@@ -1,0 +1,234 @@
+<resources>
+    <string name="app_name">AvaPod</string>
+
+    <!-- AdMob credentials -->
+    <string name="admob_app_id">ca-app-pub-8683775581688444~4521959277</string>
+    <string name="admob_interstitial_ad_unit_id">ca-app-pub-8683775581688444/6246634712</string>
+    <string name="admob_banner_ad_unit_id">ca-app-pub-8683775581688444/8872798058</string>
+    <string name="admob_rewarded_ad_unit_id">ca-app-pub-8683775581688444/7559716384</string>
+
+    <!-- Home layout -->
+    <string name="hint_search_podcasts">جستجو در پادکست‌ها...</string>
+    <string name="nav_new">جدید</string>
+    <string name="nav_download">دانلود</string>
+    <string name="nav_favorites">مورد علاقه</string>
+    <string name="nav_settings">تنظیمات</string>
+    <string name="label_weekly_trending">ترندهای هفته</string>
+    <string name="btn_view_all">مشاهده همه</string>
+    <string name="label_continue_podcast">ادامه پادکست</string>
+
+    <!-- Activity Player-->
+    <string name="player_txt_title">عنوان اپیزود</string>
+    <string name="player_txt_podcast">نام پادکست</string>
+    <string name="txt_default_time">00:00</string>
+    <string name="btn_speed_default">1.0x</string>
+
+    <!-- Activity Details -->
+    <string name="txt_podcast_title">عنوان پادکست</string>
+    <string name="txt_podcast_artist">نام سازنده</string>
+    <string name="btn_subscribe">دنبال کردن</string>
+    <string name="txt_podcast_description">توضیحات پادکست در اینجا قرار می‌گیرد…</string>
+    <string name="label_episodes">اپیزودها</string>
+
+    <!-- Admin login dialog -->
+    <string name="title_admin_login">ورود مدیر</string>
+    <string name="hint_username">نام کاربری</string>
+    <string name="hint_password">رمز عبور</string>
+    <string name="btn_login">ورود</string>
+
+    <!-- Fragment_add_podcast -->
+    <string name="title_add_new_podcast">افزودن پادکست جدید</string>
+    <string name="hint_podcast_title">عنوان پادکست</string>
+    <string name="hint_artist_host">نام هنرمند / میزبان</string>
+    <string name="hint_rss_url">RSS Feed URL</string>
+    <string name="hint_thumbnail_url">آدرس تصویر (Thumbnail URL)</string>
+    <string name="hint_podcast_description">توضیحات پادکست</string>
+    <string name="label_add_to_trending">قرار گرفتن در لیست ترند</string>
+    <string name="btn_save_to_firebase">ذخیره در فایربیس</string>
+
+    <!-- Bookmarks layout -->
+    <string name="title_bookmarks">نشان شده ها</string>
+    <string name="msg_empty_bookmarks">هنوز اپیزودی را نشان نکردید</string>
+
+    <!-- Category layout -->
+    <string name="placeholder_category_name">نام دسته‌بندی</string>
+    <string name="msg_empty_category">پادکستی در این دسته یافت نشد</string>
+
+    <!-- Continue listening layout all -->
+    <string name="title_continue_listening">ادامه پادکست‌ها</string>
+    <string name="menu_clear_continue">پاک کردن همه</string>
+    <string name="dialog_clear_continue_title">پاک کردن لیست</string>
+    <string name="dialog_clear_continue_message">آیا مطمئن هستید که می‌خواهید لیست ادامه تماشا را پاک کنید؟</string>
+
+
+    <!-- Downloads layout -->
+    <string name="title_downloads">لیست دانلودها</string>
+    <string name="msg_empty_downloads">لیست دانلود خالی است</string>
+
+    <!-- Explore layout -->
+    <string name="title_categories">دسته‌بندی‌ها</string>
+
+    <!-- Library layout -->
+    <string name="title_library">برگزیده ها</string>
+    <string name="msg_empty_library">هنوز پادکستی را دنبال نکرده‌اید</string>
+
+    <!-- New episodes layout -->
+    <string name="title_new_episodes">جدیدترین قسمت ها</string>
+
+    <!-- Search result layout -->
+    <string name="title_search_results">نتایج جستجو</string>
+    <string name="msg_no_results">نتیجه‌ای پیدا نشد</string>
+
+    <!-- Settings layout -->
+    <string name="label_dark_mode">حالت شب</string>
+    <string name="app_version">نسخه ۱.۰.۰</string>
+
+    <!-- Category item layout -->
+    <string name="cat_social">اجتماعی</string>
+
+    <!-- Continue listening layout -->
+    <string name="placeholder_continue_title">عنوان پادکست در اینجا</string>
+
+
+    <!-- Item episode layout -->
+    <string name="placeholder_episode_title">عنوان قسمت</string>
+    <string name="label_duration_prefix">زمان:</string>
+    <string name="placeholder_episode_date">|تاریخ:۱۴۰۲/۱۰/۱</string>
+    <string name="placeholder_episode_time">۴۵:۲۰</string>
+    <string name="placeholder_percent_zero">۰٪</string>
+
+    <!-- Item podcast trending layout -->
+    <string name="placeholder_trending_title">عنوان پادکست</string>
+    <string name="placeholder_artist_name">نام هنرمند</string>
+
+    <!-- Mini player layout -->
+    <string name="placeholder_mini_player_podcast">رادیو راه</string>
+    <string name="placeholder_mini_player_title">مستند صوتی شنود</string>
+    <string name="placeholder_mini_player_artist">مجتبی شکوری</string>
+
+    <!-- Bottom navigation menu -->
+    <string name="nav_home">خانه</string>
+
+    <!-- Player menu -->
+    <string name="menu_add_bookmark">افزودن به نشان شده‌ها</string>
+    <string name="menu_remove_bookmark">حذف از نشان شده‌ها</string>
+    <string name="menu_download_episode">دانلود این قسمت</string>
+    <string name="menu_delete_download">حذف از لیست دانلود</string>
+
+
+    <!-- Adapters -->
+    <string name="percent_format">%1$s٪</string>
+    <string name="date_prefix_format">|  تاریخ:%1$s</string>
+    <string name="default_time">۰۰:۰۰</string>
+    <string name="unknown_artist">ناشناس</string>
+
+
+    <!-- Fragments -->
+    <string name="error_categories_not_found">لیست دسته‌بندی‌ها یافت نشد. لطفاً اینترنت خود را چک کنید.</string>
+    <string name="error_empty_fields">لطفاً فیلدهای اصلی را پر کنید</string>
+    <string name="error_empty_category">لطفاً یک دسته‌بندی انتخاب کنید</string>
+    <string name="success_podcast_added">پادکست اضافه و نسخه دیتابیس بروزرسانی شد</string>
+    <string name="error_firebase_connection">خطا در اتصال: %1$s</string>
+    <string name="menu_clear_all_bookmarks">پاک کردن همه نشان شده‌ها</string>
+    <string name="dialog_clear_all_title">حذف همه</string>
+    <string name="dialog_clear_all_message">آیا مطمئن هستید که می‌خواهید تمام لیست مورد علاقه را پاک کنید؟</string>
+    <string name="toast_list_cleared">لیست پاک شد</string>
+    <string name="menu_clear_downloads">پاک کردن لیست دانلودها</string>
+    <string name="dialog_delete_downloads_title">حذف دانلودها</string>
+    <string name="dialog_delete_downloads_message">آیا مطمئن هستید که می‌خواهید تمام لیست دانلود را پاک کنید؟</string>
+    <string name="default_podcast_artist">آواپاد</string>
+    <string name="error_no_subscriptions">شما هیچ پادکستی را دنبال نکرده‌اید</string>
+    <string name="error_invalid_admin_credentials">اطلاعات ورود اشتباه است</string>
+    <string name="dialog_yes">بله</string>
+    <string name="dialog_no">خیر</string>
+    <string name="download_title_prefix">دانلود: %s</string>
+    <string name="toast_download_started">دانلود آغاز شد</string>
+    <string name="toast_bookmark_removed">از بوکمارک حذف شد</string>
+    <string name="toast_bookmark_added">به بوکمارک اضافه شد</string>
+
+    <string name="report_podcast">گزارش پادکست</string>
+    <string name="report_dialog_title">گزارش تخلف پادکست</string>
+    <string name="report_reason_copyright">نقض کپی‌رایت / مالکیت معنوی</string>
+    <string name="report_reason_inappropriate">محتوای نامناسب یا توهین‌آمیز</string>
+    <string name="report_reason_low_quality">کیفیت پایین فایل یا خرابی لینک</string>
+    <string name="report_email_subject">گزارش تخلف در آواپاد</string>
+    <string name="report_email_chooser_title">ارسال گزارش با...</string>
+    <string name="error_email_app_not_found">برنامه ایمیلی روی گوشی شما یافت نشد</string>
+    <string name="unknown_podcast_id">نامشخص</string>
+
+    <string name="report_email_body_template">
+        گزارش تخلف پادکست در اپلیکیشن آواپاد.\n\n
+        مشخصات پادکست:\n
+        عنوان: %1$s\n
+        آدرس فید (ID): %2$s\n
+        علت گزارش کاربر: %3$s\n\n
+        تیم پشتیبانی ظرف ۲۴ ساعت آینده محتوا را بررسی خواهد کرد.
+    </string>
+
+
+    <!--Activities-->
+    <string name="default_podcast_description">توضیحاتی ثبت نشده است.</string>
+    <string name="toast_unsubscribed">لغو دنبال کردن انجام شد</string>
+    <string name="toast_subscribed">به لیست دنبال شده‌ها اضافه شد</string>
+    <string name="btn_subscribed_text">دنبال شده</string>
+    <string name="btn_subscribe_text">دنبال کردن</string>
+    <string name="error_audio_file_not_found">فایل صوتی یافت نشد!</string>
+    <string name="error_network_connection">خطا در برقراری ارتباط</string>
+    <string name="error_loading_failed">خطا در بارگذاری</string>
+    <string name="exit_message">برای خروج، دوباره دکمه بازگشت را بزنید</string>
+
+    <!-- Settings -->
+    <string name="settings_clear_cache">پاک کردن حافظه موقت (Cache)</string>
+    <string name="settings_clear_downloads">حذف تمامی اپیزودهای دانلود شده</string>
+    <string name="dialog_clear_downloads_title">پاکسازی دانلودها</string>
+    <string name="dialog_clear_downloads_message">آیا از حذف تمامی فایل‌های صوتی دانلود شده و پاکسازی لیست آن‌ها اطمینان دارید؟</string>
+    <string name="toast_cache_cleared">حافظه بافر با موفقیت پاک شد</string>
+    <string name="toast_downloads_cleared">تمامی فایل‌های دانلود شده حذف شدند</string>
+    <string name="sleep_timer_title">تنظیم تایمر خواب</string>
+    <string name="sleep_timer_turn_off">خاموش کردن تایمر</string>
+    <string name="sleep_timer_15">۱۵ دقیقه</string>
+    <string name="sleep_timer_30">۳۰ دقیقه</string>
+    <string name="sleep_timer_60">۶۰ دقیقه</string>
+    <string name="toast_sleep_timer_set">تایمر خواب برای %1$s دیگر تنظیم شد.</string>
+    <string name="toast_sleep_timer_canceled">تایمر خواب لغو شد.</string>
+    <string name="timer_status_off">غیرفعال</string>
+    <string name="timer_status_on">%1$d دقیقه مانده</string>
+    <string name="settings_sleep_timer">تایمر خواب</string>
+    <string name="sleep_timer_activated">تایمر خواب فعال شد و پخش متوقف گردید</string>
+    <string name="delete_from_memory">از حافظه و لیست دانلودها حذف شد</string>
+
+
+    <string name="sleep_timer_off">غیرفعال</string>
+    <string name="sleep_timer_15_min">۱۵ دقیقه</string>
+    <string name="sleep_timer_30_min">۳۰ دقیقه</string>
+    <string name="sleep_timer_45_min">۴۵ دقیقه</string>
+    <string name="sleep_timer_60_min">۶۰ دقیقه</string>
+    <string name="sleep_timer_deactivated">تایمر خواب غیرفعال شد</string>
+    <string name="sleep_timer_finished">تایمر خواب: پخش پادکست متوقف شد</string>
+    <string name="player_timer_set">تایمر پخش برای %1$d دقیقه دیگر کوک شد</string>
+
+
+    <string name="title_admin_dashboard">مدیریت پادکست‌ها</string>
+    <string name="btn_add_new_podcast">افزودن پادکست جدید</string>
+    <string name="dialog_delete_title">حذف پادکست</string>
+    <string name="dialog_delete_message">آیا از حذف \'%1$s\' اطمینان دارید؟</string>
+    <string name="toast_podcast_deleted">پادکست با موفقیت حذف شد</string>
+    <string name="action_edit">ویرایش</string>
+    <string name="action_delete">حذف</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

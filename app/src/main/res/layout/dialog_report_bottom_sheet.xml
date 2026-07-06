@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="32dp"
+    android:layoutDirection="rtl">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="#40FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/report_dialog_title"
+        android:textColor="@color/text_white"
+        android:textSize="18sp"
+        android:fontFamily="@font/vazir_bold"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/item_copyright"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_flag"
+            app:tint="@color/text_gray"
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_reason_copyright"
+            android:textColor="@color/text_white"
+            android:textSize="14sp"
+            android:fontFamily="@font/vazir_regular"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_inappropriate"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_flag"
+            app:tint="@color/text_gray"
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_reason_inappropriate"
+            android:textColor="@color/text_white"
+            android:textSize="14sp"
+            android:fontFamily="@font/vazir_regular"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_low_quality"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_flag"
+            app:tint="@color/text_gray"
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_reason_low_quality"
+            android:textColor="@color/text_white"
+            android:textSize="14sp"
+            android:fontFamily="@font/vazir_regular"/>
+    </LinearLayout>
+
+</LinearLayout>

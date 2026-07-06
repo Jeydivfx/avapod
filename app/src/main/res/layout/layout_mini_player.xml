@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="22dp"
+    app:cardBackgroundColor="@color/card_info_bg"
+    app:cardElevation="16dp"
+    app:strokeColor="@color/progress_track_dark"
+    app:strokeWidth="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:background="@drawable/bg_mini_player_gradient">
+
+        <ProgressBar
+            android:id="@+id/mini_player_progress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3.5dp"
+            android:layout_alignParentBottom="true"
+            android:progress="45"
+            android:layoutDirection="ltr"
+            android:progressTint="@color/accent_cyan"
+            android:progressBackgroundTint="@color/progress_bg_alpha"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_mini_player_cover"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/RoundedImageView"
+                android:src="@drawable/placeholder_podcast"
+                app:strokeColor="@color/image_stroke_alpha"
+                app:strokeWidth="1dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_mini_player_podcast_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/vazir_bold"
+                    android:text="@string/placeholder_mini_player_podcast"
+                    android:textColor="@color/accent_cyan"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.05"
+                    android:textAllCaps="true"
+                    android:textDirection="rtl" />
+
+                <TextView
+                    android:id="@+id/txt_mini_player_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/vazir_bold"
+                    android:text="@string/placeholder_mini_player_title"
+                    android:textColor="@color/text_white"
+                    android:textSize="14sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textDirection="rtl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_mini_player_play_pause"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_pause_circle_filled"
+                    app:tint="@color/accent_cyan" />
+
+                <ImageButton
+                    android:id="@+id/btn_mini_player_close"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_close"
+                    android:scaleType="fitCenter"
+                    app:tint="@color/icon_close_alpha" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

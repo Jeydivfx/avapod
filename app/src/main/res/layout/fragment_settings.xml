@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:padding="12dp">
+
+    <include
+        android:id="@+id/common_toolbar"
+        layout="@layout/layout_common_toolbar" />
+
+    <TextView
+        android:id="@+id/txt_settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/common_toolbar"
+        android:layout_marginHorizontal="24dp"
+        android:fontFamily="@font/vazir_bold"
+        android:text="@string/nav_settings"
+        android:textColor="@color/text_white"
+        android:textSize="20sp"
+        android:gravity="right" />
+
+    <LinearLayout
+        android:id="@+id/layout_clear_cache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_settings_title"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/bg_settings_card"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_chevron_left"
+            app:tint="@color/text_gray" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_clear_cache"
+            android:textColor="@color/text_white"
+            android:fontFamily="@font/vazir_regular"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_clear_downloads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_clear_cache"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/bg_settings_card"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_chevron_left"
+            app:tint="@color/text_gray" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_clear_downloads"
+            android:textColor="@color/text_white"
+            android:fontFamily="@font/vazir_regular"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_sleep_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_clear_downloads"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/bg_settings_card"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txt_timer_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer_status_off"
+            android:textColor="@color/accent_cyan"
+            android:fontFamily="@font/vazir_regular"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_sleep_timer"
+            android:textColor="@color/text_white"
+            android:fontFamily="@font/vazir_regular"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_sleep_timer" android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/bg_settings_card"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt_app_version"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_version"
+            android:textColor="@color/text_gray"
+            android:fontFamily="@font/vazir_regular"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

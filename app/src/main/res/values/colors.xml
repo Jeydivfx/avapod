@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_dark">#050C1D</color>
+    <color name="surface_dark">#0D162B</color>
+    <color name="primary_blue">#2196F3</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_gray">#9BA3B2</color>
+    <color name="player_background">#1E2742</color>
+    <color name="icon_tint">#FFFFFF</color>
+    <color name="text_orange">#FF8A65</color>
+    <color name="login_field">#1A202C</color>
+    <color name="text_black">#000000</color>
+    <color name="category_btn_bg">#1B2430</color>
+    <color name="light_black">#44FFFFFF</color>
+    <color name="miniPlayerbg">#A2D2FF</color>
+    <color name="player_navigation_bar_background">#000000</color>
+    <color name="bg_constraint_layout">#0F1217</color>
+    <color name="card_info_bg">#1A1F26</color>
+    <color name="accent_cyan">#00E5FF</color>
+    <color name="line_divider_bg">#2A3547</color>
+    <color name="detail_navigation_bar_background">#000000</color>
+    <color name="btn_subscribed_background">#1B2430</color>
+    <color name="btn_subscribe_background">#2196F3</color>
+    <color name="waveform_background">#33FFFFFF</color>
+    <color name="waveform_progress">#FF2196F3</color>
+    <color name="yellow">#FFCC00</color>
+
+    <!-- Home layout -->
+    <color name="hint_search_color">#707F94</color>
+
+    <!-- Item continue listening layout -->
+    <color name="progress_track_dark">#33FFFFFF</color>
+
+    <!-- Mini player layout -->
+    <color name="progress_bg_alpha">#10FFFFFF</color>
+    <color name="image_stroke_alpha">#20FFFFFF</color>
+    <color name="icon_close_alpha">#4DFFFFFF</color>
+
+    <!-- bg_circle_dark shape -->
+    <color name="circle_dark_bg">#1A2433</color>
+
+    <!-- bg_circle_icon shape -->
+    <color name="circle_icon_bg">#1A2436</color>
+
+    <!-- bg_circle_gradient -->
+    <color name="gradient_start_indigo">#3F51B5</color>
+
+    <!-- circle_white_alpha shape -->
+    <color name="white_alpha_40">#66FFFFFF</color>
+    <color name="white_alpha_50">#80FFFFFF</color>
+
+    <!-- bg_details_header -->
+    <color name="transparent">#00000000</color>
+    <color name="surface_dark_alpha_50">#8012171E</color>
+    <color name="surface_dark_opaque">#12171E</color>
+
+    <!-- Gradient_bottom_shadow -->
+    <color name="black_alpha_80">#CC000000</color>
+
+    <!-- item_rounded shape -->
+    <color name="item_rounded_bg">#16202C</color>
+
+
+    <!-- Search background shape -->
+    <color name="search_bg_dark">#1E2632</color>
+    <color name="white_alpha_10">#1AFFFFFF</color>
+
+
+    <!-- settings_card shape -->
+    <color name="settings_card_bg">#161D27</color>
+    <color name="timer_accent_blue">#007AFF</color>
+    <color name="timer_bg_blue_alpha">#1A007AFF</color>
+    <color name="timer_accent_red">#FF3B30</color>
+    <color name="timer_bg_red_alpha">#1AFF3B30</color>
+
+    <!-- player background gradient -->
+    <color name="player_gradient_start">#1A2A3A</color>
+    <color name="player_gradient_center">#0A121D</color>
+    <color name="player_gradient_end">#05090F</color>
+
+    <!--Dialog-->
+    <color name="dialog_button_positive">#2196F3</color>
+    <color name="dialog_button_negative">#9BA1B0</color>
+</resources>

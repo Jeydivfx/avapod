@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:padding="12dp">
+
+    <include
+        android:id="@+id/common_toolbar"
+        layout="@layout/layout_common_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/common_toolbar"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/vazir_bold"
+                android:text="@string/title_add_new_podcast"
+                android:textColor="@color/text_white"
+                android:textSize="18sp"
+                android:gravity="right" />
+
+            <!-- فیلدها -->
+            <EditText
+                android:id="@+id/edt_title"
+                style="@style/AdminEditTextStyle"
+                android:hint="@string/hint_podcast_title" />
+
+            <EditText
+                android:id="@+id/edt_artist"
+                style="@style/AdminEditTextStyle"
+                android:hint="@string/hint_artist_host" />
+
+            <EditText
+                android:id="@+id/edt_rss_url"
+                style="@style/AdminEditTextStyle"
+                android:hint="@string/hint_rss_url"
+                android:inputType="textUri" />
+
+            <EditText
+                android:id="@+id/edt_thumbnail_url"
+                style="@style/AdminEditTextStyle"
+                android:hint="@string/hint_thumbnail_url"
+                android:inputType="textUri" />
+
+            <!-- به جای EditText قبلی این را بگذار -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_settings_card"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <Spinner
+                    android:id="@+id/spinner_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:dropDownSelector="@color/primary_blue"
+                    android:popupBackground="@color/login_field"
+                    android:textDirection="rtl" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edt_description"
+                style="@style/AdminEditTextStyle"
+                android:hint="@string/hint_podcast_description"
+                android:gravity="top|right"
+                android:inputType="textMultiLine"
+                android:lines="4" />
+
+            <!-- سوئیچ ترند بودن -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_settings_card"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_is_trending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_add_to_trending"
+                    android:textColor="@color/text_white"
+                    android:fontFamily="@font/vazir_regular" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_save_podcast"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/primary_blue"
+                android:fontFamily="@font/vazir_bold"
+                android:text="@string/btn_save_to_firebase"
+                android:textColor="@color/text_white" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
