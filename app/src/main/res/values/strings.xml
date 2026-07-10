@@ -217,8 +217,86 @@
     <string name="action_delete">حذف</string>
 
 
+    <string name="featured_today">ویژه امروز</string>
+    <string name="trending_now">پرطرفدارترین</string>
+    <string name="continue_listening">ادامه گوش دادن</string>
+    <string name="recommended_for_you">پیشنهادی برای شما</string>
+    <string name="new_episodes">اپیزودهای جدید</string>
+    <string name="popular_categories">دسته‌بندی‌های محبوب</string>
+    <string name="editor_picks">انتخاب سردبیر</string>
+    <string name="most_played">پربازدیدترین‌ها</string>
+    <string name="just_added">تازه‌ها</string>
+
+    <string name="view_all">مشاهده همه</string>
+    <string name="no_continue_listening">هنوز پادکستی شروع نکردی!</string>
+    <string name="no_continue_listening_desc">برای شروع، یک پادکست از بخش‌های بالا انتخاب کن</string>
+    <string name="start_exploring">شروع کشف</string>
+    <string name="search_hint">جستجوی پادکست، اپیزود، گوینده...</string>
+    <string name="search_suggestions">پیشنهادات جستجو</string>
+    <string name="no_search_results">نتیجه‌ای یافت نشد</string>
+
+    <!-- Category Names -->
+    <string name="category_all">همه</string>
+    <string name="category_music">موسیقی</string>
+    <string name="category_story">داستان</string>
+    <string name="category_education">آموزشی</string>
+    <string name="category_comedy">کمدی</string>
+    <string name="category_sports">ورزشی</string>
+    <string name="category_news">خبری</string>
+    <string name="category_technology">تکنولوژی</string>
+    <string name="category_health">سلامت</string>
+    <string name="category_business">کسب‌وکار</string>
+
+    <!-- Home Feature Labels -->
+    <string name="btn_new_episodes">جدیدها</string>
+    <string name="btn_downloads">دانلودها</string>
+    <string name="btn_bookmarks">نشان‌ها</string>
+    <string name="btn_settings">تنظیمات</string>
+
+    <!-- Empty States -->
+    <string name="empty_trending">هیچ پادکست پرطرفداری موجود نیست</string>
+    <string name="empty_bookmarks">نشان‌گذاری ندارید</string>
+    <string name="empty_downloads">دانلودی ندارید</string>
+
+    <!-- Player -->
 
 
+    <!-- Toast Messages -->
+    <string name="searching">در حال جستجو...</string>
+    <string name="no_internet">لطفاً اتصال اینترنت را بررسی کنید</string>
+    <string name="loading">در حال بارگذاری...</string>
+    <string name="retry">تلاش مجدد</string>
+
+
+    <!-- Calendar Strings -->
+    <string name="calendar_title">تقویم فارسی</string>
+    <string name="calendar_shamsi">شمسی</string>
+    <string name="calendar_miladi">میلادی</string>
+    <string name="calendar_ghamari">قمری</string>
+    <string name="btn_today">امروز</string>
+    <string name="back_to_today">بازگشت به امروز</string>
+    <string name="prev_month">ماه قبل</string>
+    <string name="next_month">ماه بعد</string>
+
+    <!-- Week Days -->
+    <string name="weekday_shanbe">ش</string>
+    <string name="weekday_yekshanbe">ی</string>
+    <string name="weekday_doshanbe">د</string>
+    <string name="weekday_seshanbe">س</string>
+    <string name="weekday_chaharshanbe">چ</string>
+    <string name="weekday_panjshanbe">پ</string>
+    <string name="weekday_jome">ج</string>
+
+    <!-- Event Messages -->
+    <string name="event_today">✨ امروز</string>
+    <string name="event_friday">جمعه 🕌</string>
+    <string name="event_normal_day">📅 روز معمولی</string>
+    <string name="event_holiday">✅ تعطیل</string>
+    <string name="event_loading">در حال بارگذاری...</string>
+    <string name="event_no_event">امروز هیچ مناسبت خاصی نیست</string>
+
+    <!-- Error Messages -->
+    <string name="error_date_conversion">خطا در تبدیل</string>
 
 
 

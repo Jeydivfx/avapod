@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.avapod.app.Fragments.CalendarFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -232,7 +233,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // کلیک معمولی روی منو
+        val params = bottomNav.layoutParams
+        params.height = 56.dpToPx()
+        bottomNav.layoutParams = params
+
         bottomNav.setOnItemSelectedListener { item ->
             executeNavigation(item.itemId)
             true
@@ -241,6 +245,11 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setOnItemReselectedListener { item ->
             executeNavigation(item.itemId)
         }
+    }
+
+    // Extension function برای تبدیل dp به px
+    fun Int.dpToPx(): Int {
+        return (this * resources.displayMetrics.density).toInt()
     }
 
     private fun executeNavigation(itemId: Int) {
@@ -252,6 +261,7 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home -> HomeFragment()
             R.id.nav_library -> LibraryFragment()
             R.id.nav_explore -> ExploreFragment()
+            R.id.nav_calendar -> CalendarFragment()
             else -> null
         }
 

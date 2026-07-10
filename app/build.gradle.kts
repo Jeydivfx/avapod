@@ -20,8 +20,8 @@ android {
         applicationId = "com.avapod.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 12
-        versionName = "1.40"
+        versionCode = 13
+        versionName = "1.41"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -101,7 +101,11 @@ dependencies {
 
     implementation("com.github.samanzamani:PersianDate:1.7.1")
 
+
     implementation("com.google.android.gms:play-services-ads:25.2.0")
+
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
 
 }

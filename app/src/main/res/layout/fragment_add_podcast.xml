@@ -108,6 +108,32 @@
                     android:fontFamily="@font/vazir_regular" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_settings_card"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_is_featured"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ویژه امروز"
+                    android:textColor="@color/text_white"
+                    android:fontFamily="@font/vazir_regular" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_save_podcast"
                 android:layout_width="match_parent"

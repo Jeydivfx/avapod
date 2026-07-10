@@ -204,7 +204,7 @@ class SettingsFragment : Fragment() {
             val user = edtUser.text.toString()
             val pass = edtPass.text.toString()
 
-            if (user == "jeydi" && pass == "jeydi") {
+            if (user == "admin" && pass == "padmin") {
                 dialog.dismiss()
                 openAdminDashboard()
             } else {

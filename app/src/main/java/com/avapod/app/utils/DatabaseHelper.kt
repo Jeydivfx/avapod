@@ -11,7 +11,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "AvapodDB"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
 
         private const val TABLE_PODCASTS = "podcasts"
         private const val TABLE_CATEGORIES = "categories"
@@ -25,6 +25,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val KEY_RSS = "rss_url"
         private const val KEY_THUMB = "thumbnail_url"
         private const val KEY_TRENDING = "is_trending"
+        private const val KEY_FEATURED = "is_featured"
         private const val KEY_CAT_NAME = "name"
         private const val KEY_CAT_ICON = "icon"
 
@@ -42,7 +43,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + "$KEY_CAT_ID TEXT,"
                 + "$KEY_RSS TEXT,"
                 + "$KEY_THUMB TEXT,"
-                + "$KEY_TRENDING INTEGER)")
+                + "$KEY_TRENDING INTEGER,"
+                + "$KEY_FEATURED INTEGER)")
 
         val createCategoryTable = ("CREATE TABLE $TABLE_CATEGORIES ("
                 + "$KEY_ID TEXT PRIMARY KEY,"
@@ -61,11 +63,18 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        if (oldVersion < 4) {
+            try {
+                db?.execSQL("ALTER TABLE $TABLE_PODCASTS ADD COLUMN $KEY_FEATURED INTEGER DEFAULT 0")
+            } catch (e: Exception) {
 
-        db?.execSQL("DROP TABLE IF EXISTS $TABLE_PODCASTS")
-        db?.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORIES")
-        db?.execSQL("DROP TABLE IF EXISTS $TABLE_AD_CONFIG")
-        onCreate(db)
+            }
+        } else {
+            db?.execSQL("DROP TABLE IF EXISTS $TABLE_PODCASTS")
+            db?.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORIES")
+            db?.execSQL("DROP TABLE IF EXISTS $TABLE_AD_CONFIG")
+            onCreate(db)
+        }
     }
 
     fun insertPodcasts(podcasts: List<Podcast>) {
@@ -83,6 +92,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     put(KEY_RSS, pod.rss_url)
                     put(KEY_THUMB, pod.thumbnail_url)
                     put(KEY_TRENDING, if (pod.is_trending) 1 else 0)
+                    put(KEY_FEATURED, if (pod.is_featured) 1 else 0)
                 }
                 db.insert(TABLE_PODCASTS, null, values)
             }
@@ -107,7 +117,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     category_id = cursor.getString(4),
                     rss_url = cursor.getString(5),
                     thumbnail_url = cursor.getString(6),
-                    is_trending = cursor.getInt(7) == 1
+                    is_trending = cursor.getInt(7) == 1,
+                    is_featured = if (cursor.columnCount > 8) cursor.getInt(8) == 1 else false
+
                 ))
             } while (cursor.moveToNext())
         }

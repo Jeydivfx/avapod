@@ -20,6 +20,7 @@ class AddPodcastFragment : Fragment() {
     private lateinit var edtThumbnailUrl: EditText
     private lateinit var edtDescription: EditText
     private lateinit var switchTrending: SwitchCompat
+    private lateinit var switchFeatured: SwitchCompat
     private lateinit var btnSave: Button
     private lateinit var spinnerCategories: Spinner
 
@@ -38,14 +39,11 @@ class AddPodcastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ۱. اول ویوها را مقداردهی کن
         initViews(view)
         setupToolbar(view)
 
-        // ۲. بعد داده را بگیر
         val podcast = arguments?.getSerializable("podcast_data") as? Podcast
 
-        // ۳. لود کردن کتگوری‌ها و سپس ست کردن داده‌های پادکست
         loadCategories(podcast)
 
         btnSave.setOnClickListener {
@@ -60,6 +58,7 @@ class AddPodcastFragment : Fragment() {
         edtThumbnailUrl = view.findViewById(R.id.edt_thumbnail_url)
         edtDescription = view.findViewById(R.id.edt_description)
         switchTrending = view.findViewById(R.id.switch_is_trending)
+        switchFeatured = view.findViewById(R.id.switch_is_featured)
         btnSave = view.findViewById(R.id.btn_save_podcast)
         spinnerCategories = view.findViewById(R.id.spinner_categories)
     }
@@ -86,7 +85,6 @@ class AddPodcastFragment : Fragment() {
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spinnerCategories.adapter = adapter
 
-                    // اگر در حالت ویرایش هستیم، پادکست را ست کن
                     if (podcastToEdit != null) {
                         editingPodcastId = podcastToEdit.id
                         edtTitle.setText(podcastToEdit.title)
@@ -95,6 +93,7 @@ class AddPodcastFragment : Fragment() {
                         edtThumbnailUrl.setText(podcastToEdit.thumbnail_url)
                         edtDescription.setText(podcastToEdit.description)
                         switchTrending.isChecked = podcastToEdit.is_trending
+                        switchFeatured.isChecked = podcastToEdit.is_featured
 
                         val pos = categoryList.indexOfFirst { it.id == podcastToEdit.category_id }
                         if (pos != -1) spinnerCategories.setSelection(pos)
@@ -118,18 +117,20 @@ class AddPodcastFragment : Fragment() {
         val thumbnailUrl = edtThumbnailUrl.text.toString().trim()
         val description = edtDescription.text.toString().trim()
         val isTrending = switchTrending.isChecked
+        val isFeatured = switchFeatured.isChecked
 
         if (title.isEmpty() || artist.isEmpty() || rssUrl.isEmpty() || thumbnailUrl.isEmpty()) {
             Toast.makeText(requireContext(), "لطفاً تمام فیلدها را پر کنید", Toast.LENGTH_SHORT).show()
             return
         }
 
-        saveToFirebase(title, artist, rssUrl, thumbnailUrl, selectedCategoryId, description, isTrending)
+        saveToFirebase(title, artist, rssUrl, thumbnailUrl, selectedCategoryId, description, isTrending, isFeatured)
     }
 
     private fun saveToFirebase(
         title: String, artist: String, rss: String,
-        thumb: String, catId: String, desc: String, trending: Boolean
+        thumb: String, catId: String, desc: String, trending: Boolean,
+        featured: Boolean
     ) {
         btnSave.isEnabled = false
         val db = FirebaseDatabase.getInstance().getReference("podcasts")
@@ -138,7 +139,8 @@ class AddPodcastFragment : Fragment() {
         val podcastData = mapOf(
             "title" to title, "artist" to artist, "rss_url" to rss,
             "thumbnail_url" to thumb, "category_id" to catId,
-            "description" to desc, "is_trending" to trending
+            "description" to desc, "is_trending" to trending,
+            "is_featured" to featured
         )
 
         db.child(podId).setValue(podcastData).addOnSuccessListener {

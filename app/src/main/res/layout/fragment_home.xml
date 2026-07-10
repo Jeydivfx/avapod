@@ -1,162 +1,578 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://tools.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp">
+        android:layout_marginTop="30dp"
+        tools:ignore="MissingClass">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
 
-            <TextView
-                android:id="@+id/txt_date"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/vazir_regular"
-                android:textColor="@color/text_gray"
-                android:textSize="14sp"
-                tools:text="دوشنبه، ۴ شهریور ۱۴۰۳" />
-
-            <EditText
-                android:id="@+id/search_bar"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_search_modern"
-                android:drawablePadding="12dp"
-                android:drawableStart="@drawable/ic_search"
-                android:drawableTint="@color/accent_cyan"
-                android:fontFamily="@font/vazir_regular"
-                android:hint="@string/hint_search_podcasts"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:maxLines="1"
+                android:orientation="vertical"
                 android:paddingHorizontal="16dp"
-                android:singleLine="true"
-                android:textColor="@color/text_white"
-                android:textColorHint="@color/hint_search_color"
-                android:textSize="14sp" />
+                android:paddingTop="20dp"
+                android:paddingBottom="30dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_search_suggestions"
+                <!-- ========== SEARCH BAR ========== -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/bg_popup_menu"
-                    android:elevation="8dp"
-                    android:maxHeight="250dp"
-                    android:translationZ="8dp"
-                    android:visibility="gone"
-                    tools:listitem="@layout/item_search_suggestion"
-                    tools:visibility="visible" />
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surface_dark">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_search"
+                            app:tint="@color/accent_cyan" />
+
+                        <EditText
+                            android:id="@+id/search_bar"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/vazir_regular"
+                            android:hint="@string/search_hint"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/text_white"
+                            android:textColorHint="@color/hint_search_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/btn_voice_search"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_mic"
+                            android:visibility="gone"
+                            app:tint="@color/accent_cyan" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ========== SEARCH SUGGESTIONS ========== -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surface_dark">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_suggestions_header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="10dp"
+                            android:fontFamily="@font/vazir_regular"
+                            android:text="@string/search_suggestions"
+                            android:textColor="@color/accent_cyan"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_search_suggestions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxHeight="200dp"
+                            android:visibility="gone"
+                            tools:listitem="@layout/item_search_suggestion"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ========== QUICK ACTIONS ========== -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@color/surface_dark">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="4"
+                        android:rowCount="1"
+                        android:padding="14dp">
+
+                        <!-- New Episodes -->
+                        <LinearLayout
+                            android:id="@+id/btn_new_episodes"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingVertical="4dp">
+
+                            <LinearLayout
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_circle_gradient_purple"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_notifications"
+                                    app:tint="@color/text_white" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/vazir_regular"
+                                android:text="@string/btn_new_episodes"
+                                android:textColor="@color/text_gray"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <!-- Downloads -->
+                        <LinearLayout
+                            android:id="@+id/btn_nav_downloads"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingVertical="4dp">
+
+                            <LinearLayout
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_circle_gradient_blue"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_download"
+                                    app:tint="@color/text_white" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/vazir_regular"
+                                android:text="@string/btn_downloads"
+                                android:textColor="@color/text_gray"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <!-- Bookmarks -->
+                        <LinearLayout
+                            android:id="@+id/btn_nav_bookmarks"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingVertical="4dp">
+
+                            <LinearLayout
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_circle_gradient_green"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_bookmark"
+                                    app:tint="@color/text_white" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/vazir_regular"
+                                android:text="@string/btn_bookmarks"
+                                android:textColor="@color/text_gray"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <!-- Settings -->
+                        <LinearLayout
+                            android:id="@+id/btn_nav_settings"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingVertical="4dp">
+
+                            <LinearLayout
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_circle_gradient_orange"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_settings"
+                                    app:tint="@color/text_white" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/vazir_regular"
+                                android:text="@string/btn_settings"
+                                android:textColor="@color/text_gray"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+                    </GridLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ========== FEATURED ========== -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/vazir_bold"
+                    android:text="@string/featured_today"
+                    android:textColor="@color/text_white"
+                    android:textSize="17sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/featured_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginBottom="20dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/surface_dark">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/img_featured"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/featured_placeholder"
+                            android:contentDescription="@string/featured_today" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#55000000" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:background="#72F69D19"
+                            android:paddingVertical="14dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="14dp">
+
+                            <TextView
+                                android:id="@+id/txt_featured_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/vazir_bold"
+                                android:text="پادکست ویژه امروز"
+                                android:textColor="@color/text_white"
+                                android:textSize="18sp"
+                                android:shadowColor="#000000"
+                                android:shadowDx="0"
+                                android:shadowDy="2"
+                                android:shadowRadius="4" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginTop="6dp">
+
+                                <TextView
+                                    android:id="@+id/txt_featured_artist"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/vazir_regular"
+                                    android:text="گوینده"
+                                    android:textColor="#E0FFFFFF"
+                                    android:textSize="14sp"
+                                    android:shadowColor="#000000"
+                                    android:shadowDx="0"
+                                    android:shadowDy="1"
+                                    android:shadowRadius="3" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:background="#4A90E2"
+                                    android:paddingHorizontal="12dp"
+                                    android:paddingVertical="5dp"
+                                    app:cornerRadius="14dp">
+
+                                    <ImageView
+                                        android:layout_width="14dp"
+                                        android:layout_height="14dp"
+                                        android:src="@drawable/ic_star"
+                                        app:tint="@color/text_white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="6dp"
+                                        android:fontFamily="@font/vazir_bold"
+                                        android:text="ویژه"
+                                        android:textColor="@color/text_white"
+                                        android:textSize="11sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ========== TRENDING ========== -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="36dp"
+                    android:layout_marginBottom="12dp"
                     android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:gravity="center_vertical">
 
-                    <LinearLayout android:id="@+id/btn_new_episodes" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                        <ImageView android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_circle_icon" android:padding="16dp" android:src="@drawable/ic_notifications" app:tint="@color/text_white" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:fontFamily="@font/vazir_regular" android:text="@string/nav_new" android:textColor="@color/text_gray" android:textSize="12sp" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/vazir_bold"
+                        android:text="@string/trending_now"
+                        android:textColor="@color/text_white"
+                        android:textSize="17sp" />
 
-                    <LinearLayout android:id="@+id/btn_nav_downloads" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                        <ImageView android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_circle_icon" android:padding="16dp" android:src="@drawable/ic_download" app:tint="@color/text_white" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:fontFamily="@font/vazir_regular" android:text="@string/nav_download" android:textColor="@color/text_gray" android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout android:id="@+id/btn_nav_bookmarks" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                        <ImageView android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_circle_icon" android:padding="16dp" android:src="@drawable/ic_bookmark" app:tint="@color/text_white" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:fontFamily="@font/vazir_regular" android:text="@string/nav_favorites" android:textColor="@color/text_gray" android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout android:id="@+id/btn_nav_settings" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                        <ImageView android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_circle_icon" android:padding="16dp" android:src="@drawable/ic_settings" app:tint="@color/text_white" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:fontFamily="@font/vazir_regular" android:text="@string/nav_settings" android:textColor="@color/text_gray" android:textSize="12sp" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/btn_all_trending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazir_regular"
+                        android:text="@string/view_all"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="13sp"
+                        android:clickable="true"
+                        android:focusable="true" />
                 </LinearLayout>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_trending"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone"
+                    app:shimmer_auto_start="true"
+                    tools:ignore="MissingClass">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/item_shimmer_podcast" />
+                        <include layout="@layout/item_shimmer_podcast" />
+                        <include layout="@layout/item_shimmer_podcast" />
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_trending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_podcast_trending" />
+
+                <!-- ========== CONTINUE LISTENING ========== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/vazir_bold"
+                        android:text="@string/continue_listening"
+                        android:textColor="@color/text_white"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/btn_all_resumes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazir_regular"
+                        android:text="@string/view_all"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="13sp"
+                        android:clickable="true"
+                        android:focusable="true" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_empty_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surface_dark"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="28dp">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_empty_state"
+                            android:alpha="0.5" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/vazir_bold"
+                            android:text="@string/no_continue_listening"
+                            android:textColor="@color/text_white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/vazir_regular"
+                            android:text="@string/no_continue_listening_desc"
+                            android:textColor="@color/text_gray"
+                            android:textSize="12sp"
+                            android:gravity="center" />
+
+                        <Button
+                            android:id="@+id/btn_start_exploring"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:background="@drawable/bg_button_primary"
+                            android:fontFamily="@font/vazir_bold"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="8dp"
+                            android:text="@string/start_exploring"
+                            android:textColor="@color/text_white"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_continue_listening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_continue_podcast" />
+
+                <!-- ========== RECOMMENDED ========== -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
                     android:fontFamily="@font/vazir_bold"
-                    android:text="@string/label_weekly_trending"
+                    android:text="@string/recommended_for_you"
                     android:textColor="@color/text_white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
-                <TextView
-                    android:id="@+id/btn_all_trending"
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recommended"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:fontFamily="@font/vazir_regular"
-                    android:text="@string/btn_view_all"
-                    android:textColor="@color/primary_blue" />
-            </RelativeLayout>
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_podcast_recommended" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_trending"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:focusable="true"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_podcast_trending" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp">
+    <!-- Loading Overlay -->
+    <ProgressBar
+        android:id="@+id/progress_loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/vazir_bold"
-                    android:text="@string/label_continue_podcast"
-                    android:textColor="@color/text_white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/btn_all_resumes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:fontFamily="@font/vazir_regular"
-                    android:text="@string/btn_view_all"
-                    android:textColor="@color/primary_blue" />
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_continue_listening"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="32dp"
-                android:orientation="horizontal" />
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

@@ -24,6 +24,8 @@
     <color name="waveform_background">#33FFFFFF</color>
     <color name="waveform_progress">#FF2196F3</color>
     <color name="yellow">#FFCC00</color>
+    <color name="nav_bg">#12121A</color>
+    <color name="nav_item_active">#4A90E2</color>
 
     <!-- Home layout -->
     <color name="hint_search_color">#707F94</color>
@@ -81,4 +83,7 @@
     <!--Dialog-->
     <color name="dialog_button_positive">#2196F3</color>
     <color name="dialog_button_negative">#9BA1B0</color>
+
+    <color name="red">#E74C3C</color>
+    <color name="red_dark">#C0392B</color>
 </resources>
