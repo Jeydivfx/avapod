@@ -281,13 +281,12 @@
                     android:fontFamily="@font/vazir_bold"
                     android:text="@string/featured_today"
                     android:textColor="@color/text_white"
-                    android:textSize="17sp" />
+                    android:textSize="18sp" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/featured_card"
                     android:layout_width="match_parent"
-<<<<<<< HEAD
-                    android:layout_height="170dp"
+                    android:layout_height="180dp"
                     android:layout_marginBottom="20dp"
                     android:clickable="true"
                     android:focusable="true"
@@ -296,15 +295,6 @@
                     app:cardBackgroundColor="@color/surface_dark"
                     app:strokeColor="#FFFFFF"
                     app:strokeWidth="2dp">
-=======
-                    android:layout_height="180dp"
-                    android:layout_marginBottom="20dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/surface_dark">
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -321,22 +311,21 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-<<<<<<< HEAD
                             android:background="@drawable/bg_featured_overlay" />
 
-
+                        <!-- هشتک ویژه هفته بالا سمت راست -->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="14dp"
-                            android:layout_marginEnd="14dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
                             android:orientation="horizontal"
                             android:gravity="center"
                             android:background="@drawable/bg_hashtag_featured"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="4dp">
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="6dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -344,117 +333,62 @@
                                 android:fontFamily="@font/vazir_bold"
                                 android:text="#ویژه_هفته"
                                 android:textColor="#FFD700"
-                                android:textSize="11sp" />
+                                android:textSize="13sp" />
                         </LinearLayout>
 
-=======
-                            android:background="#55000000" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:background="#72F69D19"
-                            android:paddingVertical="14dp" />
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
-
+                        <!-- محتوای پایین -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:orientation="vertical"
-<<<<<<< HEAD
                             android:paddingHorizontal="20dp"
-                            android:paddingVertical="16dp"
+                            android:paddingVertical="18dp"
                             android:background="@drawable/bg_featured_gradient">
-=======
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="14dp">
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
-                            <TextView
-                                android:id="@+id/txt_featured_title"
+                            <!-- عنوان -->
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/vazir_bold"
-<<<<<<< HEAD
-=======
-                                android:text="پادکست ویژه امروز"
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
-                                android:textColor="@color/text_white"
-                                android:textSize="18sp"
-                                android:shadowColor="#000000"
-                                android:shadowDx="0"
-                                android:shadowDy="2"
-<<<<<<< HEAD
-                                android:shadowRadius="6"
-                                android:maxLines="1"
-                                android:ellipsize="end" />
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
 
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/ic_star"
+                                    app:tint="#FFD700" />
+
+                                <TextView
+                                    android:id="@+id/txt_featured_title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/vazir_bold"
+                                    android:textColor="@color/text_white"
+                                    android:textSize="20sp"
+                                    android:shadowColor="#000000"
+                                    android:shadowDx="0"
+                                    android:shadowDy="2"
+                                    android:shadowRadius="6"
+                                    android:maxLines="1"
+                                    android:ellipsize="end" />
+                            </LinearLayout>
+
+                            <!-- گوینده -->
                             <TextView
                                 android:id="@+id/txt_featured_artist"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:layout_marginTop="4dp"
                                 android:fontFamily="@font/vazir_regular"
                                 android:textColor="#E0FFFFFF"
-                                android:textSize="13sp"
+                                android:textSize="15sp"
                                 android:shadowColor="#000000"
                                 android:shadowDx="0"
                                 android:shadowDy="1"
                                 android:shadowRadius="4"
                                 android:maxLines="1" />
-=======
-                                android:shadowRadius="4" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginTop="6dp">
-
-                                <TextView
-                                    android:id="@+id/txt_featured_artist"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:fontFamily="@font/vazir_regular"
-                                    android:text="گوینده"
-                                    android:textColor="#E0FFFFFF"
-                                    android:textSize="14sp"
-                                    android:shadowColor="#000000"
-                                    android:shadowDx="0"
-                                    android:shadowDy="1"
-                                    android:shadowRadius="3" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center"
-                                    android:background="#4A90E2"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="5dp"
-                                    app:cornerRadius="14dp">
-
-                                    <ImageView
-                                        android:layout_width="14dp"
-                                        android:layout_height="14dp"
-                                        android:src="@drawable/ic_star"
-                                        app:tint="@color/text_white" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="6dp"
-                                        android:fontFamily="@font/vazir_bold"
-                                        android:text="ویژه"
-                                        android:textColor="@color/text_white"
-                                        android:textSize="11sp" />
-                                </LinearLayout>
-                            </LinearLayout>
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
                         </LinearLayout>
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>

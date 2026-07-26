@@ -217,11 +217,8 @@
     <string name="action_delete">حذف</string>
 
 
-<<<<<<< HEAD
+
     <string name="featured_today">ویژه هفته</string>
-=======
-    <string name="featured_today">ویژه امروز</string>
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     <string name="trending_now">پرطرفدارترین</string>
     <string name="continue_listening">ادامه گوش دادن</string>
     <string name="recommended_for_you">پیشنهادی برای شما</string>
@@ -302,7 +299,7 @@
     <!-- Error Messages -->
     <string name="error_date_conversion">خطا در تبدیل</string>
 
-<<<<<<< HEAD
+
     <string name="menu_share">اشتراک‌گذاری</string>
     <string name="share_title">اشتراک‌گذاری اپیزود</string>
     <string name="share_message">🎙️ به اپیزود «%s» از پادکست «%s» گوش بده:\n%s</string>
@@ -316,8 +313,7 @@
     <string name="default_daily_message">امروز به صدای خوب گوش بده! 🎧</string>
     <string name="btn_listen_now">همین حالا گوش کن</string>
 
-=======
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
+
 
 
 

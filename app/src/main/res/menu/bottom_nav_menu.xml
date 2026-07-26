@@ -11,25 +11,15 @@
         android:icon="@drawable/ic_explore_outline"
         android:title="دسته‌بندی" />
 
-<<<<<<< HEAD
-=======
-    <item
-        android:id="@+id/nav_calendar"
-        android:icon="@drawable/ic_calendar_outline"
-        android:title="تقویم" />
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
-
     <item
         android:id="@+id/nav_library"
         android:icon="@drawable/ic_library_outline"
         android:title="کتابخانه" />
 
-<<<<<<< HEAD
+
     <item
         android:id="@+id/nav_calendar"
         android:icon="@drawable/ic_about"
         android:title="درباره" />
 
-=======
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 </menu>
