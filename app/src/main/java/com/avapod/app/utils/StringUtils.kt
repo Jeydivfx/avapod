@@ -25,6 +25,7 @@ object StringUtils {
         val finalMillis = if (millis in 1..999999) millis * 1000 else millis
 
         val totalSeconds = finalMillis / 1000
+<<<<<<< HEAD
         val hours = totalSeconds / 3600
         val minutes = (totalSeconds % 3600) / 60
         val seconds = totalSeconds % 60
@@ -38,6 +39,16 @@ object StringUtils {
 
         return toPersianNumber(result)
     }
+=======
+        val minutes = (totalSeconds / 60) % 60
+        val seconds = totalSeconds % 60
+
+        val result = String.format(Locale.US, "%02d:%02d", minutes, seconds)
+
+        return toPersianNumber(result)
+    }
+
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     fun timeStringToMs(time: String?): Long {
         if (time == null || time == "0" || time == "00:00") return 0L
         return try {

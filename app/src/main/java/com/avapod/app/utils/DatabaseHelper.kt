@@ -11,12 +11,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "AvapodDB"
+<<<<<<< HEAD
         private const val DATABASE_VERSION = 5
+=======
+        private const val DATABASE_VERSION = 4
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
         private const val TABLE_PODCASTS = "podcasts"
         private const val TABLE_CATEGORIES = "categories"
         private const val TABLE_AD_CONFIG = "ad_config"
+<<<<<<< HEAD
         private const val TABLE_MESSAGES = "app_messages"
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
         private const val KEY_ID = "id"
         private const val KEY_TITLE = "title"
@@ -29,9 +36,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val KEY_FEATURED = "is_featured"
         private const val KEY_CAT_NAME = "name"
         private const val KEY_CAT_ICON = "icon"
+<<<<<<< HEAD
         private const val KEY_MESSAGE_KEY = "message_key"
         private const val KEY_MESSAGE_TEXT = "text"
         private const val KEY_MESSAGE_DATE = "date"
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
         private const val KEY_BANNER_ENABLED = "ad_banner_enabled"
         private const val KEY_INTERSTITIAL_ENABLED = "ad_interstitial_enabled"
@@ -61,6 +71,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + "$KEY_INTERSTITIAL_ENABLED INTEGER,"
                 + "$KEY_REWARDED_ENABLED INTEGER)")
 
+<<<<<<< HEAD
         val createMessagesTable = ("CREATE TABLE $TABLE_MESSAGES ("
                 + "$KEY_MESSAGE_KEY TEXT PRIMARY KEY,"
                 + "$KEY_MESSAGE_TEXT TEXT,"
@@ -71,6 +82,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db?.execSQL(createCategoryTable)
         db?.execSQL(createAdConfigTable)
         db?.execSQL(createMessagesTable)
+=======
+        db?.execSQL(createPodcastTable)
+        db?.execSQL(createCategoryTable)
+        db?.execSQL(createAdConfigTable)
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -80,6 +96,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             } catch (e: Exception) {
 
             }
+<<<<<<< HEAD
         }
 
 
@@ -95,6 +112,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             }
         }
     }
+=======
+        } else {
+            db?.execSQL("DROP TABLE IF EXISTS $TABLE_PODCASTS")
+            db?.execSQL("DROP TABLE IF EXISTS $TABLE_CATEGORIES")
+            db?.execSQL("DROP TABLE IF EXISTS $TABLE_AD_CONFIG")
+            onCreate(db)
+        }
+    }
+
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     fun insertPodcasts(podcasts: List<Podcast>) {
         val db = this.writableDatabase
         db.beginTransaction()
@@ -244,6 +271,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return isEnabled
     }
 
+<<<<<<< HEAD
     fun saveMessage(key: String, text: String, date: String) {
         val db = this.writableDatabase
         val values = ContentValues().apply {
@@ -306,6 +334,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return map
     }
 
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     fun deletePodcast(podcastId: String) {
         val db = this.writableDatabase
         db.delete(TABLE_PODCASTS, "$KEY_ID = ?", arrayOf(podcastId))

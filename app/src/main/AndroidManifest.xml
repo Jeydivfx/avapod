@@ -23,7 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
         <activity
             android:name=".PlayerActivity"
             android:exported="false"
@@ -37,6 +40,7 @@
             android:label="@string/app_name"
             android:resizeableActivity="true"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+<<<<<<< HEAD
             android:theme="@style/Theme.AvaPod">
 
             <intent-filter>
@@ -51,6 +55,12 @@
 
                 <data android:scheme="avapad" android:host="play" />
             </intent-filter>
+=======
+            android:theme="@style/Theme.AvaPod"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
         </activity>
 
         <meta-data

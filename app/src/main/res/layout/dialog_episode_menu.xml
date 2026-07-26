@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+=======
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     android:background="@drawable/bg_popup_menu"
     android:orientation="vertical"
     android:paddingBottom="24dp"
@@ -30,7 +36,10 @@
         android:maxLines="2"
         android:ellipsize="end"/>
 
+<<<<<<< HEAD
     <!-- دانلود -->
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     <LinearLayout
         android:id="@+id/item_menu_download"
         android:layout_width="match_parent"
@@ -58,11 +67,18 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_download"
+<<<<<<< HEAD
             app:tint="@color/text_white"
             android:contentDescription="Download" />
     </LinearLayout>
 
     <!-- بوکمارک -->
+=======
+            app:tint= "@color/text_white"
+            android:contentDescription="Download" />
+    </LinearLayout>
+
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     <LinearLayout
         android:id="@+id/item_menu_bookmark"
         android:layout_width="match_parent"
@@ -94,6 +110,7 @@
             android:contentDescription="Bookmark" />
     </LinearLayout>
 
+<<<<<<< HEAD
     <!-- ====== گزینه شیر (Share) - جدید ====== -->
     <LinearLayout
         android:id="@+id/item_menu_share"
@@ -127,4 +144,6 @@
             android:contentDescription="Share" />
     </LinearLayout>
 
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 </LinearLayout>

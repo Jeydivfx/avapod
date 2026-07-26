@@ -24,8 +24,12 @@ import com.bumptech.glide.Glide
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+<<<<<<< HEAD
 import com.avapod.app.Fragments.AboutFragment
 import android.util.Base64
+=======
+import com.avapod.app.Fragments.CalendarFragment
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,7 +79,10 @@ class MainActivity : AppCompatActivity() {
         )
 
 
+<<<<<<< HEAD
         handleDeepLink(intent)
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
         val mainView = findViewById<View>(R.id.nav_host_fragment)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -134,6 +141,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
 
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
@@ -156,6 +164,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
     private fun initMiniPlayer() {
         miniPlayerContainer = findViewById(R.id.include_mini_player)
         imgCover = miniPlayerContainer.findViewById(R.id.img_mini_player_cover)
@@ -285,7 +295,11 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home -> HomeFragment()
             R.id.nav_library -> LibraryFragment()
             R.id.nav_explore -> ExploreFragment()
+<<<<<<< HEAD
             R.id.nav_calendar -> AboutFragment()
+=======
+            R.id.nav_calendar -> CalendarFragment()
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
             else -> null
         }
 

@@ -23,6 +23,10 @@ data class Category(
     var icon: String = ""
 )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 data class ContinueEpisode(
     val audioUrl: String?,
     val title: String?,
@@ -30,9 +34,12 @@ data class ContinueEpisode(
     val duration: String?,
     val lastPosition: Int,
     val artist: String? = null
+<<<<<<< HEAD
 )
 
 data class AppMessage(
     val text: String = "",
     val date: String = ""
+=======
+>>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 )
