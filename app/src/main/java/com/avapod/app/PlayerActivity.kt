@@ -3,20 +3,15 @@ package com.avapod.app
 import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
-<<<<<<< HEAD
+
 import android.content.Intent
-=======
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
-<<<<<<< HEAD
 import android.util.Base64
-=======
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageButton
@@ -217,11 +212,8 @@ class PlayerActivity : AppCompatActivity() {
                 }
                 exoPlayer?.play()
             }
-<<<<<<< HEAD
+
         }
-=======
-    }
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
 
         if (exoPlayer?.currentMediaItem?.localConfiguration?.uri.toString() != url) {
             val mediaItem = MediaItem.fromUri(url)
@@ -368,14 +360,10 @@ class PlayerActivity : AppCompatActivity() {
 
 
         txtMenuTitle.text = currentEpisode.title ?: txtTitle.text.toString()
-
-<<<<<<< HEAD
         val itemShare = dialogView.findViewById<View>(R.id.item_menu_share)
 
         txtMenuTitle.text = currentEpisode.title ?: txtTitle.text.toString()
 
-=======
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
         val isBookmarked = prefHelper.isBookmarked(audioUrl)
         if (isBookmarked) {
             txtBookmark.text = getString(R.string.menu_remove_bookmark)
@@ -398,7 +386,6 @@ class PlayerActivity : AppCompatActivity() {
             getString(R.string.menu_download_episode)
         }
 
-<<<<<<< HEAD
         itemShare.setOnClickListener {
 
             val episodeTitle = txtTitle.text.toString()
@@ -433,8 +420,6 @@ class PlayerActivity : AppCompatActivity() {
         }
 
 
-=======
->>>>>>> d211ee2b997d4e0d4f8b0e5e734b0f33ab6f3151
         itemDownload.setOnClickListener {
             if (isDownloaded) {
                 if (downloadFolder != null && downloadFolder.exists() && expectedName.isNotEmpty()) {
