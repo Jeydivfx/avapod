@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_outline"
+        android:title="خانه" />
+
+    <item
+        android:id="@+id/nav_explore"
+        android:icon="@drawable/ic_explore_outline"
+        android:title="دسته‌بندی" />
+
+
+    <item
+        android:id="@+id/nav_library"
+        android:icon="@drawable/ic_library_outline"
+        android:title="کتابخانه" />
+
+    <item
+        android:id="@+id/nav_calendar"
+        android:icon="@drawable/ic_about"
+        android:title="درباره" />
+
+</menu>

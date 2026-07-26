@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_item_rounded">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_img"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/img_episode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_podcast" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/img_play_btn"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/bg_circle_play_gradient"
+        android:padding="10dp"
+        android:src="@drawable/ic_play_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/text_white" />
+
+    <TextView
+        android:id="@+id/txt_episode_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="right"
+        android:text="@string/placeholder_episode_title"
+        android:textColor="@color/text_white"
+        android:textSize="13sp"
+        android:fontFamily="@font/vazir_bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintRight_toLeftOf="@id/card_img"
+        app:layout_constraintLeft_toRightOf="@id/img_play_btn"
+        app:layout_constraintTop_toTopOf="@id/card_img" />
+
+    <TextView
+        android:id="@+id/label_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/label_duration_prefix"
+        android:textColor="@color/text_gray"
+        android:textSize="11sp"
+        android:fontFamily="@font/vazir_regular"
+        app:layout_constraintRight_toRightOf="@id/txt_episode_title"
+        app:layout_constraintTop_toBottomOf="@id/txt_episode_title" />
+
+    <TextView
+        android:id="@+id/txt_episode_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:text="@string/placeholder_episode_date"
+        android:textColor="@color/text_gray"
+        android:textSize="11sp"
+        android:fontFamily="@font/vazir_regular"
+        app:layout_constraintRight_toLeftOf="@id/txt_episode_time"
+        app:layout_constraintTop_toTopOf="@id/label_duration" />
+
+    <TextView
+        android:id="@+id/txt_episode_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_episode_time"
+        android:textColor="@color/text_gray"
+        android:textSize="11sp"
+        android:fontFamily="@font/vazir_regular"
+        app:layout_constraintRight_toLeftOf="@id/label_duration"
+        app:layout_constraintTop_toTopOf="@id/label_duration"
+        app:layout_constraintBottom_toBottomOf="@id/label_duration" />
+
+    <ProgressBar
+        android:id="@+id/progress_listening"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="14dp"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        app:layout_constraintRight_toRightOf="@id/txt_episode_title"
+        app:layout_constraintLeft_toRightOf="@id/txt_percent"
+        app:layout_constraintTop_toBottomOf="@id/txt_episode_time" />
+
+    <TextView
+        android:id="@+id/txt_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_percent_zero"
+        android:textColor="@color/text_white"
+        android:textSize="10sp"
+        android:fontFamily="@font/vazir_regular"
+        app:layout_constraintBottom_toBottomOf="@id/progress_listening"
+        app:layout_constraintLeft_toLeftOf="@id/txt_episode_title"
+        app:layout_constraintTop_toTopOf="@id/progress_listening" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

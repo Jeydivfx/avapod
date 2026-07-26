@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AvaPod" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="android:statusBarColor">@color/surface_dark</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="popupMenuStyle">@style/CustomPopupStyle</item>
+        <item name="actionBarPopupTheme">@style/CustomPopupStyle</item>
+    </style>
+
+
+
+    <style name="BottomNavTextActive" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/vazir_bold</item>
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <style name="BottomNavTextInactive" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/vazir_bold</item>
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
+
+
+
+    <style name="CustomPopupStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:popupBackground">@drawable/bg_popup_menu</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:fontFamily">@font/vazir_regular</item>
+    </style>
+
+    <style name="DarkMenuTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/text_white</item>
+        <item name="android:textColorSecondary">@color/text_gray</item>
+        <item name="android:fontFamily">@font/vazir_regular</item>
+        <item name="android:textSize">14sp</item>
+
+        <item name="android:textDirection">rtl</item>
+        <item name="android:gravity">right|center_vertical</item>
+    </style>
+
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_rounded_dialog</item>
+        <item name="android:background">@color/background_dark</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textColorPrimary">@color/text_white</item>
+        <item name="colorAccent">@color/primary_blue</item>
+    </style>
+
+    <style name="AdminEditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:background">@drawable/bg_settings_card</item>
+        <item name="android:fontFamily">@font/vazir_regular</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textColorHint">@color/text_gray</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="RoundedImageView" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">14dp</item>
+    </style>
+
+</resources>
