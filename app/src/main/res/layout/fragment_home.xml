@@ -313,7 +313,10 @@
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_featured_overlay" />
 
+<<<<<<< HEAD
                         <!-- هشتک ویژه هفته بالا سمت راست -->
+=======
+>>>>>>> 37b85b7 (Fixed play in background error)
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -332,11 +335,19 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/vazir_bold"
                                 android:text="#ویژه_هفته"
+<<<<<<< HEAD
                                 android:textColor="#FFD700"
                                 android:textSize="13sp" />
                         </LinearLayout>
 
                         <!-- محتوای پایین -->
+=======
+                                android:textColor="@color/background_dark"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+
+>>>>>>> 37b85b7 (Fixed play in background error)
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -353,20 +364,29 @@
                                 android:orientation="horizontal"
                                 android:gravity="center_vertical">
 
+<<<<<<< HEAD
                                 <ImageView
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
                                     android:src="@drawable/ic_star"
                                     app:tint="#FFD700" />
+=======
+>>>>>>> 37b85b7 (Fixed play in background error)
 
                                 <TextView
                                     android:id="@+id/txt_featured_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                                     android:layout_marginStart="8dp"
                                     android:fontFamily="@font/vazir_bold"
                                     android:textColor="@color/text_white"
                                     android:textSize="20sp"
+=======
+                                    android:fontFamily="@font/vazir_bold"
+                                    android:textColor="@color/accent_cyan"
+                                    android:textSize="15sp"
+>>>>>>> 37b85b7 (Fixed play in background error)
                                     android:shadowColor="#000000"
                                     android:shadowDx="0"
                                     android:shadowDy="2"
@@ -375,15 +395,26 @@
                                     android:ellipsize="end" />
                             </LinearLayout>
 
+<<<<<<< HEAD
                             <!-- گوینده -->
+=======
+
+>>>>>>> 37b85b7 (Fixed play in background error)
                             <TextView
                                 android:id="@+id/txt_featured_artist"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/vazir_regular"
                                 android:textColor="#E0FFFFFF"
                                 android:textSize="15sp"
+=======
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/vazir_regular"
+                                android:textColor="#E0FFFFFF"
+                                android:textSize="13sp"
+>>>>>>> 37b85b7 (Fixed play in background error)
                                 android:shadowColor="#000000"
                                 android:shadowDx="0"
                                 android:shadowDy="1"

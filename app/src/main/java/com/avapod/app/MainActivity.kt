@@ -1,7 +1,15 @@
 package com.avapod.app
 
+<<<<<<< HEAD
 import android.content.Context
 import android.content.Intent
+=======
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+>>>>>>> 37b85b7 (Fixed play in background error)
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -26,6 +34,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.avapod.app.Fragments.AboutFragment
 import android.util.Base64
+<<<<<<< HEAD
+=======
+import androidx.annotation.OptIn
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.media3.common.util.UnstableApi
+>>>>>>> 37b85b7 (Fixed play in background error)
 import com.avapod.app.Fragments.CalendarFragment
 
 class MainActivity : AppCompatActivity() {
@@ -36,11 +51,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtPodcastNameTop: TextView
     private lateinit var btnPlayPause: ImageButton
     private lateinit var btnClose: ImageButton
+<<<<<<< HEAD
 
+=======
+    private var playerListener: Player.Listener? = null
+>>>>>>> 37b85b7 (Fixed play in background error)
     private lateinit var miniPlayerProgress: ProgressBar
     private val progressHandler = Handler(Looper.getMainLooper())
 
     private val sleepTimerMiniPlayerReceiver = object : android.content.BroadcastReceiver() {
+<<<<<<< HEAD
+=======
+        @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
         override fun onReceive(context: Context?, intent: android.content.Intent?) {
             if (intent?.action == "ACTION_AVAPOD_SLEEP_TIMER_FORCED_PAUSE") {
 
@@ -59,6 +82,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @RequiresApi(Build.VERSION_CODES.O)
+    @OptIn(UnstableApi::class)
+    @SuppressLint("UnspecifiedRegisterReceiverFlag", "ResourceAsColor")
+>>>>>>> 37b85b7 (Fixed play in background error)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -75,6 +104,11 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+<<<<<<< HEAD
+=======
+        checkAndRequestNotificationPermission()
+
+>>>>>>> 37b85b7 (Fixed play in background error)
         handleDeepLink(intent)
 
         val mainView = findViewById<View>(R.id.nav_host_fragment)
@@ -91,6 +125,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37b85b7 (Fixed play in background error)
         PlayerManager.initPlayer(this)
         initMiniPlayer()
         setupBottomNavigation()
@@ -128,13 +166,54 @@ class MainActivity : AppCompatActivity() {
 
         val filter = android.content.IntentFilter("ACTION_AVAPOD_SLEEP_TIMER_FORCED_PAUSE")
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+<<<<<<< HEAD
             registerReceiver(sleepTimerMiniPlayerReceiver, filter, androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED)
+=======
+            registerReceiver(sleepTimerMiniPlayerReceiver, filter, RECEIVER_NOT_EXPORTED)
+>>>>>>> 37b85b7 (Fixed play in background error)
         } else {
             registerReceiver(sleepTimerMiniPlayerReceiver, filter)
         }
     }
 
 
+<<<<<<< HEAD
+=======
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1001) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "برای نمایش Notification در پس‌زمینه، لطفاً اجازه دهید", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+
+    private fun checkAndRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    1001
+                )
+            } else {
+
+            }
+        }
+    }
+
+
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
         if (data != null && data.scheme == "avapad" && data.host == "play") {
@@ -156,6 +235,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun initMiniPlayer() {
         miniPlayerContainer = findViewById(R.id.include_mini_player)
         imgCover = miniPlayerContainer.findViewById(R.id.img_mini_player_cover)
@@ -182,6 +265,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+<<<<<<< HEAD
+=======
+            @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
             override fun onPlaybackStateChanged(state: Int) {
                 if (state == Player.STATE_READY) {
                     updateMiniPlayerUI()
@@ -203,15 +290,30 @@ class MainActivity : AppCompatActivity() {
         updateMiniPlayerUI()
     }
 
+<<<<<<< HEAD
+=======
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun updateMiniPlayerUI() {
 
         if (isFinishing || isDestroyed) {
             return
         }
 
+<<<<<<< HEAD
         val podcast = PlayerManager.currentPodcast
         if (podcast != null) {
             miniPlayerContainer.visibility = View.VISIBLE
+=======
+        val player = PlayerManager.exoPlayer
+        val podcast = PlayerManager.currentPodcast
+
+
+        if (player != null && podcast != null && player.playbackState != androidx.media3.common.Player.STATE_IDLE) {
+
+            miniPlayerContainer.visibility = View.VISIBLE
+
+>>>>>>> 37b85b7 (Fixed play in background error)
             txtTitle.text = PlayerManager.currentEpisodeTitle ?: podcast.title
 
             if (!podcast.artist.isNullOrEmpty()) {
@@ -230,12 +332,26 @@ class MainActivity : AppCompatActivity() {
 
             if (PlayerManager.isPlaying()) {
                 progressHandler.post(updateProgressRunnable)
+<<<<<<< HEAD
             }
         } else {
             miniPlayerContainer.visibility = View.GONE
         }
     }
 
+=======
+            } else {
+                progressHandler.removeCallbacks(updateProgressRunnable)
+            }
+
+        } else {
+            miniPlayerContainer.visibility = View.GONE
+            progressHandler.removeCallbacks(updateProgressRunnable)
+        }
+    }
+
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun updateMiniPlayerProgress() {
         PlayerManager.exoPlayer?.let { player ->
             if (player.isPlaying && player.duration > 0) {
@@ -271,7 +387,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
     // Extension function برای تبدیل dp به px
+=======
+
+>>>>>>> 37b85b7 (Fixed play in background error)
     fun Int.dpToPx(): Int {
         return (this * resources.displayMetrics.density).toInt()
     }
@@ -301,10 +421,20 @@ class MainActivity : AppCompatActivity() {
             .commitAllowingStateLoss()
     }
 
+<<<<<<< HEAD
     override fun onResume() {
         super.onResume()
         if (PlayerManager.exoPlayer != null && PlayerManager.currentPodcast != null) {
             miniPlayerContainer.post { updateMiniPlayerUI() }
+=======
+    @OptIn(UnstableApi::class)
+    override fun onResume() {
+        super.onResume()
+        updateMiniPlayerUI()
+
+        if (PlayerManager.exoPlayer != null) {
+            bindPlayer()
+>>>>>>> 37b85b7 (Fixed play in background error)
         }
     }
 
@@ -313,6 +443,10 @@ class MainActivity : AppCompatActivity() {
         progressHandler.removeCallbacks(updateProgressRunnable)
     }
 
+<<<<<<< HEAD
+=======
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     override fun onDestroy() {
         super.onDestroy()
         try {
@@ -320,5 +454,38 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+<<<<<<< HEAD
+=======
+
+        if (!PlayerManager.isPlaying()) {
+            PlayerManager.releasePlayer(this)
+        }
+    }
+
+
+    @OptIn(UnstableApi::class)
+    private fun bindPlayer() {
+        val player = PlayerManager.exoPlayer ?: return
+
+
+        playerListener?.let { player.removeListener(it) }
+
+
+        playerListener = object : Player.Listener {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                updatePlayPauseIcon(isPlaying)
+                if (isPlaying) progressHandler.post(updateProgressRunnable)
+                else progressHandler.removeCallbacks(updateProgressRunnable)
+            }
+            override fun onPlaybackStateChanged(state: Int) {
+                updateMiniPlayerUI()
+            }
+        }
+
+
+        player.addListener(playerListener!!)
+
+        updateMiniPlayerUI()
+>>>>>>> 37b85b7 (Fixed play in background error)
     }
 }

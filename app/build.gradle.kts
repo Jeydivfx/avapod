@@ -20,11 +20,16 @@ android {
         applicationId = "com.avapod.app"
         minSdk = 24
         targetSdk = 36
+<<<<<<< HEAD
         versionCode = 14
         versionName = "1.42"
         versionCode = 13
         versionName = "1.41"
 
+=======
+        versionCode = 15
+        versionName = "1.43"
+>>>>>>> 37b85b7 (Fixed play in background error)
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -71,8 +76,11 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-database") // کلمه ktx حذف شد
     implementation("com.google.firebase:firebase-analytics")
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 37b85b7 (Fixed play in background error)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 
@@ -85,12 +93,22 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-simplexml:2.9.0")
 
     // --- Media Player (ExoPlayer) ---
+<<<<<<< HEAD
     implementation("androidx.media3:media3-exoplayer:1.2.1")
     implementation("androidx.media3:media3-ui:1.2.1")
     implementation("androidx.media3:media3-common:1.2.1")
 
     //Playing when the app is minimized
     implementation("androidx.media3:media3-session:1.10.0")
+=======
+    val media3Version = "1.3.1"
+    implementation("androidx.media3:media3-exoplayer:$media3Version")
+    implementation("androidx.media3:media3-ui:$media3Version")
+    implementation("androidx.media3:media3-common:$media3Version")
+    implementation("androidx.media3:media3-session:$media3Version")
+
+
+>>>>>>> 37b85b7 (Fixed play in background error)
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -99,6 +117,7 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
+<<<<<<< HEAD
 
     implementation("com.google.code.gson:gson:2.10.1")
 
@@ -111,4 +130,12 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
 
+=======
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.github.samanzamani:PersianDate:1.7.1")
+    implementation("com.google.android.gms:play-services-ads:25.2.0")
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+>>>>>>> 37b85b7 (Fixed play in background error)
 }

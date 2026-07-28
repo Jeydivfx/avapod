@@ -2,8 +2,13 @@ package com.avapod.app
 
 import android.annotation.SuppressLint
 import android.app.DownloadManager
+<<<<<<< HEAD
 import android.content.Context
 
+=======
+import android.content.ComponentName
+import android.content.Context
+>>>>>>> 37b85b7 (Fixed play in background error)
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -16,6 +21,10 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
+<<<<<<< HEAD
+=======
+import androidx.media3.session.MediaController
+>>>>>>> 37b85b7 (Fixed play in background error)
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.SystemBarStyle
@@ -32,11 +41,25 @@ import com.avapod.app.models.RssItem
 import com.avapod.app.utils.PreferenceHelper
 import com.google.android.gms.ads.AdView
 import androidx.activity.enableEdgeToEdge
+<<<<<<< HEAD
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.avapod.app.utils.FileUtils
 import java.io.File
 
+=======
+import androidx.annotation.OptIn
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.SessionToken
+import com.avapod.app.utils.FileUtils
+import com.google.common.util.concurrent.ListenableFuture
+import com.google.common.util.concurrent.MoreExecutors
+import java.io.File
+
+
+>>>>>>> 37b85b7 (Fixed play in background error)
 class PlayerActivity : AppCompatActivity() {
 
     private var exoPlayer: ExoPlayer? = null
@@ -49,10 +72,15 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var imgCover: ImageView
     private lateinit var txtTitle: TextView
     private lateinit var txtPodcast: TextView
+<<<<<<< HEAD
 
     private lateinit var btnSleepTimer: ImageView
 
     //AdMob banner
+=======
+    private var controllerFuture: ListenableFuture<MediaController>? = null
+    private lateinit var btnSleepTimer: ImageView
+>>>>>>> 37b85b7 (Fixed play in background error)
     private var adView: AdView? = null
     private lateinit var bannerContainer: FrameLayout
 
@@ -80,6 +108,10 @@ class PlayerActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -128,6 +160,14 @@ class PlayerActivity : AppCompatActivity() {
         val filter = android.content.IntentFilter("ACTION_AVAPOD_SLEEP_TIMER_FORCED_PAUSE")
         registerReceiver(sleepTimerReceiver, filter, RECEIVER_EXPORTED)
 
+<<<<<<< HEAD
+=======
+        if (PlayerManager.exoPlayer != null) {
+            exoPlayer = PlayerManager.exoPlayer
+            updateProgress()
+        }
+
+>>>>>>> 37b85b7 (Fixed play in background error)
         handler.post(updateProgressAction)
 
         updateSleepTimerUI()
@@ -157,6 +197,7 @@ class PlayerActivity : AppCompatActivity() {
         Glide.with(this).load(cover).placeholder(R.drawable.placeholder_podcast).into(imgCover)
     }
 
+<<<<<<< HEAD
     private fun loadDataFromManager() {
         val podcast = PlayerManager.currentPodcast
         txtTitle.text = PlayerManager.currentEpisodeTitle
@@ -166,6 +207,24 @@ class PlayerActivity : AppCompatActivity() {
         exoPlayer = PlayerManager.exoPlayer
     }
 
+=======
+    @OptIn(UnstableApi::class)
+    private fun loadDataFromManager() {
+        val podcast = PlayerManager.currentPodcast
+        txtTitle.text = PlayerManager.currentEpisodeTitle ?: ""
+        txtPodcast.text = podcast?.artist ?: ""
+
+        if (!podcast?.thumbnail_url.isNullOrEmpty()) {
+            Glide.with(this).load(podcast?.thumbnail_url).into(imgCover)
+        }
+
+        exoPlayer = PlayerManager.exoPlayer
+        updateProgress()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun setupPlayer(url: String) {
         if (PlayerManager.exoPlayer == null) {
             PlayerManager.initPlayer(this)
@@ -243,6 +302,11 @@ class PlayerActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @RequiresApi(Build.VERSION_CODES.O)
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun setupClickListeners() {
         val btnClose = findViewById<ImageButton>(R.id.btn_back_common)
         val btnMore = findViewById<ImageButton>(R.id.btn_menu_common)
@@ -288,9 +352,31 @@ class PlayerActivity : AppCompatActivity() {
 
     }
 
+<<<<<<< HEAD
     private fun togglePlay() {
         exoPlayer?.let {
             if (it.isPlaying) it.pause() else it.play()
+=======
+    @RequiresApi(Build.VERSION_CODES.O)
+    @OptIn(UnstableApi::class)
+    private fun togglePlay() {
+        val player = PlayerManager.exoPlayer
+
+        if (player == null) {
+            PlayerManager.initPlayer(this)
+
+            return
+        }
+
+        if (player.playbackState == Player.STATE_IDLE) {
+            player.prepare()
+        }
+
+        if (player.isPlaying) {
+            player.pause()
+        } else {
+            player.play()
+>>>>>>> 37b85b7 (Fixed play in background error)
         }
     }
 
@@ -346,6 +432,10 @@ class PlayerActivity : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.toast_download_started), Toast.LENGTH_SHORT).show()
     }
 
+<<<<<<< HEAD
+=======
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun showPlayerMenu(view: View, audioUrl: String, currentEpisode: RssItem, cover: String) {
         val bottomSheetDialog = com.google.android.material.bottomsheet.BottomSheetDialog(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_episode_menu, null)
@@ -483,6 +573,10 @@ class PlayerActivity : AppCompatActivity() {
         bottomSheetDialog.show()
     }
 
+<<<<<<< HEAD
+=======
+    @OptIn(UnstableApi::class)
+>>>>>>> 37b85b7 (Fixed play in background error)
     override fun onPause() {
         super.onPause()
         exoPlayer?.let { player ->
@@ -559,13 +653,43 @@ class PlayerActivity : AppCompatActivity() {
         bottomSheetDialog.show()
     }
 
+<<<<<<< HEAD
+=======
+
+    @OptIn(UnstableApi::class)
+    override fun onStart() {
+        super.onStart()
+        val sessionToken = SessionToken(this, ComponentName(this, com.avapod.app.PlaybackService::class.java))
+        controllerFuture = MediaController.Builder(this, sessionToken).buildAsync()
+        controllerFuture?.addListener({
+
+            mediaController = controllerFuture?.get() as android.media.session.MediaController?
+            updateUIFromController()
+        }, MoreExecutors.directExecutor())
+    }
+
+    override fun onStop() {
+        super.onStop()
+        controllerFuture?.let { MediaController.releaseFuture(it) }
+    }
+
+    private fun updateUIFromController() {
+        mediaController?.let { controller ->
+
+        }
+    }
+
+>>>>>>> 37b85b7 (Fixed play in background error)
     private fun updateSleepTimerUI() {
         val isActive = com.avapod.app.utils.SleepTimerManager.isTimerRunning
         val color = if (isActive) getColor(R.color.timer_accent_blue) else getColor(R.color.text_white)
         btnSleepTimer.imageTintList = android.content.res.ColorStateList.valueOf(color)
     }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 37b85b7 (Fixed play in background error)
 }
