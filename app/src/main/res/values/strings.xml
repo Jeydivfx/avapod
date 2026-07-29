@@ -308,20 +308,11 @@
     <!-- About Fragment -->
     <string name="title_about">آواپاد</string>
     <string name="title_about_app">درباره آواپاد</string>
-    <string name="about_app_description">آواپاد یک اپلیکیشن پادکست ‌خوان فارسیست که با عشق برای علاقه‌مندان به محتوای صوتی ساخته شده.\n\n✨ امکانات:\n• پخش پادکست‌های RSS\n• دنبال کردن پادکست‌ها\n• دانلود اپیزودها\n• تایمر خواب\n• بوکمارک و ادامه گوش دادن</string>
-    <string name="label_daily_message">💬 پیام روز</string>
+    <string name="about_app_description">آواپاد یک اپلیکیشن پادکست ‌خوان فارسیست که با عشق برای علاقه‌مندان به محتوای صوتی ساخته شده.\n\n📧 درخواست پادکست:\nاگر جای خالی پادکست مورد علاقه‌تان در آواپاد حس می‌شود، خوشحال می‌شویم از طریق ایمیل زیر به ما اطلاع دهید تا برای اضافه کردن آن اقدام کنیم:</string>
+    <string name="label_daily_message">💬 آخرین آپدیت</string>
     <string name="default_daily_message">امروز به صدای خوب گوش بده! 🎧</string>
     <string name="btn_listen_now">همین حالا گوش کن</string>
-
-
-
-
-
-
-
-
-
-
+    <string name="today_date">تاریخ امروز</string>
 
 
 
