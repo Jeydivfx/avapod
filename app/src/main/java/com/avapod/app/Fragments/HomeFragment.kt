@@ -242,12 +242,12 @@ class HomeFragment : Fragment() {
             }
         }
 
-        rvRecommended.adapter = recommendedAdapter
+        this.rvRecommended.adapter = recommendedAdapter
         rvRecommended.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun updateRecommendedData(podcasts: List<Podcast>) {
-        val recommendedList = podcasts.filter { !it.is_trending }.take(6)
+        val recommendedList = podcasts.filter { !it.is_trending }.shuffled().take(6)
 
         activity?.runOnUiThread {
             recommendedAdapter?.updateData(recommendedList)

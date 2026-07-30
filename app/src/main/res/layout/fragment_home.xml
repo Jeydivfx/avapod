@@ -81,7 +81,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-8dp"
+                    android:layout_marginTop="-15dp"
                     android:layout_marginBottom="16dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp"
@@ -120,6 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
+                    android:layout_marginTop="16dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="2dp"
                     app:cardBackgroundColor="@color/surface_dark">
@@ -163,7 +164,7 @@
                                 android:fontFamily="@font/vazir_regular"
                                 android:text="@string/btn_new_episodes"
                                 android:textColor="@color/text_gray"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <!-- Downloads -->
@@ -198,7 +199,7 @@
                                 android:fontFamily="@font/vazir_regular"
                                 android:text="@string/btn_downloads"
                                 android:textColor="@color/text_gray"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <!-- Bookmarks -->
@@ -233,7 +234,7 @@
                                 android:fontFamily="@font/vazir_regular"
                                 android:text="@string/btn_bookmarks"
                                 android:textColor="@color/text_gray"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <!-- Settings -->
@@ -268,7 +269,7 @@
                                 android:fontFamily="@font/vazir_regular"
                                 android:text="@string/btn_settings"
                                 android:textColor="@color/text_gray"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
                         </LinearLayout>
                     </GridLayout>
                 </androidx.cardview.widget.CardView>
@@ -278,6 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/vazir_bold"
                     android:text="@string/featured_today"
                     android:textColor="@color/text_white"
@@ -391,6 +393,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:layout_marginTop="24dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -449,6 +452,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:layout_marginTop="24dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -544,6 +548,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/vazir_bold"
                     android:text="@string/recommended_for_you"
                     android:textColor="@color/text_white"

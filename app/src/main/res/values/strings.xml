@@ -48,7 +48,7 @@
 
     <!-- Bookmarks layout -->
     <string name="title_bookmarks">نشان شده ها</string>
-    <string name="msg_empty_bookmarks">هنوز اپیزودی را نشان نکردید</string>
+    <string name="msg_empty_bookmarks">هنوز اپیزودی را نشان نکرده اید.</string>
 
     <!-- Category layout -->
     <string name="placeholder_category_name">نام دسته‌بندی</string>
@@ -63,21 +63,21 @@
 
     <!-- Downloads layout -->
     <string name="title_downloads">لیست دانلودها</string>
-    <string name="msg_empty_downloads">لیست دانلود خالی است</string>
+    <string name="msg_empty_downloads">لیست دانلود خالی است.</string>
 
     <!-- Explore layout -->
     <string name="title_categories">دسته‌بندی‌ها</string>
 
     <!-- Library layout -->
     <string name="title_library">برگزیده ها</string>
-    <string name="msg_empty_library">هنوز پادکستی را دنبال نکرده‌اید</string>
+    <string name="msg_empty_library">هنوز پادکستی را دنبال نکرده‌اید.</string>
 
     <!-- New episodes layout -->
     <string name="title_new_episodes">جدیدترین قسمت ها</string>
 
     <!-- Search result layout -->
     <string name="title_search_results">نتایج جستجو</string>
-    <string name="msg_no_results">نتیجه‌ای پیدا نشد</string>
+    <string name="msg_no_results">نتیجه‌ای پیدا نشد.</string>
 
     <!-- Settings layout -->
     <string name="label_dark_mode">حالت شب</string>
@@ -137,7 +137,7 @@
     <string name="dialog_delete_downloads_title">حذف دانلودها</string>
     <string name="dialog_delete_downloads_message">آیا مطمئن هستید که می‌خواهید تمام لیست دانلود را پاک کنید؟</string>
     <string name="default_podcast_artist">آواپاد</string>
-    <string name="error_no_subscriptions">شما هیچ پادکستی را دنبال نکرده‌اید</string>
+    <string name="error_no_subscriptions">شما هیچ پادکستی را دنبال نکرده‌اید.</string>
     <string name="error_invalid_admin_credentials">اطلاعات ورود اشتباه است</string>
     <string name="dialog_yes">بله</string>
     <string name="dialog_no">خیر</string>
@@ -221,7 +221,7 @@
     <string name="featured_today">ویژه هفته</string>
     <string name="trending_now">پرطرفدارترین</string>
     <string name="continue_listening">ادامه گوش دادن</string>
-    <string name="recommended_for_you">پیشنهادی برای شما</string>
+    <string name="recommended_for_you">پادکست پیشنهادی</string>
     <string name="new_episodes">اپیزودهای جدید</string>
     <string name="popular_categories">دسته‌بندی‌های محبوب</string>
     <string name="editor_picks">انتخاب سردبیر</string>

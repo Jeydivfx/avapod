@@ -37,6 +37,7 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         dbHelper = DatabaseHelper(requireContext())
         txtShamsi = view.findViewById(R.id.txt_shamsi)
         txtMiladi = view.findViewById(R.id.txt_miladi)
@@ -45,6 +46,7 @@ class AboutFragment : Fragment() {
         updateDates()
         loadMessageFromLocal()
         fetchMessageFromFirebase()
+        setupAppVersion(view)
     }
 
     private fun updateDates() {
@@ -103,5 +105,28 @@ class AboutFragment : Fragment() {
 
             }
         })
+    }
+
+    private fun setupAppVersion(view: View) {
+        val txtVersion = view.findViewById<TextView>(R.id.app_version_text)
+
+        try {
+            val packageManager = requireContext().packageManager
+            val packageName = requireContext().packageName
+
+            val versionName = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                packageManager.getPackageInfo(packageName, android.content.pm.PackageManager.PackageInfoFlags.of(0)).versionName
+            } else {
+                @Suppress("DEPRECATION")
+                packageManager.getPackageInfo(packageName, 0).versionName
+            }
+
+            val persianVersion = com.avapod.app.utils.StringUtils.toPersianNumber(versionName ?: "1.0")
+            txtVersion.text = "نسخه $persianVersion"
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            txtVersion.text = "نسخه ۱.۰"
+        }
     }
 }

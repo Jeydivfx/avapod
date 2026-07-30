@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.avapod.app.R
 import com.avapod.app.adapters.PodcastAdapter
+import com.avapod.app.utils.GridSpacingItemDecoration
 import com.avapod.app.utils.PreferenceHelper
 
 class LibraryFragment : Fragment() {
@@ -79,6 +80,9 @@ class LibraryFragment : Fragment() {
             rvLibrary.visibility = View.VISIBLE
 
             rvLibrary.layoutManager = GridLayoutManager(context, 2)
+
+            val spacingInPixels = resources.getDimensionPixelSize(R.dimen.grid_spacing)
+            rvLibrary.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true))
 
             val adapter = PodcastAdapter(subscribedPodcasts) { podcast ->
                 com.avapod.app.utils.AdManager.showAdWithCapping(requireActivity()) {

@@ -33,7 +33,6 @@ import androidx.annotation.OptIn
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.media3.common.util.UnstableApi
-import com.avapod.app.Fragments.CalendarFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -346,8 +345,7 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home -> HomeFragment()
             R.id.nav_library -> LibraryFragment()
             R.id.nav_explore -> ExploreFragment()
-            R.id.nav_calendar -> AboutFragment()
-            R.id.nav_calendar -> CalendarFragment()
+            R.id.nav_about -> AboutFragment()
 
             else -> null
         }

@@ -42,6 +42,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 import java.io.File
 
+
 class PlayerActivity : AppCompatActivity() {
 
     private var exoPlayer: ExoPlayer? = null
@@ -455,4 +456,5 @@ class PlayerActivity : AppCompatActivity() {
             getColor(if (isActive) R.color.timer_accent_blue else R.color.text_white)
         )
     }
+
 }

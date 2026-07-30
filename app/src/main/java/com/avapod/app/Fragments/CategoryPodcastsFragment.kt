@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avapod.app.R
 import com.avapod.app.adapters.PodcastAdapter
 import com.avapod.app.models.Podcast
+import com.avapod.app.utils.GridSpacingItemDecoration
 
 class CategoryPodcastsFragment : Fragment() {
 
@@ -82,6 +83,9 @@ class CategoryPodcastsFragment : Fragment() {
     private fun setupRecyclerView(list: List<Podcast>) {
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
         rvPodcasts.layoutManager = gridLayoutManager
+
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.grid_spacing)
+        rvPodcasts.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true))
 
         rvPodcasts.adapter = PodcastAdapter(list) { podcast ->
 
