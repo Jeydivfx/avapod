@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "podcasts": {
+      ".read": true,
+      ".write": "auth != null && auth.token.admin === true",
+      "$id": {
+        ".validate": "newData.hasChildren(['title','artist','rss_url','thumbnail_url','category_id'])",
+        "title": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 500" },
+        "artist": { ".validate": "newData.isString() && newData.val().length <= 500" },
+        "rss_url": { ".validate": "newData.isString() && newData.val().matches(/^https?:\\/\\/.+/)" },
+        "thumbnail_url": { ".validate": "newData.isString() && newData.val().matches(/^https?:\\/\\/.+/)" },
+        "category_id": { ".validate": "newData.isString() && newData.val().length > 0" },
+        "description": { ".validate": "newData.isString()" },
+        "is_trending": { ".validate": "newData.isBoolean()" },
+        "is_featured": { ".validate": "newData.isBoolean()" },
+        "$other": { ".validate": false }
+      }
+    },
+    "categories": { ".read": true, ".write": "auth != null && auth.token.admin === true" },
+    "db_config": { ".read": true, ".write": "auth != null && auth.token.admin === true",
+      "version": { ".validate": "newData.isNumber() && newData.val() > 0 && (!data.exists() || newData.val() > data.val())" }
+    },
+    "ad_config": { ".read": true, ".write": "auth != null && auth.token.admin === true" },
+    "app_messages": { ".read": true, ".write": "auth != null && auth.token.admin === true" }
+  }
+}

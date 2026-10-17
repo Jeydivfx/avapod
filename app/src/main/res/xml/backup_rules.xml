@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include domain="database" path="." />
+    <include domain="sharedpref" path="AvapodPrefs.xml" />
+    <include domain="sharedpref" path="AvapodAdConfig.xml" />
+</full-backup-content>

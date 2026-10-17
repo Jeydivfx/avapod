@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" app:cardBackgroundColor="@color/category_btn_bg" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:gravity="center_vertical"
+        android:minHeight="64dp"
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground">
+        <ImageView
+            android:id="@+id/img_cat_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:background="@drawable/bg_circle_dark"
+            android:src="@drawable/ic_category_audio"
+            android:scaleType="fitCenter"
+            app:tint="@color/accent_cyan"
+            android:importantForAccessibility="no" />
+        <TextView
+            android:id="@+id/txt_cat_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/vazir_bold"
+            app:fontFamily="@font/vazir_bold"
+            android:textStyle="normal"
+            android:text="@string/cat_social"
+            android:textColor="@color/text_white"
+            android:textSize="14sp"
+            android:gravity="start|center_vertical"
+            android:textDirection="rtl"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
