@@ -12,7 +12,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
 
     companion object {
         private const val DATABASE_NAME = "AvapodDB"
-        private const val DATABASE_VERSION = 6
+        private const val DATABASE_VERSION = 7
 
         private const val TABLE_PODCASTS = "podcasts"
         private const val TABLE_CATEGORIES = "categories"
@@ -49,7 +49,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
                 + "$KEY_RSS TEXT,"
                 + "$KEY_THUMB TEXT,"
                 + "$KEY_TRENDING INTEGER,"
-                + "$KEY_FEATURED INTEGER)")
+                + "$KEY_FEATURED INTEGER, created_at INTEGER NOT NULL DEFAULT 0, trending_at INTEGER NOT NULL DEFAULT 0)")
 
         val createCategoryTable = ("CREATE TABLE IF NOT EXISTS $TABLE_CATEGORIES ("
                 + "$KEY_ID TEXT PRIMARY KEY,"
@@ -85,6 +85,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
             found
         }
         if (!hasFeatured) database.execSQL("ALTER TABLE $TABLE_PODCASTS ADD COLUMN $KEY_FEATURED INTEGER DEFAULT 0")
+        val columns = database.rawQuery("PRAGMA table_info($TABLE_PODCASTS)", null).use { cursor ->
+            val names = mutableSetOf<String>()
+            while (cursor.moveToNext()) names.add(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+            names
+        }
+        for (column in listOf("created_at", "trending_at")) {
+            if (column !in columns) database.execSQL("ALTER TABLE $TABLE_PODCASTS ADD COLUMN $column INTEGER NOT NULL DEFAULT 0")
+        }
     }
     fun insertPodcasts(podcasts: List<Podcast>) {
         val db = this.writableDatabase
@@ -102,6 +110,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
                     put(KEY_THUMB, pod.thumbnail_url)
                     put(KEY_TRENDING, if (pod.is_trending) 1 else 0)
                     put(KEY_FEATURED, if (pod.is_featured) 1 else 0)
+                    put("created_at", pod.createdAt)
+                    put("trending_at", pod.trendingAt)
                 }
                 db.insertOrThrow(TABLE_PODCASTS, null, values)
             }
@@ -127,12 +137,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
                     rss_url = cursor.getString(5),
                     thumbnail_url = cursor.getString(6),
                     is_trending = cursor.getInt(7) == 1,
-                    is_featured = if (cursor.columnCount > 8) cursor.getInt(8) == 1 else false
+                    is_featured = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_FEATURED)) == 1,
+                    createdAt = cursor.getLong(cursor.getColumnIndexOrThrow("created_at")),
+                    trendingAt = cursor.getLong(cursor.getColumnIndexOrThrow("trending_at"))
                 ))
             } while (cursor.moveToNext())
         }
         cursor.close()
-        return list
+        return PodcastOrder.newest(list)
     }
 
     fun insertCategories(categories: List<Category>) {

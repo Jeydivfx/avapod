@@ -18,7 +18,7 @@ import kotlin.coroutines.resumeWithException
 
 /** One-shot reads of public nodes only. Admin writes retain Firebase Auth and the SDK. */
 object PublicDatabase {
-    private val publicPaths = setOf("podcasts", "categories", "db_config/version", "ad_config", "app_messages")
+    private val publicPaths = setOf("podcasts", "categories", "db_config/version", "db_config/podcast_order", "ad_config", "app_messages")
     private const val MAX_BYTES = 8L * 1024 * 1024
     private val client = OkHttpClient.Builder()
         .connectTimeout(8, TimeUnit.SECONDS)
@@ -37,7 +37,8 @@ object PublicDatabase {
             continuation.invokeOnCancellation { call.cancel() }
             call.enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
-                    if (continuation.isActive) continuation.resumeWithException(e)
+                    if (continuation.isActive) continuation.resumeWithException(
+                        IOException("Public database $path: ${e.javaClass.simpleName}", e))
                 }
 
                 override fun onResponse(call: Call, response: Response) {

@@ -24,10 +24,26 @@ object AdminAccess {
     suspend fun savePodcast(id: String, value: Map<String, Any>?) = withTimeout(20_000) {
         requireAdmin()
         require(id.isNotBlank() && id.none { it in ".#$[]/" })
-        FirebaseDatabase.getInstance().reference.updateChildren(mapOf(
+        val root = FirebaseDatabase.getInstance().reference
+        val changes = mutableMapOf<String, Any?>(
             "podcasts/$id" to value,
             "db_config/version" to ServerValue.increment(1L)
-        )).awaitResult()
+        )
+        // Keep ordering metadata outside podcast records, compatible with existing strict rules.
+        val orderPath = "db_config/podcast_order/$id"
+        if (value == null) {
+            changes[orderPath] = null
+        } else {
+            val previous = root.child("podcasts/$id").get().awaitResult()
+            if (!previous.exists()) changes["$orderPath/created_at"] = ServerValue.TIMESTAMP
+            val trending = value["is_trending"] == true
+            if (trending && previous.child("is_trending").getValue(Boolean::class.java) != true) {
+                changes["$orderPath/trending_at"] = ServerValue.TIMESTAMP
+            } else if (!trending) {
+                changes["$orderPath/trending_at"] = null
+            }
+        }
+        root.updateChildren(changes).awaitResult()
         PodcastRepository.invalidate()
     }
     fun signOut() { FirebaseAuth.getInstance().signOut() }

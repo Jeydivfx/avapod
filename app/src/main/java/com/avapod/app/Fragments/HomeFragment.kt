@@ -57,6 +57,7 @@ class HomeFragment : Fragment() {
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     private var trendingAdapter: PodcastAdapter? = null
+    private var firstTrendingId: String? = null
     private var recommendedAdapter: PodcastAdapter? = null
     private var continueAdapter: ContinueAdapter? = null
     private var allPodcasts: List<Podcast> = emptyList()
@@ -197,13 +198,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateTrendingData(podcasts: List<Podcast>) {
-        val trendingList = podcasts.filter { it.is_trending }.reversed().take(8)
+        val trendingList = com.avapod.app.utils.PodcastOrder.trending(podcasts).take(8)
 
         activity?.runOnUiThread {
             shimmerTrending.stopShimmer()
             shimmerTrending.visibility = View.GONE
             rvTrending.visibility = View.VISIBLE
             trendingAdapter?.updateData(trendingList)
+                val newestId = trendingList.firstOrNull()?.id
+                if (newestId != firstTrendingId) rvTrending.scrollToPosition(0)
+                firstTrendingId = newestId
         }
     }
 

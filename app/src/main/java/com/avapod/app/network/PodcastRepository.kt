@@ -3,6 +3,8 @@ package com.avapod.app.network
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.avapod.app.R
 import com.avapod.app.models.Category
@@ -28,6 +30,7 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
         private var lastFailure: Long? = null
         private var lastAdsSuccess: Long? = null
         private var lastAdsFailure: Long? = null
+        private var lastErrorNotice: Long? = null
         private const val SYNC_INTERVAL_MS = 5 * 60_000L
         private const val FAILURE_BACKOFF_MS = 30_000L
 
@@ -65,12 +68,39 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
                         }
                     }
                     onResult(fallback)
+                    delivered = fallback.isNotEmpty()
                 }
-                Toast.makeText(app, R.string.catalog_sync_failed, Toast.LENGTH_LONG).show()
+                // Automatic refresh failure must not interrupt a usable cached screen.
+                if (forceRefresh || !delivered) showSyncFailure()
             } finally {
                 if (owner.lifecycle.currentState != androidx.lifecycle.Lifecycle.State.DESTROYED) onComplete()
             }
         }
+    }
+
+    private fun showSyncFailure() {
+        // lifecycleScope survives STOPPED: never show an app toast over another app.
+        if (!owner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) return
+        val now = SystemClock.elapsedRealtime()
+        if (lastErrorNotice?.let { now - it < FAILURE_BACKOFF_MS } == true) return
+        lastErrorNotice = now
+        val toast = Toast.makeText(app, R.string.catalog_sync_failed, Toast.LENGTH_LONG)
+        val observer = object : DefaultLifecycleObserver {
+            override fun onPause(owner: LifecycleOwner) {
+                toast.cancel()
+                owner.lifecycle.removeObserver(this)
+            }
+            override fun onDestroy(owner: LifecycleOwner) {
+                toast.cancel()
+                owner.lifecycle.removeObserver(this)
+            }
+        }
+        owner.lifecycle.addObserver(observer)
+        toast.show()
+        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+            toast.cancel()
+            owner.lifecycle.removeObserver(observer)
+        }, 4_000)
     }
 
     private suspend fun sync(force: Boolean) = syncLock.withLock {
@@ -104,7 +134,7 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
     private suspend fun synchronizeCatalog(missingCache: Boolean) {
         val version = remoteVersion()
         val localVersion = (prefs.all["db_version"] as? Number)?.toLong() ?: 0
-        if (missingCache || version != localVersion) {
+        if (missingCache || version != localVersion || prefs.getInt("catalog_order_schema", 0) < 1) {
             var success = false
             // Detect a concurrent admin edit instead of caching a mixed catalog.
             for (attempt in 0..2) {
@@ -112,17 +142,20 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
                 val categories = PublicDatabase.read("categories").databaseChildren().map { (id, item) ->
                     Category(id = id, name = item.databaseString("name"), icon = item.databaseString("icon"))
                 }
+                val order = PublicDatabase.read("db_config/podcast_order").databaseChildren().toMap()
                 val podcasts = PublicDatabase.read("podcasts").databaseChildren().map { (id, item) ->
                     Podcast(id = id, title = item.databaseString("title"), artist = item.databaseString("artist"),
                         description = item.databaseString("description"), category_id = item.databaseString("category_id"),
                         rss_url = item.databaseString("rss_url"), thumbnail_url = item.databaseString("thumbnail_url"),
-                        is_trending = item.databaseBoolean("is_trending"), is_featured = item.databaseBoolean("is_featured"))
+                        is_trending = item.databaseBoolean("is_trending"), is_featured = item.databaseBoolean("is_featured"),
+                        createdAt = order[id]?.get("created_at")?.takeUnless { it.isJsonNull }?.asLong ?: 0L,
+                        trendingAt = order[id]?.get("trending_at")?.takeUnless { it.isJsonNull }?.asLong ?: 0L)
                 }
                 val after = remoteVersion()
                 if (before != after) continue
                 withContext(Dispatchers.IO) {
                     DatabaseHelper(app).use { it.replaceCatalog(podcasts, categories) }
-                    prefs.edit().putLong("db_version", after).apply()
+                    prefs.edit().putLong("db_version", after).putInt("catalog_order_schema", 1).apply()
                 }
                 success = true
                 break

@@ -380,4 +380,6 @@
     <string name="featured_week_empty">هنوز پادکستی برای ویژهٔ هفته انتخاب نشده</string>
     <string name="admin_weekly_featured">در گردش ویژهٔ هفته</string>
     <string name="admin_weekly_featured_hint">هر هفته یکی از پادکست‌های علامت‌خورده نمایش داده می‌شود. برای تغییر هفتگی، دست‌کم دو پادکست را انتخاب کنید.</string>
+    <string name="admin_search_hint">جست‌وجوی نام پادکست…</string>
+    <string name="admin_search_empty">پادکستی با این نام پیدا نشد.</string>
 </resources>

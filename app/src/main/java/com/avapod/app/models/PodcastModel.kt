@@ -13,7 +13,9 @@ data class Podcast(
     val rss_url: String = "",
     val thumbnail_url: String = "",
     @get:PropertyName("is_trending") val is_trending: Boolean = false,
-    @get:PropertyName("is_featured") val is_featured: Boolean = false
+    @get:PropertyName("is_featured") val is_featured: Boolean = false,
+    val createdAt: Long = 0L,
+    val trendingAt: Long = 0L
 ) : Serializable
 
 @IgnoreExtraProperties

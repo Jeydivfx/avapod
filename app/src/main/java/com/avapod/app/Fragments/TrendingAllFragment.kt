@@ -65,7 +65,7 @@ class TrendingAllFragment : Fragment() {
         val repository = PodcastRepository(requireContext(), viewLifecycleOwner)
 
         repository.getPodcasts { podcasts ->
-            val trendingList = podcasts.filter { it.is_trending }
+            val trendingList = com.avapod.app.utils.PodcastOrder.trending(podcasts)
             activity?.runOnUiThread {
                 loader.visibility = View.GONE
                 adapter.updateData(trendingList)

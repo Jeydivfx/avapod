@@ -36,6 +36,7 @@ def layout_ids(name):
   if n.tag=='include': result |= layout_ids(n.get('layout').split('/')[-1]+'.xml')
  return result
 checks={
+ 'fragment_admin_dashboard.xml':['admin_search','admin_search_empty','rv_admin_podcasts','btn_add_new_podcast','btn_back_common','btn_menu_common'],
  'fragment_home.xml':['catalog_empty_panel','btn_retry_catalog','swipe_refresh_layout','shimmer_trending','progress_loading'],
  'fragment_about.xml':['btn_back_common','btn_menu_common','txt_shamsi','txt_miladi','txt_daily_message','app_version_text','txt_email'],
  'activity_podcast_detail.xml':['btn_back_common','btn_menu_common','rv_episodes','img_full_cover','btn_subscribe','btn_report_podcast','txt_podcast_title','txt_podcast_artist','txt_podcast_description','loader','btn_description_more','episode_error_panel','episode_error_message','btn_retry_episodes'],
