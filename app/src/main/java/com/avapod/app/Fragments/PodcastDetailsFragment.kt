@@ -29,10 +29,6 @@ import com.avapod.app.models.Podcast
 import com.avapod.app.network.RetrofitClient
 import com.avapod.app.network.RssParser
 import com.avapod.app.utils.PreferenceHelper
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -89,7 +85,7 @@ class PodcastDetailFragment : Fragment() {
         btnBackCommon.scaleX = 1f
 
         btnBackCommon.setOnClickListener {
-            parentFragmentManager.popBackStack()
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
         btnMenuCommon.visibility = View.GONE
 
@@ -151,7 +147,7 @@ class PodcastDetailFragment : Fragment() {
         episodeAdapter = EpisodeAdapter(episodeList, coverUrl) { rssItem ->
             if (!rssItem.audioUrl.isNullOrEmpty()) {
 
-                com.avapod.app.utils.AdManager.showAdWithCapping(this) {
+                com.avapod.app.utils.AdManager.navigateWithoutAd(this) {
                     val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
                         putExtra("audio_url", rssItem.audioUrl)
                         putExtra("title", rssItem.title)
@@ -173,6 +169,11 @@ class PodcastDetailFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        episodeAdapter?.refreshProgress(requireContext())
+    }
+
     private fun updateSubscribeButton() {
         if (prefHelper.isSubscribed(currentPodcast.rss_url)) {
             btnSubscribe.text = getString(R.string.btn_subscribed_text)
@@ -192,16 +193,29 @@ class PodcastDetailFragment : Fragment() {
     private fun fetchPodcastEpisodes(url: String, coverUrl: String, podcastName: String) {
         if (feedJob?.isActive == true) return
         val owner = viewLifecycleOwner
+        val appContext = requireContext().applicationContext
         val panel = requireView().findViewById<View>(R.id.episode_error_panel)
         val message = requireView().findViewById<TextView>(R.id.episode_error_message)
         feedJob = viewLifecycleOwner.lifecycleScope.launch {
             panel.visibility = View.GONE
             loader.visibility = View.VISIBLE
+            var hasCachedEpisodes = false
             try {
-                val episodes = com.avapod.app.network.RssLoader.load(url)
-                episodeList.clear()
-                episodeList.addAll(episodes)
-                episodeAdapter?.notifyDataSetChanged()
+                val cached = com.avapod.app.network.RssLoader.cached(appContext, url)
+                if (cached != null && cached.episodes.isNotEmpty()) {
+                    episodeList.clear()
+                    episodeList.addAll(cached.episodes)
+                    episodeAdapter?.notifyDataSetChanged()
+                    hasCachedEpisodes = true
+                    loader.visibility = View.GONE
+                }
+                val episodes = if (cached?.fresh == true) cached.episodes
+                    else com.avapod.app.network.RssLoader.load(url, appContext)
+                if (episodeList != episodes) {
+                    episodeList.clear()
+                    episodeList.addAll(episodes)
+                    episodeAdapter?.notifyDataSetChanged()
+                }
                 if (episodes.isEmpty()) {
                     message.setText(R.string.rss_no_episodes)
                     panel.visibility = View.VISIBLE
@@ -209,8 +223,12 @@ class PodcastDetailFragment : Fragment() {
             } catch (e: Exception) {
                 if (e is kotlinx.coroutines.CancellationException && e !is kotlinx.coroutines.TimeoutCancellationException) throw e
                 android.util.Log.e("AvapodRss", "Could not load episode feed", e)
-                message.setText(R.string.error_loading_failed)
-                panel.visibility = View.VISIBLE
+                if (!hasCachedEpisodes) {
+                    message.setText(R.string.error_loading_failed)
+                    panel.visibility = View.VISIBLE
+                } else {
+                    Toast.makeText(appContext, R.string.rss_showing_saved, Toast.LENGTH_SHORT).show()
+                }
             } finally {
                 if (owner.lifecycle.currentState != androidx.lifecycle.Lifecycle.State.DESTROYED) loader.visibility = View.GONE
             }

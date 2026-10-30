@@ -106,7 +106,7 @@ class BookmarkFragment : Fragment() {
 
             rvBookmarks.adapter = EpisodeAdapter(bookmarkedEpisodes, "") { episode ->
 
-                com.avapod.app.utils.AdManager.showAdWithCapping(this) {
+                com.avapod.app.utils.AdManager.navigateWithoutAd(this) {
                     val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
                         putExtra("audio_url", episode.audioUrl)
                         putExtra("title", episode.title)

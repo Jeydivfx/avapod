@@ -94,7 +94,7 @@ class CategoryPodcastsFragment : Fragment() {
 
         rvPodcasts.adapter = PodcastAdapter(list) { podcast ->
 
-            com.avapod.app.utils.AdManager.showAdWithCapping(this) {
+            com.avapod.app.utils.AdManager.navigateWithoutAd(this) {
                 val fragment = PodcastDetailFragment().apply {
                     arguments = Bundle().apply {
                         putString("rss_url", podcast.rss_url)

@@ -84,3 +84,22 @@ internal fun JsonElement.databaseBoolean(key: String): Boolean {
     val value = asJsonObject.get(key) ?: return false
     return !value.isJsonNull && value.asBoolean
 }
+
+/** Ad controls fail closed; malformed console values should be visible in release logs. */
+internal fun JsonElement.databaseAdBoolean(key: String): Boolean {
+    if (isJsonNull) return false
+    val value = if (isJsonObject) asJsonObject.get(key) else null
+    if (value == null || value.isJsonNull) return false
+    if (value.isJsonPrimitive) {
+        val primitive = value.asJsonPrimitive
+        if (primitive.isBoolean) return primitive.asBoolean
+        if (primitive.isString) {
+            when (primitive.asString.trim().lowercase(java.util.Locale.ROOT)) {
+                "true" -> return true
+                "false" -> return false
+            }
+        }
+    }
+    android.util.Log.w("AvapodAds", "Invalid ad_config/$key: expected boolean true/false; disabled")
+    return false
+}

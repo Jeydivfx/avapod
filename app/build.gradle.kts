@@ -19,8 +19,8 @@ android {
         applicationId = "com.avapod.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 25
-        versionName = "1.53"
+        versionCode = 27
+        versionName = "1.55"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -90,10 +91,29 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.samanzamani:PersianDate:1.7.1")
-    implementation("com.google.android.gms:play-services-ads:25.2.0")
+    // Explicit network allowlist: no Google Ads or nested mediation bundles.
+    implementation("com.appodeal.ads.sdk:core:4.4.0") { version { strictly("4.4.0") } }
+    implementation("com.appodeal.ads.sdk.adapters:applovin:13.6.3.0")
+    implementation("com.appodeal.ads.sdk.adapters:unity_ads:4.17.0.0")
+    implementation("com.appodeal.ads.sdk.adapters:vungle:7.7.4.0")
+    implementation("com.appodeal.ads.sdk.adapters:iab:1.8.1.1")
     implementation("com.facebook.shimmer:shimmer:0.5.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+}
+
+// Fail closed if a future adapter tries to reintroduce Google's ad-serving SDK.
+configurations.configureEach {
+    exclude(group = "com.google.android.gms", module = "play-services-ads")
+    exclude(group = "com.google.android.gms", module = "play-services-ads-lite")
+    exclude(group = "com.google.android.gms", module = "play-services-ads-base")
+    exclude(group = "com.google.android.gms", module = "play-services-ads-api")
+    resolutionStrategy.eachDependency {
+        if ((requested.group == "com.appodeal.ads.sdk.adapters" && requested.name == "admob") ||
+            (requested.group == "com.google.ads.mediation")) {
+            throw GradleException("Google ad-serving adapters are not permitted in this app")
+        }
+    }
 }
 
 

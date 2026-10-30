@@ -7,12 +7,15 @@ import androidx.appcompat.app.AlertDialog
 import com.avapod.app.R
 
 object DialogHelper {
-    fun bind(dialog: android.app.Dialog, owner: androidx.lifecycle.LifecycleOwner) {
+    fun bind(dialog: android.app.Dialog, owner: androidx.lifecycle.LifecycleOwner, onDismiss: () -> Unit = {}) {
         val observer = object : androidx.lifecycle.DefaultLifecycleObserver {
             override fun onDestroy(owner: androidx.lifecycle.LifecycleOwner) { dialog.dismiss() }
         }
         owner.lifecycle.addObserver(observer)
-        dialog.setOnDismissListener { owner.lifecycle.removeObserver(observer) }
+        dialog.setOnDismissListener {
+            owner.lifecycle.removeObserver(observer)
+            onDismiss()
+        }
     }
 
     fun showConfirmDialog(

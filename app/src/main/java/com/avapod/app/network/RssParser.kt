@@ -43,7 +43,10 @@ class RssParser {
                     if (text.isNotEmpty()) text.last().append(parser.text.orEmpty())
                 XmlPullParser.END_TAG -> {
                     val value = text.removeAt(text.lastIndex).toString().trim()
-                    if (text.isNotEmpty()) text.last().append(value)
+                    // Keep nested text within an episode field, never copy whole episodes
+                    // into item/channel/root builders (large feeds otherwise balloon in memory).
+                    if (text.isNotEmpty() && item != null && parser.depth > itemDepth + 1)
+                        text.last().append(value)
                     val name = parser.name.lowercase(java.util.Locale.ROOT)
                     if (name == "item" && parser.depth == itemDepth) {
                         item?.let(result::add); item = null

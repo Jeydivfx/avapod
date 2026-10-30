@@ -190,21 +190,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
         return list
     }
 
-    fun insertOrUpdateAdConfig(banner: Boolean, interstitial: Boolean, rewarded: Boolean) {
+    fun insertOrUpdateAdConfig(banner: Boolean, interstitial: Boolean) {
         app.getSharedPreferences("AvapodAdConfig", Context.MODE_PRIVATE).edit()
             .putBoolean("banner", banner).putBoolean("interstitial", interstitial)
-            .putBoolean("rewarded", rewarded).apply()
+            .remove("rewarded").apply()
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(KEY_ID, 1)
             put(KEY_BANNER_ENABLED, if (banner) 1 else 0)
             put(KEY_INTERSTITIAL_ENABLED, if (interstitial) 1 else 0)
-            put(KEY_REWARDED_ENABLED, if (rewarded) 1 else 0)
+            // Retain the legacy SQLite column for existing installations, always disabled.
+            put(KEY_REWARDED_ENABLED, 0)
         }
         db.insertWithOnConflict(TABLE_AD_CONFIG, null, values, SQLiteDatabase.CONFLICT_REPLACE)
     }
 
     fun isAdEnabled(adType: String): Boolean {
+        if (adType != "banner" && adType != "interstitial") return false
         var isEnabled = when (adType) {
             "banner" -> true
             else -> false
@@ -219,7 +221,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context.applicationCon
                 val columnName = when (adType) {
                     "banner" -> KEY_BANNER_ENABLED
                     "interstitial" -> KEY_INTERSTITIAL_ENABLED
-                    "rewarded" -> KEY_REWARDED_ENABLED
                     else -> ""
                 }
 

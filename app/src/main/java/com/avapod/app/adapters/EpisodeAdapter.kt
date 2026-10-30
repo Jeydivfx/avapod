@@ -20,6 +20,13 @@ class EpisodeAdapter(
     private val defaultCover: String,
     private val onEpisodeClick: (RssItem) -> Unit
 ) : RecyclerView.Adapter<EpisodeAdapter.EpisodeViewHolder>() {
+    private var listeningPositions: Map<String?, Long>? = null
+
+    fun refreshProgress(context: android.content.Context) {
+        listeningPositions = PreferenceHelper(context).getContinueListening()
+            .associate { it.audioUrl to it.lastPosition }
+        if (itemCount > 0) notifyItemRangeChanged(0, itemCount)
+    }
 
     class EpisodeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.txt_episode_title)
@@ -38,7 +45,8 @@ class EpisodeAdapter(
     override fun onBindViewHolder(holder: EpisodeViewHolder, position: Int) {
         val episode = episodes[position]
         val context = holder.itemView.context
-        val prefHelper = PreferenceHelper(context)
+        val positions = listeningPositions ?: PreferenceHelper(context).getContinueListening()
+            .associate { it.audioUrl to it.lastPosition }.also { listeningPositions = it }
 
         holder.title.text = episode.title
         holder.time.text = StringUtils.formatTime(episode.duration)
@@ -51,7 +59,7 @@ class EpisodeAdapter(
             holder.date.visibility = View.GONE
         }
 
-        val playedPos = prefHelper.getContinuePosition(episode.audioUrl)
+        val playedPos = positions[episode.audioUrl] ?: 0L
         val totalDurationMs = StringUtils.timeStringToMs(episode.duration)
 
         if (playedPos > 0 && totalDurationMs > 0) {

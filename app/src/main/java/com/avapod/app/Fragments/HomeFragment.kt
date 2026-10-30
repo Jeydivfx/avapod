@@ -99,8 +99,6 @@ class HomeFragment : Fragment() {
 
         loadDataFromLocalOrNetwork()
 
-        AdManager.preloadInterstitialAd(requireContext())
-        AdManager.preloadRewardedAd(requireContext())
     }
 
     private fun initViews(view: View) {
@@ -168,7 +166,7 @@ class HomeFragment : Fragment() {
             txtFeaturedArtist.text = selectedPodcast.artist
 
             featuredCard.setOnClickListener {
-                navigateWithAd {
+                navigateToContent {
                     openPodcastDetail(selectedPodcast)
                 }
             }
@@ -188,7 +186,7 @@ class HomeFragment : Fragment() {
         rvTrending.visibility = View.GONE
 
         trendingAdapter = PodcastAdapter(emptyList()) { podcast ->
-            navigateWithAd {
+            navigateToContent {
                 openPodcastDetail(podcast)
             }
         }
@@ -213,7 +211,7 @@ class HomeFragment : Fragment() {
 
     private fun setupRecommendedSection() {
         recommendedAdapter = PodcastAdapter(emptyList()) { podcast ->
-            navigateWithAd {
+            navigateToContent {
                 openPodcastDetail(podcast)
             }
         }
@@ -245,7 +243,7 @@ class HomeFragment : Fragment() {
             rvContinueListening.visibility = View.VISIBLE
 
             continueAdapter = ContinueAdapter(limitedList) { episode ->
-                navigateWithAd {
+                navigateToContent {
                     openPlayer(episode)
                 }
             }
@@ -292,7 +290,7 @@ class HomeFragment : Fragment() {
                     .into(icon)
 
                 holder.itemView.setOnClickListener {
-                    navigateWithAd {
+                    navigateToContent {
                         openPodcastDetail(podcast)
                         searchBar.setText("")
                         rvSuggestions.visibility = View.GONE
@@ -332,7 +330,7 @@ class HomeFragment : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val query = searchBar.text.toString().trim()
                 if (query.isNotEmpty()) {
-                    navigateWithAd {
+                    navigateToContent {
                         openSearchFragment(query)
                         searchBar.setText("")
                         rvSuggestions.visibility = View.GONE
@@ -400,13 +398,13 @@ class HomeFragment : Fragment() {
 
     private fun setupViewAllButtons() {
         btnAllTrending.setOnClickListener {
-            navigateWithAd {
+            navigateToContent {
                 openFragment(TrendingAllFragment())
             }
         }
 
         btnAllResumes.setOnClickListener {
-            navigateWithAd {
+            navigateToContent {
                 openFragment(ContinueAllFragment())
             }
         }
@@ -483,8 +481,8 @@ class HomeFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun navigateWithAd(action: () -> Unit) {
-        AdManager.showAdWithCapping(this, action)
+    private fun navigateToContent(action: () -> Unit) {
+        AdManager.navigateWithoutAd(this, action)
     }
 
     private fun hideKeyboard(view: View) {

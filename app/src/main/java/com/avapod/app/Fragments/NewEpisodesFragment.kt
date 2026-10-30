@@ -68,6 +68,7 @@ class NewEpisodesFragment : Fragment() {
 
     private fun fetchNewEpisodesFromSubs() {
         val subscriptions = prefHelper.getSubscribedPodcasts()
+        val appContext = requireContext().applicationContext
         val owner = viewLifecycleOwner
         owner.lifecycleScope.launch {
             loader.visibility = View.VISIBLE
@@ -80,7 +81,7 @@ class NewEpisodesFragment : Fragment() {
                         async {
                             limiter.withPermit {
                                 try {
-                                    val episodes = com.avapod.app.network.RssLoader.load(podcast.rss_url)
+                                    val episodes = com.avapod.app.network.RssLoader.load(podcast.rss_url, appContext)
                                     episodes.firstOrNull()?.let { episode ->
                                         collected.add(episode.copy(
                                             imageUrl = episode.imageUrl?.takeIf(String::isNotBlank) ?: podcast.thumbnail_url,
@@ -114,7 +115,7 @@ class NewEpisodesFragment : Fragment() {
         txtEmptyState.visibility = if (allNewEpisodes.isEmpty()) View.VISIBLE else View.GONE
         rvNew.layoutManager = LinearLayoutManager(requireContext())
         rvNew.adapter = NewEpisodeAdapter(allNewEpisodes) { episode ->
-            AdManager.showAdWithCapping(this) {
+            AdManager.navigateWithoutAd(this) {
                 val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
                     putExtra("audio_url", episode.audioUrl)
                     putExtra("title", episode.title)

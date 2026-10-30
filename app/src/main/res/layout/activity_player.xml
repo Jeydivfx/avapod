@@ -22,5 +22,8 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-    <FrameLayout android:id="@+id/banner_container" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_marginBottom="12dp" />
+    <LinearLayout android:id="@+id/banner_container" android:layout_width="match_parent" android:layout_height="74dp" android:layout_marginTop="24dp" android:layout_marginBottom="16dp" android:orientation="vertical" android:gravity="center_horizontal">
+        <TextView android:layout_width="wrap_content" android:layout_height="24dp" android:text="@string/advertisement_label" android:textColor="@color/text_gray" android:textSize="10sp" android:gravity="center" android:fontFamily="@font/vazir_regular" />
+        <com.appodeal.ads.BannerView android:id="@+id/appodeal_banner" android:layout_width="match_parent" android:layout_height="50dp" />
+    </LinearLayout>
 </LinearLayout>

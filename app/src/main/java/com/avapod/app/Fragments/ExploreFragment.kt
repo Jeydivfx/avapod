@@ -85,7 +85,7 @@ class ExploreFragment : Fragment() {
     }
 
     private fun openCategoryDetail(category: Category) {
-        com.avapod.app.utils.AdManager.showAdWithCapping(this) {
+        com.avapod.app.utils.AdManager.navigateWithoutAd(this) {
             val fragment = CategoryPodcastsFragment()
             val bundle = Bundle().apply {
                 putString("category_id", category.id)

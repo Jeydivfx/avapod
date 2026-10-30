@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Base64
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,7 +26,6 @@ import com.avapod.app.utils.PreferenceHelper
 import com.avapod.app.utils.SleepTimerManager
 import com.avapod.app.utils.UrlValidator
 import com.bumptech.glide.Glide
-import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,11 +45,11 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var artist: TextView
     private lateinit var cover: ImageView
     private lateinit var timer: ImageView
-    private var adView: AdView? = null
     private var initialHandled = false
     private var requestedEpisode: RssItem? = null
     private var displayedCover: String? = null
     private var lastError: String? = null
+    private var activeSheet: BottomSheetDialog? = null
     private val handler = Handler(Looper.getMainLooper())
     private val progress = object : Runnable {
         override fun run() { render(); handler.postDelayed(this, 500) }
@@ -133,13 +131,7 @@ class PlayerActivity : AppCompatActivity() {
         } }
         findViewById<ImageButton>(R.id.btn_menu_common).setOnClickListener { showMenu() }
         timer.setOnClickListener { showTimer() }
-        val banner = findViewById<FrameLayout>(R.id.banner_container)
-        banner.post {
-            if (!isDestroyed && !isFinishing) {
-                adView = AdManager.initAndLoadBanner(this, banner)
-                if (!lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED)) adView?.pause()
-            }
-        }
+
     }
 
     private fun render() {
@@ -182,10 +174,9 @@ class PlayerActivity : AppCompatActivity() {
                 toast(R.string.download_failed)
                 return@launch
             }
-            if (!lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED)) return@launch
+            if (isFinishing || isDestroyed || !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED)) return@launch
             val record = records.firstOrNull { it.episode.audioUrl == source }
             val sheet = BottomSheetDialog(this@PlayerActivity)
-            com.avapod.app.utils.DialogHelper.bind(sheet, this@PlayerActivity)
             val content = layoutInflater.inflate(R.layout.dialog_episode_menu, null)
             sheet.setContentView(content)
             content.findViewById<TextView>(R.id.txt_menu_episode_title).text = episode.title
@@ -205,11 +196,9 @@ class PlayerActivity : AppCompatActivity() {
                         toast(if (removed) R.string.delete_from_memory else R.string.download_failed)
                     }
                 } else {
-                    AdManager.showRewardedAd(this@PlayerActivity) {
-                        lifecycleScope.launch {
-                            val result = withContext(Dispatchers.IO) { runCatching { store.enqueue(episode) } }
-                            toast(if (result.isSuccess) R.string.toast_download_started else R.string.download_failed)
-                        }
+                    lifecycleScope.launch {
+                        val result = withContext(Dispatchers.IO) { runCatching { store.enqueue(episode) } }
+                        toast(if (result.isSuccess) R.string.toast_download_started else R.string.download_failed)
                     }
                 }
             }
@@ -236,13 +225,12 @@ class PlayerActivity : AppCompatActivity() {
                 } else toast(R.string.invalid_audio_link)
                 sheet.dismiss()
             }
-            sheet.show()
+            showPlayerSheet(sheet)
         }
     }
 
     private fun showTimer() {
         val sheet = BottomSheetDialog(this)
-        com.avapod.app.utils.DialogHelper.bind(sheet, this)
         val view = layoutInflater.inflate(R.layout.dialog_player_sleep_timer, null)
         sheet.setContentView(view)
         view.findViewById<View>(R.id.timer_off).setOnClickListener { SleepTimerManager.stopTimer(); render(); sheet.dismiss() }
@@ -251,7 +239,7 @@ class PlayerActivity : AppCompatActivity() {
                 SleepTimerManager.startTimer(this, minutes); render(); sheet.dismiss()
             }
         }
-        sheet.show()
+        showPlayerSheet(sheet)
     }
     private fun formatTime(ms: Long): String {
         val seconds = ms.coerceAtLeast(0) / 1000
@@ -259,17 +247,31 @@ class PlayerActivity : AppCompatActivity() {
         else String.format(Locale.US, "%02d:%02d", seconds / 60, seconds % 60)
         return com.avapod.app.utils.StringUtils.toPersianNumber(formatted)
     }
+    private fun showPlayerSheet(sheet: BottomSheetDialog) {
+        if (isFinishing || isDestroyed || !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED) ||
+            activeSheet != null) return
+        activeSheet = sheet
+        AdManager.setBannerObscured(this, true)
+        com.avapod.app.utils.DialogHelper.bind(sheet, this) {
+            if (activeSheet === sheet) {
+                activeSheet = null
+                AdManager.setBannerObscured(this, false)
+            }
+        }
+        sheet.show()
+    }
     private fun toast(message: Int) { Toast.makeText(this, message, Toast.LENGTH_SHORT).show() }
-    override fun onStart() { super.onStart(); connection.start(); handler.post(progress); adView?.resume() }
+    override fun onStart() { super.onStart(); connection.start(); handler.post(progress) }
     override fun onStop() {
         handler.removeCallbacks(progress)
         connection.stop()
-        adView?.pause()
         super.onStop()
     }
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBoolean("initial_handled", initialHandled)
         super.onSaveInstanceState(outState)
     }
-    override fun onDestroy() { adView?.destroy(); adView = null; super.onDestroy() }
+    override fun onResume() { super.onResume(); AdManager.onResume(this) }
+    override fun onPause() { AdManager.onPause(this); super.onPause() }
+    override fun onDestroy() { AdManager.setBannerObscured(this, false); super.onDestroy() }
 }

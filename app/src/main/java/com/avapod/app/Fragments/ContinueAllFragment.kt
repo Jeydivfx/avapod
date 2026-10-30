@@ -58,7 +58,7 @@ class ContinueAllFragment : Fragment() {
         val fullList = prefHelper.getContinueListening()
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = ContinueAdapter(fullList) { episode ->
-            AdManager.showAdWithCapping(this) {
+            AdManager.navigateWithoutAd(this) {
                 val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
                     putExtra("audio_url", episode.audioUrl)
                     putExtra("title", episode.title)

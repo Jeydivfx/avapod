@@ -42,6 +42,8 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
     fun getCategories(onResult: (List<Category>) -> Unit) = load({ DatabaseHelper(app).use { it.getAllCategories() } }, onResult)
 
     private fun <T> load(read: () -> List<T>, onResult: (List<T>) -> Unit, onComplete: () -> Unit = {}, forceRefresh: Boolean = false) {
+        // Remote ad switches must not depend on a successful catalogue refresh.
+        refreshAds()
         owner.lifecycleScope.launch {
             var delivered = false
             try {
@@ -55,7 +57,6 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
                 if (cached.isNotEmpty()) { onResult(cached); delivered = true }
                 withTimeout(20_000) { sync(forceRefresh) }
                 onResult(withContext(Dispatchers.IO) { read() })
-                refreshAds()
             } catch (e: Exception) {
                 if (e is CancellationException && e !is kotlinx.coroutines.TimeoutCancellationException) throw e
                 android.util.Log.e("AvapodCatalog", "Catalog synchronization failed", e)
@@ -181,16 +182,16 @@ class PodcastRepository(context: Context, private val owner: LifecycleOwner) {
                         throw e
                     }
                     withContext(Dispatchers.IO) {
-                        DatabaseHelper(app).use { db -> db.insertOrUpdateAdConfig(ads.databaseBoolean("ad_banner_enabled"),
-                            ads.databaseBoolean("ad_interstitial_enabled"), ads.databaseBoolean("ad_rewarded_enabled")) }
+                        DatabaseHelper(app).use { db -> db.insertOrUpdateAdConfig(ads.databaseAdBoolean("ad_banner_enabled"),
+                            ads.databaseAdBoolean("ad_interstitial_enabled")) }
                     }
                     lastAdsSuccess = SystemClock.elapsedRealtime()
                     lastAdsFailure = null
-                    AdManager.preloadInterstitialAd(app)
-                    AdManager.preloadRewardedAd(app)
+                    AdManager.refresh()
                 }
             } catch (e: Exception) {
                 if (e is CancellationException && e !is kotlinx.coroutines.TimeoutCancellationException) throw e
+                android.util.Log.w("AvapodAds", "Could not refresh ad configuration; retaining saved flags", e)
             }
         }
     }

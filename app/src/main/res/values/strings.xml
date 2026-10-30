@@ -1,11 +1,8 @@
 <resources>
+    <string name="rss_showing_saved">به‌روزرسانی ممکن نشد؛ اپیزودهای ذخیره‌شده نمایش داده می‌شوند.</string>
     <string name="app_name">AvaPod</string>
 
-    <!-- AdMob credentials -->
-    <string name="admob_app_id">ca-app-pub-8683775581688444~4521959277</string>
-    <string name="admob_interstitial_ad_unit_id">ca-app-pub-8683775581688444/6246634712</string>
-    <string name="admob_banner_ad_unit_id">ca-app-pub-8683775581688444/8872798058</string>
-    <string name="admob_rewarded_ad_unit_id">ca-app-pub-8683775581688444/7559716384</string>
+    <!-- Appodeal public application key -->
 
     <!-- Home layout -->
     <string name="hint_search_podcasts">جستجو در پادکست‌ها...</string>
@@ -382,4 +379,8 @@
     <string name="admin_weekly_featured_hint">هر هفته یکی از پادکست‌های علامت‌خورده نمایش داده می‌شود. برای تغییر هفتگی، دست‌کم دو پادکست را انتخاب کنید.</string>
     <string name="admin_search_hint">جست‌وجوی نام پادکست…</string>
     <string name="admin_search_empty">پادکستی با این نام پیدا نشد.</string>
+    <string name="appodeal_app_key" translatable="false">8f1dd662826f5b73482f501ce64677be449f7e5cc8543653</string>
+    <string name="ads_privacy">حریم خصوصی تبلیغات</string>
+    <string name="ads_privacy_unavailable">تنظیمات حریم خصوصی تبلیغات فعلاً در دسترس نیست؛ اتصال اینترنت را بررسی و دوباره تلاش کنید.</string>
+    <string name="advertisement_label">تبلیغات</string>
 </resources>

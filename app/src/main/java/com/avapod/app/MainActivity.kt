@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private var displayedCover: String? = null
     private var lastBackPress = 0L
     private var keyboardVisible = false
+    private var pendingDetailsReturn = false
     private val tick = object : Runnable {
         override fun run() { renderProgress(); handler.postDelayed(this, 500) }
     }
@@ -93,7 +94,18 @@ class MainActivity : AppCompatActivity() {
         }
         onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (supportFragmentManager.backStackEntryCount > 0) supportFragmentManager.popBackStack()
+                if (pendingDetailsReturn || supportFragmentManager.isStateSaved) return
+                if (supportFragmentManager.backStackEntryCount > 0) {
+                    val current = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                    if (current is PodcastDetailFragment) {
+                        val player = connection.controller
+                        com.avapod.app.utils.AdManager.onDetailsReturn(this@MainActivity,
+                            player != null && !player.playWhenReady && !player.isPlaying) {
+                            pendingDetailsReturn = true
+                            handler.post { completeDetailsReturn() }
+                        }
+                    } else supportFragmentManager.popBackStack()
+                }
                 else if (nav.selectedItemId != R.id.nav_home) nav.selectedItemId = R.id.nav_home
                 else if (android.os.SystemClock.elapsedRealtime() - lastBackPress < 2000) finish()
                 else { lastBackPress = android.os.SystemClock.elapsedRealtime(); Toast.makeText(this@MainActivity, R.string.exit_message, Toast.LENGTH_SHORT).show() }
@@ -149,6 +161,17 @@ class MainActivity : AppCompatActivity() {
         val player = connection.controller ?: return
         progress.progress = if (player.duration > 0) ((player.currentPosition * 100 / player.duration).toInt()).coerceIn(0, 100) else 0
     }
+    private fun completeDetailsReturn() {
+        if (!pendingDetailsReturn || !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED) ||
+            supportFragmentManager.isStateSaved || isFinishing || isDestroyed) return
+        pendingDetailsReturn = false
+        if (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) is PodcastDetailFragment &&
+            supportFragmentManager.backStackEntryCount > 0) supportFragmentManager.popBackStack()
+    }
+    override fun onResume() { super.onResume(); com.avapod.app.utils.AdManager.onResume(this) }
+    override fun onPostResume() { super.onPostResume(); handler.post { completeDetailsReturn() } }
+    override fun onPause() { com.avapod.app.utils.AdManager.onPause(this); super.onPause() }
+    override fun onDestroy() { com.avapod.app.utils.AdManager.onDestroy(); super.onDestroy() }
     override fun onStart() { super.onStart(); connection.start(); handler.post(tick) }
     override fun onStop() { handler.removeCallbacks(tick); connection.stop(); super.onStop() }
 }
