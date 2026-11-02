@@ -1,9 +1,95 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardCornerRadius="14dp" app:cardElevation="0dp" app:cardBackgroundColor="@color/surface_dark" app:strokeColor="@color/line_divider_bg" app:strokeWidth="1dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-<ImageView android:layout_width="28dp" android:layout_height="28dp" android:padding="5dp" android:src="@drawable/ic_bell_outline" app:tint="@color/accent_cyan" android:background="@drawable/bg_circle_dark" android:importantForAccessibility="no" />
-<TextView android:id="@+id/message_card_heading" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:textColor="@color/accent_cyan" android:textSize="@dimen/type_body" android:fontFamily="@font/vazir_bold" />
-</LinearLayout>
-<TextView android:id="@+id/message_card_date" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:textColor="@color/text_gray" android:textSize="@dimen/type_caption" android:fontFamily="@font/vazir_regular" />
-<TextView android:id="@+id/message_card_body" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:textColor="@color/text_white" android:textSize="@dimen/type_body" android:fontFamily="@font/vazir_regular" android:lineSpacingExtra="3dp" android:textIsSelectable="true" android:textDirection="firstStrong" />
-</LinearLayout></com.google.android.material.card.MaterialCardView>
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layoutDirection="rtl"
+    app:cardBackgroundColor="@color/surface_dark"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/nav_border"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardBackgroundColor="#19365B"
+                app:cardCornerRadius="11dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#315A85"
+                app:strokeWidth="0.5dp">
+
+                <ImageView
+                    android:id="@+id/message_card_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_inbox_chat"
+                    android:contentDescription="@null"
+                    android:importantForAccessibility="no"
+                    app:tint="#65B7FF" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/message_card_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/vazir_regular"
+                android:textColor="@color/text_gray"
+                android:textSize="11sp"
+                android:textDirection="ltr" />
+
+            <ImageView
+                android:id="@+id/message_card_calendar"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_calendar_outline"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                app:tint="@color/text_gray" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/message_card_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/message_card_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/vazir_regular"
+            android:gravity="right"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/text_white"
+            android:textDirection="firstStrong"
+            android:textIsSelectable="true"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

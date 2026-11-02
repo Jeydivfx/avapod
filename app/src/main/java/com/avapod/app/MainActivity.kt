@@ -54,6 +54,23 @@ class MainActivity : AppCompatActivity() {
         }
         enableEdgeToEdge(statusBarStyle = barStyle, navigationBarStyle = barStyle)
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        // Bring the navigation labels closer to their icons without moving the icons.
+        nav.post {
+            val menu = nav.getChildAt(0) as? ViewGroup ?: return@post
+            val offset = 6f * resources.displayMetrics.density
+            fun moveLabels(view: View) {
+                if (view is TextView) {
+                    view.translationY = -offset
+                } else if (view is ViewGroup) {
+                    for (index in 0 until view.childCount) {
+                        moveLabels(view.getChildAt(index))
+                    }
+                }
+            }
+            for (index in 0 until menu.childCount) {
+                moveLabels(menu.getChildAt(index))
+            }
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_root_view)) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
             val keyboard = insets.getInsets(WindowInsetsCompat.Type.ime())
