@@ -1,6 +1,12 @@
 package com.avapod.app.Fragments
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.TimeoutCancellationException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +34,32 @@ class LibraryFragment : Fragment() {
         txtEmpty = view.findViewById(R.id.txt_empty_library)
         prefHelper = PreferenceHelper(requireContext())
 
+        view.findViewById<View>(R.id.library_notifications).setOnClickListener {
+            if (!parentFragmentManager.isStateSaved) {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment, InboxFragment())
+                    .addToBackStack(null).commit()
+            }
+        }
+        val inboxContext = requireContext().applicationContext
+        fun updateUnread() {
+            view.findViewById<View>(R.id.library_unread_dot).visibility =
+                if (com.avapod.app.network.AnnouncementInbox.unread(inboxContext)) View.VISIBLE else View.GONE
+        }
+        updateUnread()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.RESUMED) {
+                while (true) {
+                    updateUnread()
+                    try { com.avapod.app.network.AnnouncementInbox.refresh(inboxContext, force = true) }
+                    catch (e: Exception) {
+                        if (e is CancellationException && e !is TimeoutCancellationException) throw e
+                    }
+                    updateUnread()
+                    delay(60_000)
+                }
+            }
+        }
         setupToolbar(view)
         view.findViewById<View>(R.id.common_toolbar).visibility = View.GONE
         listOf(

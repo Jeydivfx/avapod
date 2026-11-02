@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='utf-8'?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:id="@+id/nav_home" android:icon="@drawable/ic_nav_home_selector" android:title="خانه" />
-  <item android:id="@+id/nav_explore" android:icon="@drawable/ic_grid_outline" android:title="دسته‌بندی" />
-  <item android:id="@+id/nav_about" android:icon="@drawable/ic_settings" android:title="تنظیمات" />
-  <item android:id="@+id/nav_library" android:icon="@drawable/ic_personal_space" android:title="@string/title_library" />
+<?xml version='1.0' encoding='UTF-8'?>
+<menu xmlns:ns0="http://schemas.android.com/apk/res/android">
+  <item ns0:id="@+id/nav_home" ns0:icon="@drawable/ic_nav_home_selector" ns0:title="خانه"/>
+  <item ns0:id="@+id/nav_explore" ns0:icon="@drawable/ic_nav_category_ring" ns0:title="دسته‌بندی"/>
+  <item ns0:id="@+id/nav_library" ns0:icon="@drawable/ic_personal_space" ns0:title="@string/title_library"/>
+  <item ns0:id="@+id/nav_about" ns0:icon="@drawable/ic_settings" ns0:title="تنظیمات"/>
 </menu>

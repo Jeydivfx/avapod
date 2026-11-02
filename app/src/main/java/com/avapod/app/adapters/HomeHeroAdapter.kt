@@ -27,10 +27,10 @@ class HomeHeroAdapter(private val open: (Podcast) -> Unit) : RecyclerView.Adapte
             ?: (parent.resources.displayMetrics.widthPixels - 32f * d).toInt()
         val width = (parentWidth - parent.paddingLeft - parent.paddingRight).coerceAtLeast(1)
         val fontScale = parent.resources.configuration.fontScale.coerceAtLeast(1f)
-        val height = maxOf(width * 305f / 785f, 136f * d * fontScale).toInt()
+        val height = maxOf(width * 326f / 785f, 138f * d * fontScale).toInt()
         view.layoutParams = RecyclerView.LayoutParams(width, height)
         view.background = HeroBackgroundDrawable(d)
-        val coverSize = minOf((width * .30f).toInt(), height - (24f * d).toInt()).coerceAtLeast(1)
+        val coverSize = minOf((width * .355f).toInt(), height - (24f * d).toInt()).coerceAtLeast(1)
         view.findViewById<View>(R.id.hero_cover_frame).layoutParams =
             (view.findViewById<View>(R.id.hero_cover_frame).layoutParams as FrameLayout.LayoutParams).apply {
                 this.width = coverSize
@@ -38,19 +38,19 @@ class HomeHeroAdapter(private val open: (Podcast) -> Unit) : RecyclerView.Adapte
             }
         val content = view.findViewById<View>(R.id.hero_content_panel)
         content.layoutParams = (content.layoutParams as FrameLayout.LayoutParams).apply {
-            leftMargin = coverSize + (28f * d).toInt()
+            leftMargin = coverSize + (24f * d).toInt()
             rightMargin = (12f * d).toInt()
         }
         view.findViewById<View>(R.id.hero_badge).setBackgroundResource(R.drawable.home_badge_compact)
         view.findViewById<View>(R.id.hero_listen_surface).background = GradientDrawable(
             GradientDrawable.Orientation.TOP_BOTTOM,
-            intArrayOf(Color.rgb(52, 120, 246), Color.rgb(7, 87, 216))
+            intArrayOf(Color.rgb(255, 255, 255), Color.rgb(245, 245, 245))
         ).apply { cornerRadius = 20f * d }
         view.findViewById<View>(R.id.hero_listen).layoutParams.apply {
-            this.width = minOf((116f * d * fontScale).toInt(), width - coverSize - (40f * d).toInt())
-            this.height = (48f * d * fontScale).toInt()
+            this.width = minOf((93f * d * fontScale).toInt(), width - coverSize - (40f * d).toInt())
+            this.height = (27f * d * fontScale).toInt()
         }
-        view.findViewById<View>(R.id.hero_listen_surface).layoutParams.height = (30f * d * fontScale).toInt()
+        view.findViewById<View>(R.id.hero_listen_surface).layoutParams.height = (27f * d * fontScale).toInt()
         return Holder(view)
     }
 
@@ -59,6 +59,7 @@ class HomeHeroAdapter(private val open: (Podcast) -> Unit) : RecyclerView.Adapte
         val item = items[position]
         holder.itemView.contentDescription = item.title
         holder.itemView.findViewById<TextView>(R.id.hero_title).text = item.title
+        holder.itemView.findViewById<TextView>(R.id.hero_artist).text = item.artist
         holder.itemView.findViewById<TextView>(R.id.hero_description).text = item.description
         val cover = holder.itemView.findViewById<ImageView>(R.id.hero_cover)
         Glide.with(cover).load(item.thumbnail_url)

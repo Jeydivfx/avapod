@@ -22,18 +22,18 @@ class HeroBackgroundDrawable(private val density: Float) : Drawable() {
         canvas.clipPath(shape)
         paint.style = Paint.Style.FILL
         paint.shader = LinearGradient(0f, 0f, w, h * .25f,
-            intArrayOf(Color.rgb(175, 0, 52), Color.rgb(80, 10, 49), Color.rgb(20, 13, 37)),
+            intArrayOf(Color.rgb(167, 15, 23), Color.rgb(57, 14, 27), Color.rgb(26, 12, 26)),
             floatArrayOf(0f, .42f, 1f), Shader.TileMode.CLAMP)
         canvas.drawRect(0f, 0f, w, h, paint)
         paint.shader = null
-        paint.color = Color.argb(42, 245, 52, 52)
+        paint.color = Color.argb(30, 240, 58, 42)
         val glow = Path().apply {
             moveTo(0f, 0f); lineTo(w * .29f, 0f)
             cubicTo(w * .45f, h * .42f, w * .27f, h * .78f, 0f, h * .62f)
             close()
         }
         canvas.drawPath(glow, paint)
-        paint.color = Color.argb(65, 195, 38, 48)
+        paint.color = Color.argb(58, 165, 39, 40)
         val wave = Path().apply {
             moveTo(0f, h * .67f)
             cubicTo(w * .23f, h * .55f, w * .47f, h * 1.13f, w, h * .73f)
@@ -50,7 +50,7 @@ class HeroBackgroundDrawable(private val density: Float) : Drawable() {
         canvas.restoreToCount(save)
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 0.8f * density
-        paint.color = Color.argb(160, 205, 55, 157)
+        paint.color = Color.argb(195, 133, 22, 30)
         canvas.drawRoundRect(RectF(paint.strokeWidth, paint.strokeWidth,
             w - paint.strokeWidth, h - paint.strokeWidth), r, r, paint)
         paint.style = Paint.Style.FILL

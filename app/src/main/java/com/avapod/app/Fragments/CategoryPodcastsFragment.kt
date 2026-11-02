@@ -86,12 +86,12 @@ class CategoryPodcastsFragment : Fragment() {
     }
 
     private fun setupRecyclerView(list: List<Podcast>) {
-        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
+        val gridLayoutManager = GridLayoutManager(requireContext(), 3)
         rvPodcasts.layoutManager = gridLayoutManager
 
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.grid_spacing)
         while (rvPodcasts.itemDecorationCount > 0) rvPodcasts.removeItemDecorationAt(0)
-        rvPodcasts.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true))
+        rvPodcasts.addItemDecoration(GridSpacingItemDecoration(3, (spacingInPixels / 2).coerceAtLeast(1), true))
 
         rvPodcasts.adapter = PodcastAdapter(list) { podcast ->
 

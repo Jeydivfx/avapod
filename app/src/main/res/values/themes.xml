@@ -29,6 +29,7 @@
         <item name="android:fontFamily">@font/vazir_bold</item>
         <item name="fontFamily">@font/vazir_bold</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="BottomNavTextInactive"
@@ -37,6 +38,7 @@
         <item name="android:fontFamily">@font/vazir_bold</item>
         <item name="fontFamily">@font/vazir_bold</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 

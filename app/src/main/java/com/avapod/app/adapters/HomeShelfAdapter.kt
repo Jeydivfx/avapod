@@ -21,10 +21,15 @@ class HomeShelfAdapter : RecyclerView.Adapter<HomeShelfAdapter.Holder>() {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_episode, parent, false)
         val d = parent.resources.displayMetrics.density
         val total = parent.width.takeIf { it > 0 }
-            ?: (parent.resources.displayMetrics.widthPixels - 32f * d).toInt()
+            ?: parent.resources.displayMetrics.widthPixels
         val usable = (total - parent.paddingLeft - parent.paddingRight).coerceAtLeast(1)
         val columns = ((parent as? RecyclerView)?.layoutManager as? androidx.recyclerview.widget.GridLayoutManager)?.spanCount ?: 3
-        val width = (usable / columns).coerceAtLeast(1)
+        // 3 complete cards plus about 10% of the fourth, while keeping RTL scrolling.
+        val layoutManager = (parent as? RecyclerView)?.layoutManager
+        val width = if (layoutManager is androidx.recyclerview.widget.LinearLayoutManager
+            && layoutManager !is androidx.recyclerview.widget.GridLayoutManager)
+            (usable / 3.20f).toInt().coerceAtLeast(1)
+        else (usable / columns).coerceAtLeast(1)
         // RecyclerView.LayoutParams must carry spacing: XML root margins are lost
         // when layoutParams are replaced here.
         view.layoutParams = RecyclerView.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT).apply {
@@ -32,7 +37,7 @@ class HomeShelfAdapter : RecyclerView.Adapter<HomeShelfAdapter.Holder>() {
         }
         // Item content width excludes its end margin, keeping exactly 3 cards visible.
         val content = view.findViewById<View>(R.id.home_cover_frame)
-        val imageSize = (width - (5f * d).toInt()).coerceAtLeast(1)
+        val imageSize = (width * .76f).toInt().coerceAtLeast(1)
         content.layoutParams = content.layoutParams.apply { height = imageSize }
         // The XML root is wrap_content; its measured width follows the RecyclerView item width.
         return Holder(view)
@@ -42,8 +47,8 @@ class HomeShelfAdapter : RecyclerView.Adapter<HomeShelfAdapter.Holder>() {
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val card = cards[position]
         holder.itemView.findViewById<TextView>(R.id.home_card_title).apply {
-            maxLines = 1
-            minLines = 1
+            maxLines = 2
+            minLines = 2
             ellipsize = android.text.TextUtils.TruncateAt.END
             text = card.title
         }

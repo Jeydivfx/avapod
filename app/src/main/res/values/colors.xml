@@ -72,5 +72,5 @@
   <color name="brand_selected">#E3EDFF</color>
   <color name="brand_selected_end">#C8DBFF</color>
   <color name="nav_selected_text">#163C7A</color>
-  <color name="home_search_fill">#FFFFFF</color>
+  <color name="home_search_fill">#19263C</color>
 </resources>

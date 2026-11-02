@@ -139,6 +139,9 @@ class HomeFragment : Fragment() {
         setupHero()
         rvLatest = view.findViewById(R.id.rv_home_latest)
         latestAdapter = HomeShelfAdapter()
+        latestAdapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() { alignShelfPeek(rvLatest) }
+        })
         rvLatest.adapter = latestAdapter
         rvLatest.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         view.findViewById<View>(R.id.btn_all_latest).setOnClickListener {
@@ -151,6 +154,17 @@ class HomeFragment : Fragment() {
 
         loadDataFromLocalOrNetwork()
 
+    }
+
+    // Start each shelf with a 10% edge peek, three complete cards and 10% at the far edge.
+    // The first item is intentionally cropped on the RTL start edge.
+    private fun alignShelfPeek(recyclerView: RecyclerView) {
+        recyclerView.post {
+            val manager = recyclerView.layoutManager as? LinearLayoutManager ?: return@post
+            if ((recyclerView.adapter?.itemCount ?: 0) < 5 || recyclerView.width <= 0) return@post
+            val cardWidth = (recyclerView.width / 3.20f).toInt()
+            manager.scrollToPositionWithOffset(1, (cardWidth * 0.10f).toInt())
+        }
     }
 
     private fun initViews(view: View) {
@@ -251,6 +265,9 @@ class HomeFragment : Fragment() {
 
     private fun setupTrendingSection() {
         trendingAdapter = HomeShelfAdapter()
+        trendingAdapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() { alignShelfPeek(rvTrending) }
+        })
         rvTrending.adapter = trendingAdapter
         rvTrending.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
@@ -375,6 +392,9 @@ class HomeFragment : Fragment() {
 
     private fun setupRecommendedSection() {
         recommendedAdapter = HomeShelfAdapter()
+        recommendedAdapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() { alignShelfPeek(rvRecommended) }
+        })
         rvRecommended.adapter = recommendedAdapter
         rvRecommended.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
