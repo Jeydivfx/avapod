@@ -12,7 +12,8 @@ import com.avapod.app.models.Podcast
 class AdminPodcastAdapter(
     private val podcastList: List<Podcast>,
     private val onEditClick: (Podcast) -> Unit,
-    private val onDeleteClick: (Podcast) -> Unit // اضافه شده
+    private val onDeleteClick: (Podcast) -> Unit,
+    private val onEpisodesClick: (Podcast) -> Unit
 ) : RecyclerView.Adapter<AdminPodcastAdapter.AdminViewHolder>() {
 
     class AdminViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -30,6 +31,7 @@ class AdminPodcastAdapter(
         val podcast = podcastList[position]
         holder.txtTitle.text = podcast.title
 
+        holder.itemView.findViewById<Button>(R.id.btn_admin_episodes).setOnClickListener { onEpisodesClick(podcast) }
         holder.btnEdit.setOnClickListener { onEditClick(podcast) }
         holder.btnDelete.setOnClickListener { onDeleteClick(podcast) }
     }

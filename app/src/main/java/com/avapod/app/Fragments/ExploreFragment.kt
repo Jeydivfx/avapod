@@ -89,6 +89,7 @@ class ExploreFragment : Fragment() {
             val fragment = CategoryPodcastsFragment()
             val bundle = Bundle().apply {
                 putString("category_id", category.id)
+                putStringArrayList("category_ids", ArrayList((category.sourceIds + category.id).distinct()))
                 putString("category_name", category.name)
             }
             fragment.arguments = bundle

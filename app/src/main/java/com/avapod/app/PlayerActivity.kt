@@ -49,6 +49,7 @@ class PlayerActivity : AppCompatActivity() {
     private var requestedEpisode: RssItem? = null
     private var displayedCover: String? = null
     private var lastError: String? = null
+    private var playlistSources = emptySet<String?>()
     private var activeSheet: BottomSheetDialog? = null
     private val handler = Handler(Looper.getMainLooper())
     private val progress = object : Runnable {
@@ -70,6 +71,28 @@ class PlayerActivity : AppCompatActivity() {
             view.setPadding(bars.left + padding, bars.top, bars.right + padding, bars.bottom)
             WindowInsetsCompat.CONSUMED
         }
+        // Size artwork from remaining viewport space, retaining scroll as an accessibility fallback.
+        val scroll = findViewById<View>(R.id.player_scroll)
+        val content = findViewById<android.widget.LinearLayout>(R.id.player_content)
+        val artwork = findViewById<View>(R.id.player_cover_frame)
+        fun fitArtwork() {
+            if (scroll.height <= 0 || scroll.width <= 0) return
+            var other = content.paddingTop + content.paddingBottom
+            for (i in 0 until content.childCount) {
+                val child = content.getChildAt(i)
+                if (child.visibility == View.GONE) continue
+                val lp = child.layoutParams as android.widget.LinearLayout.LayoutParams
+                other += lp.topMargin + lp.bottomMargin
+                if (child !== artwork) other += child.measuredHeight
+            }
+            val density = resources.displayMetrics.density
+            val target = minOf(scroll.width * .52f, 200f * density,
+                (scroll.height - other - 8 * density).coerceAtLeast(96f * density)).toInt()
+            if (artwork.layoutParams.height != target) {
+                artwork.layoutParams = artwork.layoutParams.apply { width = target; height = target }
+            }
+        }
+        content.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> fitArtwork() }
         preferences = PreferenceHelper(this)
         initialHandled = savedInstanceState?.getBoolean("initial_handled") ?: false
         requestedEpisode = intent.getStringExtra("audio_url")?.let { source ->
@@ -89,7 +112,12 @@ class PlayerActivity : AppCompatActivity() {
         connection = PlaybackConnection(this, { controller ->
             val request = requestedEpisode
             if (!initialHandled && request != null && PlayerManager.isPlayable(this, request.audioUrl)) {
-                if (controller.currentMediaItem?.mediaId != request.audioUrl) {
+                val queue = com.avapod.app.utils.PlaylistStore.queue(this, intent.getStringExtra("queue_id"))
+                val index = queue.indexOfFirst { it.audioUrl == request.audioUrl }
+                if (index >= 0) {
+                    val position = if (!intent.getBooleanExtra("queue_restart", false) && controller.currentMediaItem?.mediaId == request.audioUrl) controller.currentPosition else request.lastPosition
+                    controller.setMediaItems(queue.map { PlayerManager.mediaItem(this, it) }, index, position)
+                } else if (controller.currentMediaItem?.mediaId != request.audioUrl) {
                     controller.setMediaItem(PlayerManager.mediaItem(this, request), request.lastPosition)
                 }
                 if (!connection.hasPendingAction) {
@@ -122,6 +150,36 @@ class PlayerActivity : AppCompatActivity() {
         findViewById<View>(R.id.btn_forward_30).setOnClickListener {
             connection.run { it.seekTo((it.currentPosition + 30_000).coerceAtMost(it.duration.takeIf { d -> d > 0 } ?: Long.MAX_VALUE)) }
         }
+        findViewById<View>(R.id.btn_previous_episode).setOnClickListener { connection.run {
+            if (it.hasPreviousMediaItem()) { it.seekToPreviousMediaItem(); it.prepare(); it.play() }
+        } }
+        findViewById<View>(R.id.btn_next_episode).setOnClickListener { connection.run {
+            if (it.hasNextMediaItem()) { it.seekToNextMediaItem(); it.prepare(); it.play() }
+        } }
+        findViewById<View>(R.id.btn_add_playlist).setOnClickListener { connection.run { player ->
+            player.currentMediaItem?.let { item ->
+                val added = com.avapod.app.utils.PlaylistStore.toggle(this, PlayerManager.episode(item))
+                playlistSources = com.avapod.app.utils.PlaylistStore.all(this).map { it.audioUrl }.toSet()
+                toast(if (added) R.string.playlist_added else R.string.playlist_removed)
+                render()
+            }
+        } }
+        findViewById<View>(R.id.btn_shuffle).setOnClickListener { connection.run {
+            it.shuffleModeEnabled = !it.shuffleModeEnabled
+            toast(if (it.shuffleModeEnabled) R.string.shuffle_on else R.string.shuffle_off)
+        } }
+        findViewById<View>(R.id.btn_repeat).setOnClickListener { connection.run {
+            it.repeatMode = when (it.repeatMode) {
+                Player.REPEAT_MODE_OFF -> Player.REPEAT_MODE_ALL
+                Player.REPEAT_MODE_ALL -> Player.REPEAT_MODE_ONE
+                else -> Player.REPEAT_MODE_OFF
+            }
+            toast(when (it.repeatMode) {
+                Player.REPEAT_MODE_ALL -> R.string.repeat_all
+                Player.REPEAT_MODE_ONE -> R.string.repeat_one
+                else -> R.string.repeat_off
+            })
+        } }
         waveform.onProgressChanged = { fraction -> connection.run {
             if (it.duration > 0) it.seekTo((it.duration * fraction).toLong())
         } }
@@ -131,12 +189,40 @@ class PlayerActivity : AppCompatActivity() {
         } }
         findViewById<ImageButton>(R.id.btn_menu_common).setOnClickListener { showMenu() }
         timer.setOnClickListener { showTimer() }
+        findViewById<View>(R.id.sleep_timer_action).setOnClickListener { showTimer() }
 
     }
 
     private fun render() {
         if (!::connection.isInitialized) return
         val player = connection.controller
+        listOf(R.id.btn_previous_episode to (player?.hasPreviousMediaItem() == true),
+            R.id.btn_next_episode to (player?.hasNextMediaItem() == true)).forEach { (id, enabled) ->
+            findViewById<View>(id).apply { isEnabled = enabled; alpha = if (enabled) 1f else .3f }
+        }
+        findViewById<ImageView>(R.id.btn_shuffle).apply {
+            isEnabled = (player?.mediaItemCount ?: 0) > 1
+            alpha = if (isEnabled) 1f else .35f
+            isSelected = player?.shuffleModeEnabled == true
+            imageTintList = android.content.res.ColorStateList.valueOf(getColor(if (isSelected) R.color.primary_blue else R.color.text_gray))
+            contentDescription = getString(if (isSelected) R.string.shuffle_on else R.string.shuffle_off)
+        }
+        findViewById<ImageView>(R.id.btn_repeat).apply {
+            isEnabled = (player?.mediaItemCount ?: 0) > 0
+            isSelected = player != null && player.repeatMode != Player.REPEAT_MODE_OFF
+            imageTintList = android.content.res.ColorStateList.valueOf(getColor(if (isSelected) R.color.primary_blue else R.color.text_gray))
+            contentDescription = getString(when (player?.repeatMode) {
+                Player.REPEAT_MODE_ONE -> R.string.repeat_one
+                Player.REPEAT_MODE_ALL -> R.string.repeat_all
+                else -> R.string.repeat_off
+            })
+            setImageResource(if (player?.repeatMode == Player.REPEAT_MODE_ONE) R.drawable.ic_player_repeat_one else R.drawable.ic_player_repeat)
+        }
+        val currentSource = player?.currentMediaItem?.mediaId
+        findViewById<TextView>(R.id.btn_add_playlist).apply {
+            isEnabled = currentSource != null
+            setText(if (currentSource != null && currentSource in playlistSources) R.string.playlist_remove else R.string.playlist_add)
+        }
         val episode = player?.currentMediaItem?.let(PlayerManager::episode) ?: requestedEpisode
         title.text = episode?.title.orEmpty()
         artist.text = episode?.artist.orEmpty()
@@ -153,7 +239,7 @@ class PlayerActivity : AppCompatActivity() {
         waveform.progress = if (duration > 0) position.toFloat() / duration else 0f
         currentTime.text = formatTime(position)
         totalTime.text = formatTime(duration)
-        speed.text = com.avapod.app.utils.StringUtils.toPersianNumber(getString(R.string.playback_speed, player?.playbackParameters?.speed ?: 1f))
+        speed.text = getString(R.string.playlist_speed, com.avapod.app.utils.StringUtils.toPersianNumber(getString(R.string.playback_speed, player?.playbackParameters?.speed ?: 1f)))
         SleepTimerManager.refresh(this)
         timer.imageTintList = android.content.res.ColorStateList.valueOf(getColor(
             if (SleepTimerManager.isTimerRunning) R.color.timer_accent_blue else R.color.text_white))
@@ -261,7 +347,7 @@ class PlayerActivity : AppCompatActivity() {
         sheet.show()
     }
     private fun toast(message: Int) { Toast.makeText(this, message, Toast.LENGTH_SHORT).show() }
-    override fun onStart() { super.onStart(); connection.start(); handler.post(progress) }
+    override fun onStart() { super.onStart(); playlistSources = com.avapod.app.utils.PlaylistStore.all(this).map { it.audioUrl }.toSet(); connection.start(); handler.post(progress) }
     override fun onStop() {
         handler.removeCallbacks(progress)
         connection.stop()

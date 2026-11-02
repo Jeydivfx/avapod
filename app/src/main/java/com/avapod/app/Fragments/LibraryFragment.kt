@@ -34,7 +34,8 @@ class LibraryFragment : Fragment() {
             R.id.library_new_episodes to { NewEpisodesFragment() },
             R.id.library_downloads to { DownloadFragment() },
             R.id.library_bookmarks to { BookmarkFragment() },
-            R.id.library_history to { ContinueAllFragment() }
+            R.id.library_history to { ContinueAllFragment() },
+            R.id.library_playlist to { PlaylistFragment() }
         ).forEach { (id, destination) ->
             view.findViewById<View>(id).setOnClickListener {
                 if (!parentFragmentManager.isStateSaved) {
@@ -90,13 +91,14 @@ class LibraryFragment : Fragment() {
             txtEmpty.visibility = View.GONE
             rvLibrary.visibility = View.VISIBLE
 
-            rvLibrary.layoutManager = GridLayoutManager(context, 2)
+            val columns = if (resources.configuration.fontScale > 1.3f) 2 else 3
+            rvLibrary.layoutManager = GridLayoutManager(context, columns)
 
             val spacingInPixels = resources.getDimensionPixelSize(R.dimen.grid_spacing)
             while (rvLibrary.itemDecorationCount > 0) rvLibrary.removeItemDecorationAt(0)
-            rvLibrary.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true))
+            rvLibrary.addItemDecoration(GridSpacingItemDecoration(columns, spacingInPixels, true))
 
-            val adapter = PodcastAdapter(subscribedPodcasts) { podcast ->
+            val adapter = PodcastAdapter(subscribedPodcasts, compact = true) { podcast ->
                 com.avapod.app.utils.AdManager.navigateWithoutAd(this) {
                     val fragment = PodcastDetailFragment().apply {
                         arguments = Bundle().apply {

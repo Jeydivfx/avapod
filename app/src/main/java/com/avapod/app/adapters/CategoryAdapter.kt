@@ -28,8 +28,11 @@ class CategoryAdapter(
         val category = categories[position]
         holder.txtName.text = category.name
 
+        val resource = if (category.icon.startsWith("ic_category_"))
+            holder.itemView.resources.getIdentifier(category.icon, "drawable", holder.itemView.context.packageName) else 0
         val name = category.name.replace('ي', 'ی').replace('ك', 'ک')
         val icon = when {
+            resource != 0 -> resource
             category.icon == "ic_social" || name.contains("جامعه") -> R.drawable.ic_category_community
             category.icon == "ic_crime" || name.contains("جنایی") -> R.drawable.ic_category_crime
             category.icon == "ic_horror" || name.contains("ترس") -> R.drawable.ic_category_horror

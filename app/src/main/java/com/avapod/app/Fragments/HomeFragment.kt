@@ -27,7 +27,19 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.avapod.app.PlayerActivity
 import com.avapod.app.R
 import com.avapod.app.adapters.ContinueAdapter
-import com.avapod.app.adapters.PodcastAdapter
+import com.avapod.app.adapters.HomeShelfAdapter
+import com.avapod.app.adapters.HomeCard
+import com.avapod.app.adapters.HomeHeroAdapter
+import com.avapod.app.network.HomeEpisodes
+import com.avapod.app.network.RssLoader
+import com.avapod.app.utils.PodcastOrder
+import com.avapod.app.utils.DialogHelper
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.PagerSnapHelper
+import kotlinx.coroutines.*
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import com.avapod.app.models.Podcast
 import com.avapod.app.models.RssItem
 import com.avapod.app.network.PodcastRepository
@@ -48,22 +60,28 @@ class HomeFragment : Fragment() {
     private lateinit var shimmerTrending: ShimmerFrameLayout
     private lateinit var progressLoading: ProgressBar
     private lateinit var cardEmptyContinue: CardView
-    private lateinit var imgFeatured: ImageView
-    private lateinit var txtFeaturedTitle: TextView
-    private lateinit var txtFeaturedArtist: TextView
-    private lateinit var featuredCard: CardView
     private lateinit var btnAllTrending: TextView
     private lateinit var btnAllResumes: TextView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
-    private var trendingAdapter: PodcastAdapter? = null
-    private var firstTrendingId: String? = null
-    private var recommendedAdapter: PodcastAdapter? = null
+    private var trendingAdapter: HomeShelfAdapter? = null
+    private var recommendedAdapter: HomeShelfAdapter? = null
+    private lateinit var rvHero: RecyclerView
+    private lateinit var rvLatest: RecyclerView
+    private var heroAdapter: HomeHeroAdapter? = null
+    private var latestAdapter: HomeShelfAdapter? = null
+    private var topEpisodes = emptyList<RssItem>()
+    private var latestEpisodes = emptyList<RssItem>()
+    private var recommendations = emptyList<Podcast>()
+    private var topJob: Job? = null
+    private var latestJob: Job? = null
+    private var latestSourceKey: String? = null
+    private var heroKey = ""
+    private val heroSnap = PagerSnapHelper()
     private var continueAdapter: ContinueAdapter? = null
     private var allPodcasts: List<Podcast> = emptyList()
     private val handler = Handler(Looper.getMainLooper())
     private var isRefreshing = false
-    private var featuredPodcast: Podcast? = null
     private var displayedFeaturedWeek = Long.MIN_VALUE
     private val featuredWeekCheck = object : Runnable {
         override fun run() {
@@ -89,13 +107,47 @@ class HomeFragment : Fragment() {
         prefHelper = PreferenceHelper(requireContext())
 
         initViews(view)
+        view.findViewById<View>(R.id.home_notifications).setOnClickListener {
+            openFragment(InboxFragment())
+        }
         view.findViewById<View>(R.id.btn_retry_catalog).setOnClickListener { refreshAllData() }
+        val inboxContext = requireContext().applicationContext
+        fun showUnread() {
+            this.view?.findViewById<View>(R.id.home_unread_dot)?.visibility =
+                if (com.avapod.app.network.AnnouncementInbox.unread(inboxContext)) View.VISIBLE else View.GONE
+        }
+        showUnread()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.RESUMED) {
+                while (true) {
+                    showUnread()
+                    try { com.avapod.app.network.AnnouncementInbox.refresh(inboxContext, force = true) }
+                    catch (e: Exception) {
+                        if (e is CancellationException && e !is TimeoutCancellationException) throw e
+                    }
+                    showUnread()
+                    kotlinx.coroutines.delay(60_000)
+                }
+            }
+        }
         setupSearch(view)
         setupTrendingSection()
         setupRecommendedSection()
         setupContinueListening()
         setupViewAllButtons()
         setupSwipeRefresh()
+        setupHero()
+        rvLatest = view.findViewById(R.id.rv_home_latest)
+        latestAdapter = HomeShelfAdapter()
+        rvLatest.adapter = latestAdapter
+        rvLatest.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        view.findViewById<View>(R.id.btn_all_latest).setOnClickListener {
+            showEpisodeList(getString(R.string.home_latest), latestEpisodes)
+        }
+        view.findViewById<View>(R.id.btn_all_recommended).setOnClickListener {
+            showPodcastList()
+        }
+        loadTopEpisodes()
 
         loadDataFromLocalOrNetwork()
 
@@ -108,10 +160,6 @@ class HomeFragment : Fragment() {
         shimmerTrending = view.findViewById(R.id.shimmer_trending)
         progressLoading = view.findViewById(R.id.progress_loading)
         cardEmptyContinue = view.findViewById(R.id.card_empty_continue)
-        imgFeatured = view.findViewById(R.id.img_featured)
-        txtFeaturedTitle = view.findViewById(R.id.txt_featured_title)
-        txtFeaturedArtist = view.findViewById(R.id.txt_featured_artist)
-        featuredCard = view.findViewById(R.id.featured_card)
         btnAllTrending = view.findViewById(R.id.btn_all_trending)
         btnAllResumes = view.findViewById(R.id.btn_all_resumes)
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout)
@@ -131,7 +179,7 @@ class HomeFragment : Fragment() {
         view?.findViewById<View>(R.id.catalog_empty_panel)?.visibility =
             if (podcasts.isEmpty()) View.VISIBLE else View.GONE
         setupFeaturedContent(podcasts)
-        updateTrendingData(podcasts)
+        loadLatestEpisodes(podcasts)
         updateRecommendedData(podcasts)
     }
 
@@ -148,84 +196,211 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupFeaturedContent(podcasts: List<Podcast>) {
-        val now = System.currentTimeMillis()
-        val selectedPodcast = WeeklyFeatured.select(podcasts, now)
-        displayedFeaturedWeek = WeeklyFeatured.weekIndex(now)
-        featuredPodcast = selectedPodcast
-
-        if (selectedPodcast != null) {
-            Glide.with(requireContext())
-                .load(selectedPodcast.thumbnail_url)
-                .placeholder(R.drawable.featured_placeholder)
-                .error(R.drawable.featured_placeholder)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgFeatured)
-
-            txtFeaturedTitle.text = selectedPodcast.title
-            txtFeaturedArtist.text = selectedPodcast.artist
-
-            featuredCard.setOnClickListener {
-                navigateToContent {
-                    openPodcastDetail(selectedPodcast)
-                }
+    private fun setupHero() {
+        rvHero = requireView().findViewById(R.id.rv_home_hero)
+        rvHero.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        heroAdapter = HomeHeroAdapter { podcast -> navigateToContent { openPodcastDetail(podcast) } }
+        rvHero.adapter = heroAdapter
+        heroSnap.attachToRecyclerView(rvHero)
+        rvHero.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) updateHeroDots()
             }
-        } else {
-            imgFeatured.setImageResource(R.drawable.featured_placeholder)
-            txtFeaturedTitle.setText(R.string.featured_today)
-            txtFeaturedArtist.setText(R.string.featured_week_empty)
-            featuredCard.setOnClickListener {
-                Toast.makeText(requireContext(), "محتوای ویژه به زودی!", Toast.LENGTH_SHORT).show()
+        })
+    }
+
+    private fun updateHeroDots() {
+        val manager = rvHero.layoutManager ?: return
+        val position = heroSnap.findSnapView(manager)?.let { manager.getPosition(it) } ?: 0
+        val count = heroAdapter?.itemCount ?: 0
+        view?.findViewById<TextView>(R.id.home_hero_dots)?.apply {
+            visibility = if (count > 1) View.VISIBLE else View.GONE
+            if (count <= 1) return@apply
+            val dotText = (0 until count).joinToString("   ") { "●" }
+            val styled = android.text.SpannableString(dotText)
+            for (i in 0 until count) {
+                val color = if (i == position) android.graphics.Color.WHITE
+                            else android.graphics.Color.parseColor("#77717C")
+                styled.setSpan(
+                    android.text.style.ForegroundColorSpan(color), i * 4, i * 4 + 1,
+                    android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
             }
+            text = styled
+            textSize = 11f
+            includeFontPadding = false
+            gravity = android.view.Gravity.CENTER
+            alpha = 1f
         }
     }
 
-    private fun setupTrendingSection() {
-        shimmerTrending.visibility = View.VISIBLE
-        shimmerTrending.startShimmer()
-        rvTrending.visibility = View.GONE
-
-        trendingAdapter = PodcastAdapter(emptyList()) { podcast ->
-            navigateToContent {
-                openPodcastDetail(podcast)
-            }
+    private fun setupFeaturedContent(podcasts: List<Podcast>) {
+        displayedFeaturedWeek = WeeklyFeatured.weekIndex()
+        val weekly = WeeklyFeatured.select(podcasts, System.currentTimeMillis())
+        // Recently marked trends lead; the weekly editorial pick remains in the carousel.
+        val items = (PodcastOrder.trending(podcasts) + listOfNotNull(weekly)).distinctBy { it.id }.take(3)
+        val key = items.toString()
+        if (heroKey != key) {
+            heroKey = key
+            heroAdapter?.submit(items)
+            rvHero.scrollToPosition(0)
         }
+        rvHero.visibility = if (items.isEmpty()) View.GONE else View.VISIBLE
+        updateHeroDots()
+    }
 
+    private fun setupTrendingSection() {
+        trendingAdapter = HomeShelfAdapter()
         rvTrending.adapter = trendingAdapter
         rvTrending.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
-    private fun updateTrendingData(podcasts: List<Podcast>) {
-        val trendingList = com.avapod.app.utils.PodcastOrder.trending(podcasts).take(8)
-
-        activity?.runOnUiThread {
-            shimmerTrending.stopShimmer()
-            shimmerTrending.visibility = View.GONE
-            rvTrending.visibility = View.VISIBLE
-            trendingAdapter?.updateData(trendingList)
-                val newestId = trendingList.firstOrNull()?.id
-                if (newestId != firstTrendingId) rvTrending.scrollToPosition(0)
-                firstTrendingId = newestId
+    private fun episodeCards(items: List<RssItem>) = items.map { episode ->
+        HomeCard(episode.title.orEmpty(), episode.artist.orEmpty(), episode.imageUrl, episode.duration) {
+            navigateToContent { openPlayer(episode) }
         }
     }
 
-    private fun setupRecommendedSection() {
-        recommendedAdapter = PodcastAdapter(emptyList()) { podcast ->
-            navigateToContent {
-                openPodcastDetail(podcast)
+    private fun loadTopEpisodes() {
+        topJob?.cancel()
+        val app = requireContext().applicationContext
+        topJob = viewLifecycleOwner.lifecycleScope.launch {
+            topEpisodes = HomeEpisodes.cached(app, "top")
+            renderTop()
+            try {
+                topEpisodes = HomeEpisodes.top(app)
+                renderTop()
+            } catch (e: Exception) {
+                if (e is CancellationException && e !is TimeoutCancellationException) throw e
+                if (topEpisodes.isEmpty()) view?.findViewById<TextView>(R.id.home_top_status)?.setText(R.string.home_top_error)
             }
         }
+    }
 
-        this.rvRecommended.adapter = recommendedAdapter
+    private fun renderTop() {
+        trendingAdapter?.submit(episodeCards(topEpisodes.take(12)))
+        rvTrending.visibility = if (topEpisodes.isEmpty()) View.GONE else View.VISIBLE
+        view?.findViewById<TextView>(R.id.home_top_status)?.apply {
+            visibility = if (topEpisodes.isEmpty()) View.VISIBLE else View.GONE
+            setText(R.string.home_top_empty)
+        }
+        btnAllTrending.visibility = if (topEpisodes.isEmpty()) View.INVISIBLE else View.VISIBLE
+    }
+
+    private fun published(item: RssItem): Long {
+        val text = item.pubDate.orEmpty().trim()
+        return listOf("EEE, dd MMM yyyy HH:mm:ss Z", "EEE, dd MMM yyyy HH:mm Z", "yyyy-MM-dd'T'HH:mm:ssXXX",
+            "yyyy-MM-dd'T'HH:mm:ss.SSSXXX", "dd MMM yyyy HH:mm:ss Z")
+            .firstNotNullOfOrNull { pattern -> runCatching {
+                val parser = java.text.SimpleDateFormat(pattern, java.util.Locale.ENGLISH).apply { isLenient = false }
+                val position = java.text.ParsePosition(0)
+                parser.parse(text, position)?.time?.takeIf { position.index == text.length }
+            }.getOrNull() } ?: 0L
+    }
+
+    private fun loadLatestEpisodes(podcasts: List<Podcast>) {
+        if (podcasts.isEmpty()) {
+            renderLatest(loading = false)
+            return
+        }
+        val subscribed = prefHelper.getSubscribedPodcasts()
+        val catalogIds = podcasts.map { it.id }.toSet()
+        val sources = (subscribed.filter { it.id in catalogIds } + PodcastOrder.newest(podcasts))
+            .distinctBy { it.rss_url }.filter { it.rss_url.isNotBlank() }
+        val key = "window=14d\n" + sources.map { it.rss_url }.sorted().joinToString("\n")
+        if (key == latestSourceKey) return
+        latestSourceKey = key
+        latestJob?.cancel()
+        val app = requireContext().applicationContext
+        latestJob = viewLifecycleOwner.lifecycleScope.launch {
+            val now = System.currentTimeMillis()
+            val cutoff = now - 14L * 24 * 60 * 60 * 1000
+            latestEpisodes = HomeEpisodes.cached(app, "latest").filter { published(it) in cutoff..now }
+            renderLatest(loading = true)
+            val collected = latestEpisodes.toMutableList()
+            val syncPrefs = app.getSharedPreferences("home_latest_sync", android.content.Context.MODE_PRIVATE)
+            val age = now - syncPrefs.getLong("completed_at", 0L)
+            if (syncPrefs.getString("sources", null) == key && age in 0 until 30 * 60_000L) {
+                renderLatest(loading = false)
+                return@launch
+            }
+            var failed = false
+            val gate = Semaphore(2)
+            // One slow/unreachable publisher cannot block the catalogue or other sections.
+            run {
+                supervisorScope {
+                    sources.map { podcast -> launch {
+                        gate.withPermit {
+                            try {
+                                val items = withTimeout(10_000) { RssLoader.load(podcast.rss_url, app) }
+                                val fresh = withContext(Dispatchers.Default) {
+                                    items.filter { com.avapod.app.utils.UrlValidator.isWebUrl(it.audioUrl) }
+                                    .map { it to published(it) }.filter { it.second in cutoff..now }
+                                    .sortedByDescending { it.second }.take(100).map { (it, _) ->
+                                        it.copy(artist = podcast.title, imageUrl = it.imageUrl?.takeIf(String::isNotBlank)
+                                            ?: podcast.thumbnail_url, description = "")
+                                    }
+                                }
+                                val freshUrls = fresh.map { it.audioUrl }.toSet()
+                                collected.removeAll { it.audioUrl in freshUrls }
+                                collected += fresh
+                                latestEpisodes = collected.distinctBy { it.audioUrl }.sortedByDescending { published(it) }.take(100)
+                                collected.clear()
+                                collected.addAll(latestEpisodes)
+                                HomeEpisodes.remember(app, "latest", latestEpisodes)
+                                renderLatest(loading = true)
+                            } catch (e: Exception) {
+                                if (e is CancellationException && e !is TimeoutCancellationException) throw e
+                                failed = true
+                            }
+                        }
+                    } }.joinAll()
+                }
+            }
+            if (!failed) syncPrefs.edit().putString("sources", key)
+                .putLong("completed_at", System.currentTimeMillis()).apply()
+            HomeEpisodes.remember(app, "latest", latestEpisodes)
+            renderLatest(loading = false)
+        }
+    }
+
+    private fun renderLatest(loading: Boolean) {
+        latestAdapter?.submit(episodeCards(latestEpisodes.take(12)))
+        view?.findViewById<TextView>(R.id.home_latest_status)?.apply {
+            visibility = if (latestEpisodes.isEmpty()) View.VISIBLE else View.GONE
+            setText(if (loading) R.string.home_latest_loading else R.string.home_latest_empty)
+        }
+        view?.findViewById<View>(R.id.btn_all_latest)?.visibility = if (latestEpisodes.isEmpty()) View.INVISIBLE else View.VISIBLE
+    }
+
+    private fun setupRecommendedSection() {
+        recommendedAdapter = HomeShelfAdapter()
+        rvRecommended.adapter = recommendedAdapter
         rvRecommended.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun updateRecommendedData(podcasts: List<Podcast>) {
-        val recommendedList = podcasts.filter { !it.is_trending }.shuffled().take(6)
-
-        activity?.runOnUiThread {
-            recommendedAdapter?.updateData(recommendedList)
+        val subscribed = prefHelper.getSubscribedPodcasts()
+        val categories = subscribed.map { it.category_id }.filter(String::isNotBlank).toSet()
+        val recentArtists = prefHelper.getContinueListening().mapNotNull { it.artist }.toSet()
+        val recentCategories = podcasts.filter { it.title in recentArtists }.map { it.category_id }.toSet()
+        val interests = categories + recentCategories
+        recommendations = PodcastOrder.newest(podcasts).sortedByDescending {
+            (if (it.category_id in interests) 4 else 0) + (if (it.is_featured) 2 else 0)
         }
+        recommendedAdapter?.submit(recommendations.take(12).map { podcast ->
+            HomeCard(podcast.title, podcast.artist, podcast.thumbnail_url, null) {
+                navigateToContent { openPodcastDetail(podcast) }
+            }
+        })
+    }
+
+    private fun showEpisodeList(title: String, episodes: List<RssItem>) {
+        openFragment(HomeCollectionFragment.episodes(title, episodes))
+    }
+
+    private fun showPodcastList() {
+        openFragment(HomeCollectionFragment.podcasts(getString(R.string.home_recommend), recommendations))
     }
 
     private fun setupContinueListening() {
@@ -399,7 +574,7 @@ class HomeFragment : Fragment() {
     private fun setupViewAllButtons() {
         btnAllTrending.setOnClickListener {
             navigateToContent {
-                openFragment(TrendingAllFragment())
+                showEpisodeList(getString(R.string.home_top), topEpisodes)
             }
         }
 
@@ -425,6 +600,8 @@ class HomeFragment : Fragment() {
     private fun refreshAllData() {
         if (isRefreshing) return
         isRefreshing = true
+        latestSourceKey = null
+        loadTopEpisodes()
 
         swipeRefreshLayout.isRefreshing = true
 
@@ -497,8 +674,6 @@ class HomeFragment : Fragment() {
         if (::prefHelper.isInitialized) {
             setupContinueListening()
         }
-
-
     }
 
     override fun onPause() {
@@ -512,6 +687,14 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         handler.removeCallbacksAndMessages(null)
 
+        heroSnap.attachToRecyclerView(null)
+        rvHero.clearOnScrollListeners()
+        rvHero.adapter = null
+        rvLatest.adapter = null
+        heroKey = ""
+        latestSourceKey = null
+        topJob?.cancel()
+        latestJob?.cancel()
         rvContinueListening.adapter = null
         rvTrending.adapter = null
         rvRecommended.adapter = null

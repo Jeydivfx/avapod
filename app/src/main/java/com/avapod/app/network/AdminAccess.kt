@@ -33,6 +33,10 @@ object AdminAccess {
         val orderPath = "db_config/podcast_order/$id"
         if (value == null) {
             changes[orderPath] = null
+            val selections = root.child(HomeEpisodes.PATH).get().awaitResult()
+            selections.children.filter { it.child("podcast_id").value == id }.forEach {
+                changes["${HomeEpisodes.PATH}/${it.key}"] = null
+            }
         } else {
             val previous = root.child("podcasts/$id").get().awaitResult()
             if (!previous.exists()) changes["$orderPath/created_at"] = ServerValue.TIMESTAMP

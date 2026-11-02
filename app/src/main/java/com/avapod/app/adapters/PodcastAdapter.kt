@@ -13,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 class PodcastAdapter(
     private var podcastList: List<Podcast>,
+    private val compact: Boolean = false,
     private val onItemClick: (Podcast) -> Unit
 ) : RecyclerView.Adapter<PodcastAdapter.PodcastViewHolder>() {
 
@@ -53,7 +54,7 @@ class PodcastAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PodcastViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_podcast_trending, parent, false)
+            .inflate(if (compact) R.layout.item_podcast_followed else R.layout.item_podcast_trending, parent, false)
         return PodcastViewHolder(view)
     }
 

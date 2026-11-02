@@ -39,11 +39,13 @@ class MainActivity : AppCompatActivity() {
     private var lastBackPress = 0L
     private var keyboardVisible = false
     private var pendingDetailsReturn = false
+    private var pendingPush: Bundle? = null
     private val tick = object : Runnable {
         override fun run() { renderProgress(); handler.postDelayed(this, 500) }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        pendingPush = savedInstanceState?.getBundle("pending_push")
         setContentView(R.layout.activity_main)
         val barStyle = if (resources.getBoolean(R.bool.light_system_bars)) {
             SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT)
@@ -92,6 +94,11 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, HomeFragment()).commit()
             handleDeepLink(intent)
         }
+        if (BuildConfig.DEBUG && com.google.firebase.FirebaseApp.getApps(this).isNotEmpty()) {
+            com.google.firebase.messaging.FirebaseMessaging.getInstance().token
+                .addOnSuccessListener { android.util.Log.d("AvapodFCM", "Test token: $it") }
+                .addOnFailureListener { android.util.Log.w("AvapodFCM", "Token registration failed", it) }
+        }
         onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (pendingDetailsReturn || supportFragmentManager.isStateSaved) return
@@ -116,8 +123,24 @@ class MainActivity : AppCompatActivity() {
             requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1001)
         }
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        pendingPush?.let { outState.putBundle("pending_push", it) }
+        super.onSaveInstanceState(outState)
+    }
     override fun onNewIntent(intent: Intent) { super.onNewIntent(intent); setIntent(intent); handleDeepLink(intent) }
     private fun handleDeepLink(intent: Intent?) {
+        if (intent?.getStringExtra("open_inbox") == "1" || intent?.hasExtra("google.message_id") == true) {
+            com.avapod.app.network.PushInbox.save(this,
+                intent.getStringExtra("push_id") ?: intent.getStringExtra("google.message_id"),
+                intent.getStringExtra("push_title").orEmpty(), intent.getStringExtra("push_body").orEmpty())
+            pendingPush = Bundle().apply {
+                putString("push_title", intent.getStringExtra("push_title")?.take(200))
+                putString("push_body", intent.getStringExtra("push_body")?.take(4000))
+            }
+            intent.removeExtra("open_inbox")
+            intent.removeExtra("google.message_id")
+            return
+        }
         val data = intent?.data ?: return
         if (!data.isHierarchical || data.scheme != "avapad" || data.host != "play") return
         val source = runCatching {
@@ -169,7 +192,20 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.backStackEntryCount > 0) supportFragmentManager.popBackStack()
     }
     override fun onResume() { super.onResume(); com.avapod.app.utils.AdManager.onResume(this) }
-    override fun onPostResume() { super.onPostResume(); handler.post { completeDetailsReturn() } }
+    override fun onPostResume() {
+        super.onPostResume()
+        handler.post {
+            completeDetailsReturn()
+            if (!supportFragmentManager.isStateSaved && !isFinishing && !isDestroyed) {
+                pendingPush?.let { args ->
+                    pendingPush = null
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment, InboxFragment().apply { arguments = args })
+                        .addToBackStack("push_inbox").commit()
+                }
+            }
+        }
+    }
     override fun onPause() { com.avapod.app.utils.AdManager.onPause(this); super.onPause() }
     override fun onDestroy() { com.avapod.app.utils.AdManager.onDestroy(); super.onDestroy() }
     override fun onStart() { super.onStart(); connection.start(); handler.post(tick) }

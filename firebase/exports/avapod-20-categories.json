@@ -1,0 +1,1180 @@
+{
+  "ad_config": {
+    "ad_banner_enabled": true,
+    "ad_interstitial_enabled": true,
+    "ad_rewarded_enabled": false
+  },
+  "app_messages": {
+    "date": "2026-11-02",
+    "text": "تغییرات جدید اعمال شد."
+  },
+  "categories": {
+    "cat_01": {
+      "name": "جامعه",
+      "icon": "ic_category_community"
+    },
+    "cat_02": {
+      "name": "جنایی",
+      "icon": "ic_category_crime"
+    },
+    "cat_03": {
+      "name": "دانش",
+      "icon": "ic_category_science"
+    },
+    "cat_04": {
+      "name": "ترسناک",
+      "icon": "ic_category_horror"
+    },
+    "cat_05": {
+      "name": "ادبیات",
+      "icon": "ic_category_book"
+    },
+    "cat_06": {
+      "name": "سینما",
+      "icon": "ic_category_cinema"
+    },
+    "cat_07": {
+      "name": "پیشگویی",
+      "icon": "ic_category_future"
+    },
+    "cat_08": {
+      "name": "فلسفه",
+      "icon": "ic_category_thought"
+    },
+    "cat_09": {
+      "name": "سیاست",
+      "icon": "ic_category_politics"
+    },
+    "cat_10": {
+      "name": "ورزش",
+      "icon": "ic_category_sport"
+    },
+    "cat_11": {
+      "name": "موسیقی",
+      "icon": "ic_category_music"
+    },
+    "cat_12": {
+      "name": "تاریخ",
+      "icon": "ic_category_history"
+    },
+    "cat_13": {
+      "name": "روان‌شناسی",
+      "icon": "ic_category_psychology"
+    },
+    "cat_14": {
+      "name": "فناوری",
+      "icon": "ic_category_technology"
+    },
+    "cat_15": {
+      "name": "اقتصاد",
+      "icon": "ic_category_economy"
+    },
+    "cat_16": {
+      "name": "کارآفرینی",
+      "icon": "ic_category_business"
+    },
+    "cat_17": {
+      "name": "سفر",
+      "icon": "ic_category_travel"
+    },
+    "cat_18": {
+      "name": "طنز",
+      "icon": "ic_category_comedy"
+    },
+    "cat_19": {
+      "name": "معنویت",
+      "icon": "ic_category_spirituality"
+    },
+    "cat_20": {
+      "name": "داستان",
+      "icon": "ic_category_audio"
+    }
+  },
+  "db_config": {
+    "podcast_order": {
+      "-P3FA8N5CZynpmg-KBd7": {
+        "trending_at": 1793386734862
+      },
+      "-P4Tnptd19QzL4e5dA22": {
+        "created_at": 1792592015140
+      },
+      "-P4To4Zg_VJ3b-2cjhfl": {
+        "created_at": 1792592076101
+      },
+      "-P4Tp1c-X-3lu-ZasFcE": {
+        "created_at": 1792592333051
+      },
+      "-P4URJZc5gecN6A4oFv1": {
+        "created_at": 1792602623495
+      },
+      "-P4URha2rGamSXjWBihA": {
+        "created_at": 1792602726095
+      },
+      "-P4US0ZwyHe2A0_Wu0sD": {
+        "created_at": 1792602808494
+      },
+      "-P4USJJcUI4Dykr96Ywp": {
+        "created_at": 1792602884692
+      },
+      "-P4USa9g9tfIoLeWUO7B": {
+        "created_at": 1792602958060
+      },
+      "-P4USs8VAXp4GY8gPvn7": {
+        "created_at": 1792603031648
+      },
+      "-P4UTPjtc8WZsxr7sAhE": {
+        "created_at": 1792603174910
+      }
+    },
+    "version": 1793640366529
+  },
+  "home_content": {
+    "top_episodes": {
+      "2616a7e0b03ad0af1fd0d5c8b3e34e1e476846f30a90efa0e9df92f08fa86859": {
+        "artist": "ایرانیکا",
+        "audioUrl": "https://sphinx.acast.com/p/open/s/673cbffbb1e4e2505acf18d0/e/6814e4a96ac0e5213b3f24d3/media.mp3",
+        "duration": "14:47",
+        "imageUrl": "https://assets.pippa.io/shows/673cbffbb1e4e2505acf18d0/1746199690331-104961cf-f42f-41b2-8233-097a4d87d516.jpeg",
+        "podcast_id": "pod_003",
+        "pubDate": "Fri, 02 May 2025 17:30:00 GMT",
+        "selected_at": 1793379730360,
+        "title": "جنگل ابر قسمت2 پایانی"
+      },
+      "a7bded0202d61eaa1a840ebf8328c05eeb8ec19061abe2be35903fd513fe0253": {
+        "artist": "رادیو ساگا",
+        "audioUrl": "https://sphinx.acast.com/p/open/s/660cfe61a8a1c100165419c0/e/6a92aa98cbb539139786ae51/media.mp3",
+        "duration": "34:16",
+        "imageUrl": "https://assets.pippa.io/shows/660cfe61a8a1c100165419c0/1787996750366-152448a8-6649-4df1-a348-7050e24b9149.jpeg",
+        "podcast_id": "pod_1780766257510",
+        "pubDate": "Sat, 29 Aug 2026 09:45:19 GMT",
+        "selected_at": 1793379750247,
+        "title": "میتوس (12) - ایلیاد هومر - بخش دوازدهم"
+      },
+      "c6bfc202cecd8ae832b38c628b5c8192d0c26e44d124b16a7e9dea2b42161701": {
+        "artist": "پلی لیست",
+        "audioUrl": "https://s3.castbox.fm/8f/b1/d8/6d5c464b349fb7ca01cd78a168.mp3",
+        "duration": "01:38:18",
+        "imageUrl": "https://s3.castbox.fm/d2/29/e2/bf63f94a569b695414716f1c66.jpg",
+        "podcast_id": "pod_1785146650504",
+        "pubDate": "Fri, 23 Oct 2026 07:54:45 +0000",
+        "selected_at": 1793463211992,
+        "title": "پلی لیست - خاکستری"
+      },
+      "d98b53ad0d17d6915ef29ae462a54d00877567307960cb2a064a5b47bfac0656": {
+        "artist": "بوطیقا",
+        "audioUrl": "https://sphinx.acast.com/p/open/s/624957f6f5bbfe0012f8de54/e/6ac63b8429b9fbfbe24b2513/media.mp3",
+        "duration": "47:22",
+        "imageUrl": "https://assets.pippa.io/shows/624957f6f5bbfe0012f8de54/1791402233364-5a38770d-7bbe-4704-8bd2-dcb287912c70.jpeg",
+        "podcast_id": "pod_1779094423637",
+        "pubDate": "Wed, 07 Oct 2026 19:51:27 GMT",
+        "selected_at": 1793379700498,
+        "title": "48 –  غصهٔ زمانه"
+      },
+      "de791fa5a19c1e81b258964f357e89034b8d32abf89c65b6f74b9622d2c2f51f": {
+        "artist": "کد آینده",
+        "audioUrl": "https://audio3.redcircle.com/episodes/620acfe2-542d-41e5-9ac6-27b87433409d/stream.mp3",
+        "duration": "5007",
+        "imageUrl": "https://media.redcircle.com/images/2026/10/30/17/39db6eb4-0de1-4d1c-9dda-d0ee3284f092_thumbnail.jpg",
+        "podcast_id": "pod_1780719867877",
+        "pubDate": "Fri, 30 Oct 2026 16:57:51 +0000",
+        "selected_at": 1793380845159,
+        "title": "آینده رو دیدم: جنگ خاورمیانه"
+      }
+    }
+  },
+  "podcasts": {
+    "-P3FA8N5CZynpmg-KBd7": {
+      "artist": "مهدی پورباغی",
+      "category_id": "cat_02",
+      "description": "این یک پادکست قصه گو نیست. پرونده های جنایی واقعی حاوی مصادیق خشونت، حوادث آزاردهنده، مسائل جنسی و سوء مصرف مواد هستند و می توانند برای کودکان و افرادی که روحیه حساس و آسیب پذیر دارند اثرات مخرب و گاه جبران ناپذیر داشته باشند.",
+      "is_featured": false,
+      "is_trending": true,
+      "rss_url": "https://feeds.acast.com/public/shows/624c50c3e227d40012651329",
+      "thumbnail_url": "https://assets.pippa.io/shows/624c50c3e227d40012651329/show-cover.jpg",
+      "title": "آخرین شاهد"
+    },
+    "-P3j4ng0H5TSYUA7Vczj": {
+      "artist": "دریا فرشاد",
+      "category_id": "cat_13",
+      "description": "دارکست در زمینه‌ی آگاهی بخشی از دانش روانشناسی پادکستی رو تولید کرده که شما رو در مسیر شناسایی و شناخت هر چه بهتر روان‌درمانگر و رویکردهای روان‌درمانی راهنمایی کنه. همزمان هم با زندگی و نظریات افراد بزرگ ِ دانش روان‌شناسی آشنا می‌شید.",
+      "is_featured": true,
+      "is_trending": true,
+      "rss_url": "https://anchor.fm/s/7d4899f0/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/9a/37/fb/9a37fb8f-f1b8-edb6-7f76-1490c7b6de0e/mza_12069772240521811131.jpg/400x400bb.webp",
+      "title": "دارکست"
+    },
+    "-P3j7naFSRDlTVoygjSt": {
+      "artist": "ناشناس",
+      "category_id": "cat_08",
+      "description": "پادکست فارسی تاریخ و فلسفه",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6245a395107b39001354b39c",
+      "thumbnail_url": "https://assets.pippa.io/shows/6245a395107b39001354b39c/1717133374808-6caee686b7266806df5ba693d5f0e75f.jpeg",
+      "title": "بوم"
+    },
+    "-P3j82R_LaRvdCdiyzSG": {
+      "artist": "مرسن",
+      "category_id": "cat_20",
+      "description": "در هر اپیزود پادکست آن، داستان واقعی آدمها رو تعریف می‌کنیم تا سعی کنیم خودمون رو جاشون بذاریم. اینجا بیشتر بشنوید، دانلود و دنبال کنید.",
+      "is_featured": true,
+      "is_trending": false,
+      "rss_url": "https://feeds.simplecast.com/VXsnzJeg",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/5a/8b/10/5a8b10fa-6460-f04e-e590-14198c54c1a7/mza_13174333068011834879.jpg/400x400bb.webp",
+      "title": "پادکست آن"
+    },
+    "-P4TIYjRa6sF-9FKWqET": {
+      "artist": "فرشاد محمودی",
+      "category_id": "cat_03",
+      "description": "توضیح ساده موضوعات پیچیده اجتماعی، اقتصادی، سیاسی و علمی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feed.podbean.com/digesttt/feed.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/b7/0c/80/b70c8074-f269-76a3-5818-662192a03f2b/mza_12435483265136349473.jpg/600x600bb.jpg",
+      "title": "دایجست"
+    },
+    "-P4TIy2W8MJnLRDme1Zt": {
+      "artist": "کیمیا خسروی و سالار موسوی",
+      "category_id": "cat_17",
+      "description": "روایت تجربه‌های سفر و گفت‌وگو درباره شیوه‌های جهان‌گردی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/624fd0fe3b43120012e43cb5",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/cd/ee/45/cdee4530-e71b-570a-41a0-8c0d25c214a2/mza_9302927718021868903.jpg/600x600bb.jpg",
+      "title": "رادیو جولون"
+    },
+    "-P4TJHWgEQ_uj3yMmvDZ": {
+      "artist": "کینگ رام",
+      "category_id": "cat_01",
+      "description": "گفت‌وگوهای صمیمی درباره زندگی، هنر و تجربه‌های شخصی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/66ddea9a505674fba498fcff",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/f3/38/3f/f3383f27-bbd8-1f59-26c9-a00f2b52ba6c/mza_5686751141599471609.jpg/600x600bb.jpg",
+      "title": "مستی و راستی"
+    },
+    "-P4TJhPljiXBnXlAbqMN": {
+      "artist": "عباس رضایی",
+      "category_id": "cat_17",
+      "description": "روایت تجربه‌های سفر با دوچرخه و آشنایی با فرهنگ‌ها و آدم‌ها.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/1cbf964c/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/cd/47/53/cd475313-1334-9b21-0441-203c95318aca/mza_15848387962132450997.jpg/600x600bb.jpg",
+      "title": "رادیو چرخ"
+    },
+    "-P4TJzEpqQcdbrWhfDp6": {
+      "artist": "هلی",
+      "category_id": "cat_13",
+      "description": "گفت‌وگو درباره مهارت‌های فردی، عادت‌ها و رضایت بیشتر از زندگی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/67fd69dedf6cd9fb98b6f817",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/1b/51/fa/1b51fa6d-25f5-27e3-3f68-2b012398a01e/mza_1302277521737628499.png/600x600bb.jpg",
+      "title": "هلی تاک"
+    },
+    "-P4TKUBSPf0frJX-4F1j": {
+      "artist": "محمدامین چیتگران",
+      "category_id": "cat_11",
+      "description": "ترکیبی از روایت، متن و موسیقی با محوریت تجربه‌های انسانی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/65e9c8c0fe108d0016af50de",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/42/6f/83/426f8305-8168-cd5f-6917-45949ad27740/mza_6405988886828629556.jpg/600x600bb.jpg",
+      "title": "رادیو بندر تهران"
+    },
+    "-P4TLF56kVNWQFDdVOfD": {
+      "artist": "اردشیر طیبی",
+      "category_id": "cat_01",
+      "description": "توضیح کوتاه و قابل فهم موضوعات تاریخی، اجتماعی و سیاسی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6936fafec3bfafbbda23473f",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/25/6a/a7/256aa7b3-e43c-59da-6600-3934b459b8a0/mza_2780019834220639108.jpeg/600x600bb.jpg",
+      "title": "مختصر و مفید"
+    },
+    "-P4TPAl8G9HVDw1rRIgN": {
+      "artist": "مونا زارع",
+      "category_id": "cat_01",
+      "description": "نمایش گفت‌وگوهای روزمره آدم‌ها و قصه‌هایی که در دل آن‌ها پنهان است.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/62c331b821f14c00123bb696",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/29/d2/c1/29d2c199-5369-9dba-1d9d-5dbaddcf4071/mza_15728299369562117483.jpeg/600x600bb.jpg",
+      "title": "شنود"
+    },
+    "-P4TPS7B8uNhLMiiYG-p": {
+      "artist": "محمود عظیمایی",
+      "category_id": "cat_12",
+      "description": "بررسی تاریخ معاصر ایران با استفاده از اسناد و آرشیوهای تاریخ شفاهی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/f1739c44/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/a3/b6/91/a3b69162-48d0-3b8e-ee19-8c20590bf43b/mza_8681379855056685094.jpg/600x600bb.jpg",
+      "title": "رادیو دست نوشته ها"
+    },
+    "-P4TPu-ZYiL1jdZrB-5U": {
+      "artist": "منصور ضابطیان",
+      "category_id": "cat_05",
+      "description": "روایت‌ها و گفتارهایی از ادبیات، فرهنگ و هنر.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/670ab2409343c2d47a60e742",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/95/4c/65/954c6534-9d41-bafb-d3d8-8255e155aca6/mza_11454955388960084391.jpg/600x600bb.jpg",
+      "title": "جعبه"
+    },
+    "-P4TQ8E8eXcogHVy9X2O": {
+      "artist": "امید اخوان",
+      "category_id": "cat_16",
+      "description": "گفت‌وگو درباره مدیریت، کارآفرینی و تجربه عملی راه‌اندازی استارتاپ‌ها.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/628cf0e369be4d0014f80b46",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/7a/0e/87/7a0e870f-9fdf-6e5b-606f-783e4d6311cc/mza_13535867379482621602.jpg/600x600bb.jpg",
+      "title": "ده صبح"
+    },
+    "-P4Tnptd19QzL4e5dA22": {
+      "artist": "مهدی ناجی",
+      "category_id": "cat_15",
+      "description": "گفت‌وگو با اقتصاددانان درباره اقتصاد و مسائل اقتصادی ایران.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://rss.audiyacreators.one/cmhwf2in54yyt7d2lx04o",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0a/d8/3e/0ad83e57-acc7-178d-b031-680b425e77cd/mza_12432754219457192369.jpg/600x600bb.jpg",
+      "title": "سکه"
+    },
+    "-P4To4Zg_VJ3b-2cjhfl": {
+      "artist": "سجاد سلیمانی",
+      "category_id": "cat_16",
+      "description": "گفت‌وگو با کارآفرینان و فعالان اقتصادی درباره مسیر کار و زندگی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6253d9a4d862aa0012f384fa",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/da/bf/ff/dabfff05-277d-701a-3059-cb4d80cd6980/mza_7377319550100633422.jpg/600x600bb.jpg",
+      "title": "اکنون"
+    },
+    "-P4Tp1c-X-3lu-ZasFcE": {
+      "artist": "میزبانان متعدد",
+      "category_id": "cat_10",
+      "description": "بحث و تحلیل خبرها و اتفاقات فوتبال ایران و جهان.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6253d9a4d862aa0012f384fa",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/da/bf/ff/dabfff05-277d-701a-3059-cb4d80cd6980/mza_7377319550100633422.jpg/600x600bb.jpg",
+      "title": "رادیو آفساید"
+    },
+    "-P4URJZc5gecN6A4oFv1": {
+      "artist": "آرش طاهر",
+      "category_id": "cat_01",
+      "description": "گفت‌وگو با آدم‌های مختلف برای شنیدن داستان زندگی و تجربه‌هایشان.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://radiodaal.arashTaher.com/podcast.rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/c2/ad/dc/c2addce3-a35d-cda6-ab46-99248151080d/mza_4016043415516363748.jpg/600x600bb.jpg",
+      "title": "رادیو دال"
+    },
+    "-P4URha2rGamSXjWBihA": {
+      "artist": "حامد قدیری",
+      "category_id": "cat_08",
+      "description": "روایت و توضیح ایده‌ها و پرسش‌های فلسفی به زبان فارسی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feed.podbean.com/hamed0ghadiri/feed.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/c5/4b/8b/c54b8b7e-130f-5504-d0f1-4f9208afa182/mza_626119002981460873.jpg/600x600bb.jpg",
+      "title": "لوگوس"
+    },
+    "-P4US0ZwyHe2A0_Wu0sD": {
+      "artist": "بازیگران متعدد",
+      "category_id": "cat_12",
+      "description": "روایت نمایشی تاریخ آیین بابی و بهائی با محوریت تاریخ نبیل.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.transistor.fm/b9dc6eb4-5cff-40b0-9813-71f649d0853b",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/fc/4e/56/fc4e5617-6780-c316-7073-96212e2317d1/mza_18355856354705742259.jpg/600x600bb.jpg",
+      "title": "تاریخ به روایت مورخ"
+    },
+    "-P4USJJcUI4Dykr96Ywp": {
+      "artist": "کریم نیکونظر",
+      "category_id": "cat_12",
+      "description": "روایت مستند زندگی شخصیت‌هایی با سرنوشت تراژیک در تاریخ و فرهنگ.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/1f4e2c0cae1740f5bff605527db43b59.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/28/bf/aa/28bfaa72-08f4-81da-3c69-4d05112133a5/mza_6354265731875843274.jpg/600x600bb.jpg",
+      "title": "رادیو تراژدی"
+    },
+    "-P4USa9g9tfIoLeWUO7B": {
+      "artist": "کریم نیکونظر",
+      "category_id": "cat_05",
+      "description": "روایت ایده‌های کتاب‌ها و تجربه‌های روزمره برای انتخاب آگاهانه‌تر و سبک زندگی بهتر.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://microketab.sabketo.com/podcast-feed",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/0e/9c/1b/0e9c1b1c-d903-b5f2-0094-ccd241af55e1/mza_7457703654114068070.jpg/600x600bb.jpg",
+      "title": "سبکتو"
+    },
+    "-P4USs8VAXp4GY8gPvn7": {
+      "artist": "امیرعلی ق",
+      "category_id": "cat_13",
+      "description": "گفت‌وگو با مهمانان درباره تجربه‌های زندگی، احساسات و رشد فردی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/66556d86a8e5c200126c6fac",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/c4/56/0a/c4560ad9-79d3-1666-c64f-76a42f4d3fea/mza_2542341223877899490.jpeg/600x600bb.jpg",
+      "title": "جافکری"
+    },
+    "-P4UTPjtc8WZsxr7sAhE": {
+      "artist": "سپهر خدابنده",
+      "category_id": "cat_13",
+      "description": "گفتارهایی درباره خودشناسی، رابطه‌ها و بهتر شدن حال درونی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feed.podbean.com/sepblog/feed.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/e8/fe/e2/e8fee254-52a4-6c92-0fc6-3b304dba49bb/mza_5193387366231592116.jpg/600x600bb.jpg",
+      "title": "صلح درون"
+    },
+    "pod_003": {
+      "artist": "فرهاد منظوری",
+      "category_id": "cat_04",
+      "description": "روایت داستان‌های وهم‌آلود، قصه‌های قدیمی و افسانه‌های ترسناک ایرانی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/iranika-podcast",
+      "thumbnail_url": "https://open-images.acast.com/shows/673cbffbb1e4e2505acf18d0/show-cover.jpg?height=300",
+      "title": "ایرانیکا"
+    },
+    "pod_004": {
+      "artist": "سلمان خورشیدی",
+      "category_id": "cat_06",
+      "description": "روایت چگونگی تولید فیلم‌های تاثیرگذار و جریان‌ساز تاریخ سینمای ایران.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6256c763f25a1200130e9fbd",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/9b/13/0b/9b130bc8-8a99-5ef4-b6ec-7b994b5c0761/mza_17451355552894566510.jpg/300x300bb.webp",
+      "title": "سانسور"
+    },
+    "pod_005": {
+      "artist": "امید",
+      "category_id": "cat_02",
+      "description": "روایت داستان‌های واقعی از ماجراهای جنایی و کارآگاهی در سراسر دنیا.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/62e642a84607240012855366",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/72/8e/35/728e3568-130e-7af5-9538-821a3dd35b68/mza_17563459794964854192.jpg/600x600bb.webp",
+      "title": "پادکست جنایی"
+    },
+    "pod_006": {
+      "artist": "ایمان فانی",
+      "category_id": "cat_13",
+      "description": "بررسی مقالات علمی و مطالعات روانشناسی و میان‌رشته‌ای برای زندگی بهتر.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/68326d0cd67b2139b7ae2ee5",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/f5/69/b1/f569b1d8-b423-79a3-730c-de4b005d9b69/mza_14633431585035739229.jpg/300x300bb.webp",
+      "title": "مدرسه زندگی"
+    },
+    "pod_007": {
+      "artist": "امین متین",
+      "category_id": "cat_04",
+      "description": "ساعت صفر روایتی پر از رمز و راز درباره زمان.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/saatesefr",
+      "thumbnail_url": "https://s3.castbox.fm/48/e1/60/5b9da2b813ac6be83a3a01f33a0e359fad_scaled_v1_400.jpg",
+      "title": "ساعت صفر"
+    },
+    "pod_1778330327554": {
+      "artist": "مرضیه صادقی",
+      "category_id": "cat_02",
+      "description": "روایت داستان‌ها و پرونده‌های جنایی مرموز به همراه تحلیل ابعاد معما.",
+      "is_trending": false,
+      "rss_url": "https://www.omnycontent.com/d/playlist/05c002e0-37f2-42b5-a34d-b38c00523ad5/e7f9558f-024b-418b-96d7-b420015b6f1e/26fe549e-ec26-42b6-8d2e-b420015b6f37/podcast.rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/83/1a/97/831a9778-4a00-2c12-e9fa-10b3393456de/mza_1371327919944179265.jpg/600x600bb.webp",
+      "title": "پادکست فیکشن"
+    },
+    "pod_1778365056653": {
+      "artist": "مریم",
+      "category_id": "cat_02",
+      "description": "خوانش داستان‌های جذاب پلیسی، کارآگاهی و معماهای هیجان‌انگیز جنایی.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/agata",
+      "thumbnail_url": "https://assets.pippa.io/shows/669f91bfbdac21d2028a6835/1727124529790-18b15be0-39aa-43ad-b109-c07af3e6e254.jpeg",
+      "title": "ردپا"
+    },
+    "pod_1778785427936": {
+      "artist": "جوزف",
+      "category_id": "cat_04",
+      "description": "شنیدن داستان‌های شنیدنی، هیجان‌انگیز و ترسناک بر اساس روایت‌های واقعی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://shenoto.net/service/api/feed/sargijeh",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/f3/1b/8b/f31b8bf4-15e7-62f6-9641-fc531b70bd39/mza_8387871414856189784.png/600x600bb.webp",
+      "title": "سرگیجه"
+    },
+    "pod_1779094423637": {
+      "artist": "حامد",
+      "category_id": "cat_05",
+      "description": "بررسی، روخوانی و تحلیل شیرین‌ترین آثار شعر و ادبیات غنی فارسی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/624957f6f5bbfe0012f8de54",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/73/99/84/739984c2-8f42-2399-3e1e-dfe74f5d7df0/mza_8426018598956829373.jpg/600x600bb.webp",
+      "title": "بوطیقا"
+    },
+    "pod_1779231692514": {
+      "artist": "فرشید نزاکتی",
+      "category_id": "cat_10",
+      "description": "بررسی نکات علمی، ترفندها و ابعاد مختلف دنیای فیتنس و بدنسازی.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/81c52d6e3df648d8a9e23bc6c80470e7.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/65/b6/84/65b68418-c2ce-0013-7661-c679b3b32827/mza_16623144068144138853.jpg/600x600bb.webp",
+      "title": "هرکول"
+    },
+    "pod_1779266448423": {
+      "artist": "حسن ربیعی نیا",
+      "category_id": "cat_05",
+      "description": "روایت شیرین و آموزنده قصه و داستان‌های کهن پارسی برای نسل جدید.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/6c5c8747d3ce4a84963c5112d12c2571.xml",
+      "thumbnail_url": "https://s3.castbox.fm/6a/e3/a4/ce2724458d820d8c93e7d06956.jpg",
+      "title": "داستان های کهن"
+    },
+    "pod_1779365373454": {
+      "artist": "خود شاعر",
+      "category_id": "cat_05",
+      "description": "شنیدن مجموعه‌ای از زیباترین شعرهای معاصر ایران با دکلمه و صدای شاعر.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/aa30903431d04d67ba2492ead8ca0faa.xml",
+      "thumbnail_url": "https://s3.castbox.fm/2e/53/b4/2dae44489d9c615d80ffa81d98.jpg",
+      "title": "شعر با صدای شاعر"
+    },
+    "pod_1779393096006": {
+      "artist": "فرشید منافی",
+      "category_id": "cat_18",
+      "description": "بررسی طنزآمیز و کمدی اتفاقات و اخبار روز جامعه با زبانی شاد.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6721c1d9fab47fdf26442707",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/dc/7b/30/dc7b3054-4451-f661-eade-d124d7fdd600/mza_17816622971245713785.jpeg/600x600bb.webp",
+      "title": "رادیو شاخ"
+    },
+    "pod_1779394984851": {
+      "artist": "امیر خادم",
+      "category_id": "cat_05",
+      "description": "خوانش و شرح شاهنامه فردوسی به زبان قابل فهم برای مخاطب امروز.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6aac41b28de3b43b6a9c8227",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/25/29/1b/25291b02-3e75-612c-9a35-e7a442c55b70/mza_4627513121671344906.jpeg/600x600bb.jpg",
+      "title": "فردوسی خوانی"
+    },
+    "pod_1779398111662": {
+      "artist": "رسول مجیدی",
+      "category_id": "cat_10",
+      "description": "شنیدن جذاب‌ترین داستان‌ها، حواشی و ناگفته‌های تاریخی دنیای فوتبال.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/varzeshgah",
+      "thumbnail_url": "https://open-images.acast.com/shows/627ec6b71dfda000136e2448/1736343510495-3f9bbdc3-2050-40c4-bfc7-6c3c23748004.jpeg?height=300",
+      "title": "ورزشگاه"
+    },
+    "pod_1779437776998": {
+      "artist": "فرشید منافی",
+      "category_id": "cat_06",
+      "description": "بررسی جذاب‌ترین فیلم‌های خاطره‌انگیز تاریخ سینما در فضایی شاد.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/pofe-film",
+      "thumbnail_url": "https://open-images.acast.com/shows/cover/1736668173404-12bf64ee-6e3a-4394-b4fa-58d7cf22fc59.jpeg?height=250",
+      "title": "پف فیلم"
+    },
+    "pod_1779438528566": {
+      "artist": "مجتبی فلاحت",
+      "category_id": "cat_03",
+      "description": "بررسی علمی و به چالش کشیدن باورهای عامیانه‌ و رایج در میان مردم.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/screed",
+      "thumbnail_url": "https://open-images.acast.com/shows/6259d42722dee40012cc554f/1658262208442-86d6000046a0dad2385909a32d818be0.jpeg?height=250",
+      "title": "اسکرید"
+    },
+    "pod_1779439447409": {
+      "artist": "علی علیزاده",
+      "category_id": "cat_09",
+      "description": "جدال بستری برای گفتگو در راستای منافع ملی و جمعی ایرانیان است.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/61477a179b8f620012860316",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/78/a8/6e/78a86eae-8aee-6f10-c4fc-35fc0ff12b08/mza_804205946431187880.jpg/300x300bb.webp",
+      "title": "جدال"
+    },
+    "pod_1779580347156": {
+      "artist": "حامد",
+      "category_id": "cat_05",
+      "description": "پادکستی شنیدنی برای مرور معروف‌ترین اشعار غزل و ادبیات فارسی.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/shercast",
+      "thumbnail_url": "https://open-images.acast.com/shows/cover/1651424809377-2d7cfc3f3b9d1757e7754bfdaa63187d.jpeg?height=750",
+      "title": "شعر کست"
+    },
+    "pod_1779580599671": {
+      "artist": "علیرضا",
+      "category_id": "cat_05",
+      "description": "اشتراک‌گذاری زیباترین دکلمه‌های ادبی و متن‌های ناب عاشقانه و عارفانه.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/0bf682ac9ea44b3394712957db74985c.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/9a/f7/28/9af72875-72de-b383-64a6-71477a8dffa8/mza_7260548523122536792.jpg/600x600bb.webp",
+      "title": "دکلمه های ناب"
+    },
+    "pod_1779581220083": {
+      "artist": "عباس موزون",
+      "category_id": "cat_19",
+      "description": "در این پادکست فایل صوتی قسمت های برگزیده فصل های مختلف برنامه زندگی پس از زندگی قرار داده می شود.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/e62a1baf6f8a4da3a2693e393a7d1dcf.xml",
+      "thumbnail_url": "https://s3.castbox.fm/55/ef/a4/dd397e4cce8c48925ca3720a54.jpg",
+      "title": "زندگی پس از زندگی"
+    },
+    "pod_1780409682681": {
+      "artist": "ایمان نژد احمدی",
+      "category_id": "cat_12",
+      "description": "ما در راوکست از تاریخ میگیم، چون معتقدیم که گذشته چراغ راه آینده است و سعی داریم در کنار هم این چراغ را روشن نگهداریم.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/65d452168e81bc0017790e5b",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/c2/8a/9f/c28a9f14-66db-d9fd-b05a-b878d56d05e1/mza_5094252850764563595.jpeg/300x300bb.webp",
+      "title": "راوکست"
+    },
+    "pod_1780409992752": {
+      "artist": "احسان طریقت",
+      "category_id": "cat_12",
+      "description": "پرچم سفید، روایتی است از تاریک‌ترین فصل‌های تاریخ بشر.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/69c78827b9917327710c49c5",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/08/31/dc/0831dcef-406d-32d5-4c38-17e9c7e48cf6/mza_9547496286678800681.jpg/300x300bb.webp",
+      "title": "پرچم سفید"
+    },
+    "pod_1780719721354": {
+      "artist": "علی بندری",
+      "category_id": "cat_05",
+      "description": "در پادکست بی‌پلاس از کتابهای غیرداستانی‌ای که می‌خونیم حرف می‌زنیم و از ایده‌ و حرف‌های اصلی نویسنده می‌گیم.",
+      "is_featured": false,
+      "is_trending": true,
+      "rss_url": "https://feeds.acast.com/public/shows/65417dfc6143f1001280fb90",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/4f/e6/74/4fe67465-2ff1-73ae-8306-b5497a1c8885/mza_3205137134570485457.jpg/300x300bb.webp\"",
+      "title": "بی پلاس"
+    },
+    "pod_1780719867877": {
+      "artist": "متفرقه",
+      "category_id": "cat_07",
+      "description": "برای مخاطبینی که به دنبال الگوها و پیام های مخفی هستند.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.redcircle.com/611d513b-84f6-45bd-9012-7fb4804e7eea",
+      "thumbnail_url": "https://media.redcircle.com/images/2026/7/27/11/baa83fab-4c8c-4370-9fda-9da34d98503c_gemini_generated_image_2b64ua2b64ua2b64.jpg?d=440x440",
+      "title": "کد آینده"
+    },
+    "pod_1780720009441": {
+      "artist": "صادق راوی",
+      "category_id": "cat_19",
+      "description": "مجموعه خاطرات تجربه های نزدیک به مرگ یکی از مسئولان امنیتی است که توسط انتشارات ابراهیم هادی منتشر شده.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/c59b0c5a18b544178556cda33f924092.xml",
+      "thumbnail_url": "https://i.scdn.co/image/ab67656300005f1fc434414bed00ec3cd38cee2b",
+      "title": "شنود"
+    },
+    "pod_1780720220960": {
+      "artist": "مسعود ریاعی",
+      "category_id": "cat_19",
+      "description": "ترجمه ی فارسی تمامی سوره های قرآن کریم.",
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/5bf4f37612014baa9009085f482145b5.xml",
+      "thumbnail_url": "https://cdn-images.dzcdn.net/images/talk/4430232001af58f216bfe4d2aeeeb074/1900x1900-000000-80-0-0.jpg",
+      "title": "ترجمه ی فارسی قرآن"
+    },
+    "pod_1780720352623": {
+      "artist": "علی بندری",
+      "category_id": "cat_20",
+      "description": "در پادکست فارسی چنل‌بی ماجراهای واقعی رو تعریف می‌کنیم.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/channelbpodcast",
+      "thumbnail_url": "https://open-images.acast.com/shows/651e9d60130f3400115df9a0/show-cover.jpg?height=300",
+      "title": "چینل بی"
+    },
+    "pod_1780765275400": {
+      "artist": "جادی",
+      "category_id": "cat_14",
+      "description": "تقاطع تکنولوژی و جامعه و البته خیلی چیزهای دیگه. از جوراب شلواری تا شماره های ویژه.",
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/6048890/podcast/rss",
+      "thumbnail_url": "https://podcastaddict.com/cache/artwork/thumb/3137855",
+      "title": "رادیو گیگ"
+    },
+    "pod_1780765460278": {
+      "artist": "کار نکن",
+      "category_id": "cat_16",
+      "description": "کار نکن داستان زندگی آدماییه که با شغلشون زندگی میکنند.",
+      "is_trending": false,
+      "rss_url": "https://feed.podbean.com/aminaramesh/feed.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/3f/89/26/3f89260d-b4cd-4678-b114-d8394d58f765/mza_16911995118230952602.png/600x600bb.webp",
+      "title": "کار نکن"
+    },
+    "pod_1780766257510": {
+      "artist": "گلسین",
+      "category_id": "cat_20",
+      "description": "پادکستی که در اون افسانه ها و اسطوره های سرزمینهای دور رو به زبان امروز می شنوید.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/sagapodcast",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/a8/99/3a/a8993ad0-3d76-2bfe-4d16-eed239d1636f/mza_11994220311902869549.jpg/600x600bb.webp",
+      "title": "رادیو ساگا"
+    },
+    "pod_1780766426380": {
+      "artist": "ناشناس",
+      "category_id": "cat_11",
+      "description": "مترونوم، پادکستی است در مورد موسیقی ایرانی و داستان ساخته شدن ترانه های مشهور.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/metronom",
+      "thumbnail_url": "https://assets.pippa.io/shows/69212ea3c367efee96509473/1763786476259-b8566eba-72aa-48fb-8a59-f92dce5ab797.jpeg",
+      "title": "مترونوم"
+    },
+    "pod_1780766648338": {
+      "artist": "پیام وثوقیان",
+      "category_id": "cat_20",
+      "description": "داستان ها و گزارش های واقعی، مهیج و شنیدنی منتشر شده در رسانه های معتبر از سراسر دنیا.",
+      "is_trending": true,
+      "rss_url": "https://feeds.acast.com/public/shows/fericast",
+      "thumbnail_url": "https://assets.pippa.io/shows/673d9878ed94033880591625/show-cover.jpg",
+      "title": "فری کست"
+    },
+    "pod_1780773540531": {
+      "artist": "احمد هاشمی",
+      "category_id": "cat_06",
+      "description": "ما در سینما مورخ هربار یکی از فریم های تاریخ سینما رو کنار هم میچینیم.",
+      "is_trending": false,
+      "rss_url": "https://shenoto.net/service/api/feed/CinemaMovarekh",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/e9/41/3f/e9413f7e-3ba0-237c-7cd3-aa47640312d7/mza_7993608789354873392.png/600x600bb.webp",
+      "title": "سینما مورخ"
+    },
+    "pod_1780908050": {
+      "artist": "مائده قربانی",
+      "category_id": "cat_16",
+      "description": "اولین و پرشنونده ترین پادکست در حوزه آموزش کسب وکار.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/ghafpodcast",
+      "thumbnail_url": "https://assets.pippa.io/shows/627a225a40ce640013cec294/1758967524938-62b1d2d7-24dd-419e-8e4e-6e2775c28a85.jpeg",
+      "title": "قاف پادکست"
+    },
+    "pod_1780908611594": {
+      "artist": "محمد رضا طاهری",
+      "category_id": "cat_05",
+      "description": "مروری بر تمام آثار سعدی و دقت در ظرافت‌های آن.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/saad",
+      "thumbnail_url": "https://open-images.acast.com/shows/625066b96e71510013f4872e/show-cover.jpg?height=300",
+      "title": "سعدی"
+    },
+    "pod_1780908947912": {
+      "artist": "هوشیو",
+      "category_id": "cat_14",
+      "description": "در این پادکست، ما به بررسی دنیای شگفت‌انگیز هوش مصنوعی و تأثیرات آن بر زندگی روزمره و صنایع مختلف می‌پردازیم.",
+      "is_trending": false,
+      "rss_url": "https://shenoto.net/service/api/feed/Prompt",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/f1/53/49/f153495d-ee23-45fc-920a-d5e76c154ce7/mza_14318564031504671115.png/300x300bb.webp",
+      "title": "پرامپت"
+    },
+    "pod_1781011037051": {
+      "artist": "مرضیه",
+      "category_id": "cat_01",
+      "description": "روایت آدم‌ها از فاصله‌ای که با دیگران احساس می‌کنند.",
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/radio-marz-or",
+      "thumbnail_url": "https://assets.pippa.io/shows/65674fccc3ca8a00127b7474/show-cover.png",
+      "title": "رادیو مرز"
+    },
+    "pod_1781261432517": {
+      "artist": "کتابگرد",
+      "category_id": "cat_05",
+      "description": "در پادکست کتابگرد با آدم‌های مختلف حرف می‌زنم، قصه‌ٔ زندگیشان را می‌شنوم و سعی می‌کنم کتابی را که ممکن است برایشان جذاب باشد به مهمان پیشنهاد بدهم",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6654821f79fdff00128a2ebf",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/56/7e/99/567e99ea-6f4a-da7c-2ad8-fb4381a75f25/mza_17963769290494328711.jpg/600x600bb.webp",
+      "title": "کتابگرد"
+    },
+    "pod_1783341885042": {
+      "artist": "حسام ایپکچی",
+      "category_id": "cat_08",
+      "description": "پادکست انسانک تاملی است در تجربیات زیسته و زندگی جاری به روایت حسام ایپکچی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/ensanak",
+      "thumbnail_url": "https://cdn-arch.shenoto.com/shenoto-channel/133f05f0-89e4-471f-b070-679a8d2f5f2b/cover/3000.jpg",
+      "title": "انسانک"
+    },
+    "pod_1783786434505": {
+      "artist": "محسن بوالحسنی",
+      "category_id": "cat_05",
+      "description": "پادکست خرقه، روایتی‌ست صوتی از رمان‌ها و داستان‌های ماندگار ادبیات فارسی؛ جایی برای شنیدن آثار بزرگ و کمیاب، همان‌گونه که نویسنده آن‌ها را نوشته، نه آن‌طور که سانسور اجازه داده است.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feed.dotcast.org/p/7nmh50se/feed.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/49/1a/cc/491acc81-41de-6ace-083c-640702b9a38b/mza_10511449191574484884.jpg/600x600bb.webp",
+      "title": "خرقه"
+    },
+    "pod_1784018029970": {
+      "artist": "مهیار عاشقی میلانی",
+      "category_id": "cat_17",
+      "description": "در این پادکست با تمام افرادی که درگیر دنیای سفر هستند مصاحبه خواهیم کرد. پادکست یک هدف داره و اون هم این هست علاقه مندان به سفر رو به خواستشون نزدیک تر بکنه.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/59a952436cca42d89c939af7ce91ebd7.xml",
+      "thumbnail_url": "https://s3.castbox.fm/46/8e/b0/011d9048038916bd17e58f2dd8.jpg",
+      "title": "ولگردی"
+    },
+    "pod_1784018166700": {
+      "artist": "فرزآن",
+      "category_id": "cat_13",
+      "description": "می‌ترسید بی‌آنکه بداند می‌ترسد. غمگین بود بی‌آنکه بداند از چه. می‌خواست برود، بی‌آنکه بداند به کجا.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.redcircle.com/cd4c375c-2a1d-4041-a5d2-3d817b216cd4",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/fb/fa/43/fbfa43f5-bfdd-8075-e983-446e900d084f/mza_8214303788362167837.jpg/300x300bb.webp",
+      "title": "رواق"
+    },
+    "pod_1784023569202": {
+      "artist": "ناشناس",
+      "category_id": "cat_10",
+      "description": "پادکست فارسی هفتگی تحلیل فوتبال باشگاهی اروپا و ایران.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://podkadeh.com/podcastxml/footballlab.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9a/73/7c/9a737cd9-6857-4d94-4956-dda96385c915/mza_579761800851946.jpg/600x600bb.webp",
+      "title": "فوتبال لب"
+    },
+    "pod_1784898965220": {
+      "artist": "بردیا برج",
+      "category_id": "cat_11",
+      "description": "هر آلبوم موسیقی، قصه‌ای دارد!... پادکست آلبوم، روایتگر داستان ساخت و انتشار آلبومهای تاثیرگذار تاریخ موسیقی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/645b4b6a62ead300117aa0bb",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/04/72/4b/04724bc1-a982-3019-0990-115a14ebae91/mza_17759916364696250015.jpg/400x400bb.webp",
+      "title": "آلبوم"
+    },
+    "pod_1784899409661": {
+      "artist": "مهدی ستوده",
+      "category_id": "cat_06",
+      "description": "پادکست سینما، ادبیات، موسیقی",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/10f0827c/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/d9/0c/dc/d90cdcfa-fa65-9c2a-672b-999cc6e897f3/mza_1991308204187686622.jpg/400x400bb.webp",
+      "title": "دیالوگ باکس"
+    },
+    "pod_1784899641664": {
+      "artist": "سهیل علوی",
+      "category_id": "cat_16",
+      "description": "استارتاپ، تکنولوژی، زندگی",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/625bd31dc030a00012e0dba7",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/64/b6/ac/64b6ac6d-aa04-2269-9b26-d2a0b634d90b/mza_9646180096483726997.jpg/400x400bb.webp",
+      "title": "طبقه ۱۶"
+    },
+    "pod_1785146650504": {
+      "artist": "مختار رزمجو",
+      "category_id": "cat_11",
+      "description": "پلی‌لیست، برای وقتاییه که دلت یه انتخاب درست از موسیقی می‌خواد، نه یه لیست تصادفی. هر اپیزود حول یه محور مشخصه: یه خواننده، یه کشور، یه سبک، یا یه حس‌وحال.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/78e14307d01a4bef9665c62f22e26ca4.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/1d/90/44/1d90442d-e041-d643-a9bf-56a8c8ef1fe4/mza_9853416767076997594.jpg/400x400bb.webp",
+      "title": "پلی لیست"
+    },
+    "pod_1785147101329": {
+      "artist": "ناشناس",
+      "category_id": "cat_18",
+      "description": "دوشنبه ها ، یه در میون هستیم.طنز ، خلق و خو نیست گونه ای جهان بینی است.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://rss.libsyn.com/shows/593550/destinations/5158600.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/80/4a/89/804a8993-96e6-a3f0-4ad9-288608d86aa8/mza_12625955550534459701.jpg/400x400bb.webp",
+      "title": "طنزپردازی"
+    },
+    "pod_1785147293242": {
+      "artist": "امیر سودبخش",
+      "category_id": "cat_12",
+      "description": "پادکست رپاپ خلاصه ی کتاب هایی در حوزه تاریخ.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6254327779d35a00135d17c9",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/cb/6f/71/cb6f7116-ae5d-0bcd-1a18-1d238d64426f/mza_1616307942816859096.jpeg/400x400bb.webp",
+      "title": "رپاپ"
+    },
+    "pod_1785147464576": {
+      "artist": "مسعود فهیمی",
+      "category_id": "cat_12",
+      "description": "اینجا داستان های تاریخی تعریف می کنیم و سعی داریم به روایت ها، دیدگاه علمی داشته باشیم.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6860ebc2653df36e7b81252f",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/7a/8f/2e/7a8f2e21-80e0-8004-c16d-c623eb7ea497/mza_12990771327417215558.jpeg/400x400bb.webp",
+      "title": "معجون"
+    },
+    "pod_1785147608014": {
+      "artist": "شهاب جعفری",
+      "category_id": "cat_02",
+      "description": "داستان جنایات واقعی جهان، قصه رمزگشایی از جرائمی که مجرم ها سعی در پنهان کردنشون داشتن. با پادکست جنون، جنایات حقیقی دنیا رو به شکلی متفاوت بشنوید.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://www.spreaker.com/show/7162265/episodes/feed",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/5f/14/f0/5f14f07e-d685-7cb0-0722-60b2dd042eb5/mza_1852987902646216951.jpg/400x400bb.webp",
+      "title": "جنون"
+    },
+    "pod_1785147881007": {
+      "artist": "اتاق ۱۳",
+      "category_id": "cat_02",
+      "description": "اینجا پادکست کرایم تایم هستش و ما در هر اپیزود یک ماجرای جنایی واقعی رو بازگو میکنیم.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://www.spreaker.com/show/6531009/episodes/feed",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/60/23/26/602326ad-adaa-8264-5bb0-cfd25ea039ae/mza_4311068293462452097.jpg/400x400bb.webp",
+      "title": "کرایم تایم"
+    },
+    "pod_1785147935960": {
+      "artist": "ناشناس",
+      "category_id": "cat_02",
+      "description": "پادکست نوار زرد قصد داره قتل های سریالی که در ایران اتفاق افتادن رو در کنار یک بستر تاریخی و اجتماعی روایت کند.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/626ce50492829f00120e8192",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/e7/c0/64/e7c06498-d514-559c-c4d2-b7587d099e7c/mza_1900805530312291643.jpeg/400x400bb.webp",
+      "title": "نوار زرد"
+    },
+    "pod_1785271224412": {
+      "artist": "ناشناس",
+      "category_id": "cat_06",
+      "description": "به روایت سینما\n\nما سینما را انتخاب کرده ایم؛برای اندیشه ای والاترروزهایی دلگرم کننده ترو پرواز رویا گونه ای در آسمان آبی پهناورما سینما را انتخاب کرده ایم...",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/accordingtocinemacinema",
+      "thumbnail_url": "https://assets.pippa.io/shows/67093626dc27bf9f7745be29/1735167579849-c5547ada-ef45-4761-a312-2ebc705b4724.jpeg",
+      "title": "به روایت سینما"
+    },
+    "pod_1785271720571": {
+      "artist": "احسان رحیمی",
+      "category_id": "cat_06",
+      "description": "پادکست سینمایی برداشت چندم: معرفی، نقد، بررسی و تحلیل فیلم، سریال و انیمیشن",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/fd60a0ec/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/da/f4/e3/daf4e3f7-ac32-189c-a215-04b1e20b587e/mza_4049507145277779924.jpg/800x800bb.webp",
+      "title": "برداشت چندم"
+    },
+    "pod_1785271923521": {
+      "artist": "سعید مرادی",
+      "category_id": "cat_06",
+      "description": "پادکستی درباره سینما، تئاتر و هنرهای نمایشی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/66a9115bec855766579bfa26",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/92/5e/16/925e16f3-1f3c-013a-57d4-3357ff98ee7e/mza_17265210539261922533.jpeg/800x800bb.webp",
+      "title": "سینما سین"
+    },
+    "pod_1785272449817": {
+      "artist": "ناشناس",
+      "category_id": "cat_04",
+      "description": "در پادکست طلسم شما را میهمان داستان‌های شنیدنی از جنس ترسناک‌های.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/fc4a9d36e8894f55b51d6247290b2325.xml",
+      "thumbnail_url": "https://s3.castbox.fm/e5/34/95/78b1ce4a4dab4cd3b4aecf0316.jpg",
+      "title": "طلسم"
+    },
+    "pod_1785336026196": {
+      "artist": "رضا",
+      "category_id": "cat_11",
+      "description": "گلچینی از بهترین آهنگ های بیکلام از بین چند هزار آهنگ مناسب برای ریلکسیشن ، مدیتیشن و خواب.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/a35432154c1c4c828820b7c66a63e129.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/d0/4f/0b/d04f0b0f-1867-193c-b054-f56bd3c149b7/mza_16422974499997195070.jpg/800x800bb.webp",
+      "title": "هنر ریلکسیشن"
+    },
+    "pod_1785336597037": {
+      "artist": "احسان مصدق",
+      "category_id": "cat_11",
+      "description": "شاید زمان آن رسیده تا برای ساعتی هم که شده به دغدغه هایمان توجه نکنیم\nچشمانمان را روی هم بگذاریم گوش ،روح و ذهنمان را به یک موسیقی خوب بسپاریم و اندکی از تنش های زندگی فاصله بگیریم.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/65fb6a3072544feb9436d4c52cc64cb9.xml",
+      "thumbnail_url": "https://s3.castbox.fm/52/fa/dc/7b1ad640319da79d6a91ac1999.jpg",
+      "title": "کافه میوزیک"
+    },
+    "pod_1785336886167": {
+      "artist": "فریبا",
+      "category_id": "cat_11",
+      "description": "گلچین آهنگ های قدیمی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/ce82e2f837244d6e8d816bee6380e859.xml",
+      "thumbnail_url": "https://s3.castbox.fm/34/a3/df/63f8674d3db3986585f1ed243e.jpg",
+      "title": "آهنگ قدیمی"
+    },
+    "pod_1785337113309": {
+      "artist": "دکتر سمیه شکری",
+      "category_id": "cat_11",
+      "description": "شعر مولانا با صدای و موسیقی دلنشین و به یاد ماندنی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/f9ce7f8c1c57404699c4c7ef6fdc712f.xml",
+      "thumbnail_url": "https://s3.castbox.fm/0e/0e/c9/e550e8468ba3222186a58ed154.jpg",
+      "title": "مولانا موزیک"
+    },
+    "pod_1785337305864": {
+      "artist": "اسدالله شهبازی",
+      "category_id": "cat_11",
+      "description": "پادکست آهنگ های شاد.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/1607d8b9771e4a7c98f6f6b9ae9d1b8d.xml",
+      "thumbnail_url": "https://s3.castbox.fm/28/de/11/0806504d02a46142518b6fd3f6.jpg",
+      "title": "آهنگ شاد"
+    },
+    "pod_1c8fd90c65fdfdef6296": {
+      "artist": "ناشناس",
+      "category_id": "cat_10",
+      "description": "خبر و تحلیل فوتبال اروپا به زبان فارسی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/3d5cf304/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/c1/14/ba/c114ba40-ba44-c31c-9d1b-e5296b165a54/mza_8967295129222233359.jpg/600x600bb.jpg",
+      "title": "فوتبالکست"
+    },
+    "pod_60d25263cc0e1f098571": {
+      "artist": "آرام",
+      "category_id": "cat_08",
+      "description": "تأمل و گفت‌وگو درباره خود، رفتار انسان و پرسش‌های ذهن کنجکاو.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feed.podbean.com/Dasein-aramtavakoli/feed.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/4f/3b/59/4f3b5907-3518-8a1b-eb88-86d34631cffc/mza_11017653459712640115.jpg/600x600bb.jpg",
+      "title": "دازاین"
+    },
+    "pod_70b2b9dfce0c62b27403": {
+      "artist": "ناشناس",
+      "category_id": "cat_10",
+      "description": "آشنایی با رشته‌های مختلف ورزشی و موضوعات مرتبط با آن‌ها.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/4dd43d78/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/54/a6/3c/54a63cf5-d41a-aab3-2777-317a0fff3c03/mza_1066764870321474424.jpg/600x600bb.jpg",
+      "title": "دی‌اثلیت"
+    },
+    "pod_98125a60b1d8f8155a51": {
+      "artist": "مختلف",
+      "category_id": "cat_10",
+      "description": "تحلیل رویدادها و مسائل فوتبال ایران.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/3e1f37a1d33448bfbf2b11c1caa98ae4.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/c3/ed/1c/c3ed1ccb-9372-0f9b-8497-941796d568c4/mza_4192590042761015381.jpg/600x600bb.jpg",
+      "title": "فوتبال ۳۶۰"
+    },
+    "pod_98bcd88cf4a0ab3a1d7e": {
+      "artist": "ناشناس",
+      "category_id": "cat_10",
+      "description": "گفت‌وگو و تحلیل هفتگی رویدادها و موضوعات دنیای فوتبال.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://rss.audiyacreators.one/cmirs0ugaxipywzzzcnts",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/21/a7/e5/21a7e5dd-cf07-c347-290e-8c9efaa5d158/mza_17672016236461583596.jpg/600x600bb.jpg",
+      "title": "فوتبال‌تراپی"
+    },
+    "pod_a04a7cda22bccaca1945": {
+      "artist": "احسان طریقت",
+      "category_id": "cat_02",
+      "description": "بازکردن و روایت پرونده‌های جنایی بر پایه ماجراهای واقعی.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6a30d4e3a893cd95ca9864a2",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/47/43/6d/47436d88-3763-417e-294f-bd6989f5c550/mza_854345865311906875.jpeg/600x600bb.jpg",
+      "title": "پرونده باز"
+    },
+    "pod_a3a2750d02ef5493b1dd": {
+      "artist": "مهدی خلجی",
+      "category_id": "cat_08",
+      "description": "گفتارهایی درباره عشق و فلسفه.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/545fa880/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/cd/a5/ba/cda5bac8-3f98-1da0-117b-55b28df61be7/mza_8095054156110316218.jpg/600x600bb.jpg",
+      "title": "فیلوسوفیا"
+    },
+    "pod_a48585ba713399f33ecc": {
+      "artist": "نیما بنی‌اسدی مقدم",
+      "category_id": "cat_08",
+      "description": "گفتارهایی درباره فلسفه و نگاه آگاهانه به رفتار، احساس و باورها.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/693ab7ce4d362887b70a5d03",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/4a/73/12/4a731261-4963-d14d-bc87-cb2d2b0fac29/mza_6578142690055249422.jpeg/600x600bb.jpg",
+      "title": "رادیو کنش"
+    },
+    "pod_b0a56ae449f843b5150f": {
+      "artist": "سهراب طاهری",
+      "category_id": "cat_02",
+      "description": "بازگویی پرونده‌های جنایی، رازهای حل‌نشده و سرنخ‌های تحقیقات.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/101d1edc0/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/8c/cc/f4/8cccf4de-d915-c79a-bc97-ce80ff858f1e/mza_14595382372929610266.jpg/600x600bb.jpg",
+      "title": "سین‌تاک"
+    },
+    "pod_b3295372c3ce3dfc5747": {
+      "artist": "ناشناس",
+      "category_id": "cat_04",
+      "description": "داستان‌ها و روایت‌های عجیب برای علاقه‌مندان به ژانر وحشت.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "http://rss.castbox.fm/everest/71f6910b2aab48398bdd97fb9d52e7fe.xml",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ed/0e/87/ed0e87d6-10f5-a0b6-c986-f22621048f2c/mza_4990970848238350390.jpg/600x600bb.jpg",
+      "title": "خوف‌کست"
+    },
+    "pod_ba916a8ff465dc1acac3": {
+      "artist": "مژده ناظمی",
+      "category_id": "cat_02",
+      "description": "روایت جنایت‌های واقعی، ناپدیدشدن‌ها و پرونده‌های پیچیده یا حل‌نشده.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/6683f24d4cb273e461378fc6",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/13/1c/a0/131ca090-1d72-af0c-1bb1-d764b81034e3/mza_15242664298963849552.jpeg/600x600bb.jpg",
+      "title": "رادیو کرایم"
+    },
+    "pod_d61ab7af3d4258fc0356": {
+      "artist": "ناشناس",
+      "category_id": "cat_10",
+      "description": "برنامه‌های صوتی و گفت‌وگوهای تخصصی درباره بسکتبال.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://anchor.fm/s/4ed2bf60/podcast/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/ab/0c/87/ab0c87d1-914c-6bcb-7f32-e1efe21ed36d/mza_3521502143701576023.jpg/600x600bb.jpg",
+      "title": "رادیو بسکتبال؛ خانه بسکتبال ایران"
+    },
+    "pod_d7bdeb266382e5268177": {
+      "artist": "پژمان نوروزی",
+      "category_id": "cat_08",
+      "description": "گفت‌وگو درباره ماهیت علم، عقلانیت و مرز میان علم و شبه‌علم.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://api.rabt.host/podcasts/ef2229cb-1d2e-496f-8250-af1b9daf4bd4/rss",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/38/71/c9/3871c90d-44f5-b001-00b8-0069ebec1aab/mza_7236014886608662655.jpeg/600x600bb.jpg",
+      "title": "فلسفهٔ علم"
+    },
+    "pod_df654929dc2c3d7ab35c": {
+      "artist": "رضا غفاری",
+      "category_id": "cat_05",
+      "description": "خوانش و روایت متن‌هایی در پیوند ادبیات، فلسفه، تاریخ و اسطوره.",
+      "is_featured": false,
+      "is_trending": false,
+      "rss_url": "https://feeds.acast.com/public/shows/674f71a122a0cb38beece255",
+      "thumbnail_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/aa/2f/22/aa2f221a-4f17-4f55-6ae7-f3cd5a466a62/mza_3842503878652733340.jpeg/600x600bb.jpg",
+      "title": "خرمگس"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+<resources>
+<string name="playlist_title">پلی‌لیست من</string><string name="playlist_add">افزودن به لیست</string><string name="playlist_remove">در پلی‌لیست</string><string name="playlist_added">به پلی‌لیست اضافه شد</string><string name="playlist_removed">از پلی‌لیست حذف شد</string><string name="playlist_play_all">پخش همه</string><string name="playlist_empty">هنوز اپیزودی ذخیره نکرده‌اید. از پلیر به لیست اضافه کنید.</string><string name="previous_episode">اپیزود قبلی</string><string name="next_episode">اپیزود بعدی</string><string name="playlist_delete">حذف از پلی‌لیست</string><string name="playlist_speed">سرعت %1$s</string>
+<string name="playlist_hint">اپیزودهای انتخابی، به ترتیب دلخواه شما</string><string name="playlist_count">%1$s اپیزود برای شنیدن</string></resources>

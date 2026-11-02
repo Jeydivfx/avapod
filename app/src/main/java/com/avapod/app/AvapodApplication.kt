@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 class AvapodApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        PushNotifications.createChannel(this)
         AppCompatDelegate.setDefaultNightMode(Appearance.mode(this))
     }
 }

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="home_week_trends">✦ ترندهای هفته</string>
+  <string name="home_listen">▶ گوش دادن</string>
+  <string name="home_top">اپیزودهای برتر</string>
+  <string name="home_top_description">منتخب آواپاد برای شنیدن</string>
+  <string name="home_latest">جدیدترین اپیزودها</string>
+  <string name="home_latest_description">اپیزودهای ۱۴ روز اخیر از فهرست پادکست‌ها</string>
+  <string name="home_recommend">پیشنهاد ویژه برای شما</string>
+  <string name="home_recommend_description">از پادکست‌های مورد علاقه و منتخب آواپاد</string>
+  <string name="home_all">مشاهده همه ‹</string>
+  <string name="home_top_empty">اپیزودهای منتخب به‌زودی اینجا قرار می‌گیرند.</string>
+  <string name="home_top_error">دریافت اپیزودهای منتخب ممکن نشد؛ برای تلاش دوباره صفحه را به پایین بکشید.</string>
+  <string name="home_latest_loading">در حال دریافت تازه‌ها…</string>
+  <string name="home_latest_empty">فعلاً اپیزودی از ۱۴ روز اخیر دریافت نشد. برای تلاش دوباره صفحه را به پایین بکشید.</string>
+  <string name="admin_top_episodes">اپیزودهای برتر</string>
+  <string name="admin_episode_loading">در حال دریافت اپیزودها…</string>
+  <string name="admin_episode_saved">اپیزودهای برتر ذخیره شدند.</string>
+  <string name="admin_episode_error">دریافت یا ذخیره انجام نشد. اتصال، دسترسی ادمین و قوانین فایربیس را بررسی کنید.</string>
+  <string name="home_save">ذخیره</string>
+  <string name="home_back">بازگشت</string>
+  <string name="home_view_all_compact">‹ مشاهده همه</string>
+  <string name="home_featured_badge">✦ ویژه هفته</string>
+</resources>

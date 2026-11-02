@@ -1,0 +1,162 @@
+{
+  "categories": {
+    "cat_01": {
+      "name": "جامعه",
+      "icon": "ic_category_community"
+    },
+    "cat_02": {
+      "name": "جنایی",
+      "icon": "ic_category_crime"
+    },
+    "cat_03": {
+      "name": "علم",
+      "icon": "ic_category_science"
+    },
+    "cat_04": {
+      "name": "ترسناک",
+      "icon": "ic_category_horror"
+    },
+    "cat_05": {
+      "name": "ادبیات",
+      "icon": "ic_category_book"
+    },
+    "cat_06": {
+      "name": "سینما",
+      "icon": "ic_category_cinema"
+    },
+    "cat_07": {
+      "name": "آینده‌پژوهی",
+      "icon": "ic_category_future"
+    },
+    "cat_08": {
+      "name": "فلسفه",
+      "icon": "ic_category_thought"
+    },
+    "cat_09": {
+      "name": "سیاست",
+      "icon": "ic_category_politics"
+    },
+    "cat_10": {
+      "name": "ورزش",
+      "icon": "ic_category_sport"
+    },
+    "cat_11": {
+      "name": "موسیقی",
+      "icon": "ic_category_music"
+    },
+    "cat_12": {
+      "name": "تاریخ",
+      "icon": "ic_category_history"
+    },
+    "avapod_cat_story": {
+      "name": "داستان",
+      "icon": "ic_category_audio"
+    },
+    "avapod_cat_psychology": {
+      "name": "روان‌شناسی",
+      "icon": "ic_category_psychology"
+    },
+    "avapod_cat_health": {
+      "name": "سلامت",
+      "icon": "ic_category_health"
+    },
+    "avapod_cat_technology": {
+      "name": "فناوری",
+      "icon": "ic_category_technology"
+    },
+    "avapod_cat_economy": {
+      "name": "اقتصاد",
+      "icon": "ic_category_economy"
+    },
+    "avapod_cat_business": {
+      "name": "کسب‌وکار",
+      "icon": "ic_category_business"
+    },
+    "avapod_cat_learning": {
+      "name": "آموزش",
+      "icon": "ic_category_learning"
+    },
+    "avapod_cat_language": {
+      "name": "زبان",
+      "icon": "ic_category_language"
+    },
+    "avapod_cat_travel": {
+      "name": "سفر",
+      "icon": "ic_category_travel"
+    },
+    "avapod_cat_nature": {
+      "name": "طبیعت",
+      "icon": "ic_category_nature"
+    },
+    "avapod_cat_comedy": {
+      "name": "طنز",
+      "icon": "ic_category_comedy"
+    },
+    "avapod_cat_family": {
+      "name": "خانواده",
+      "icon": "ic_category_family"
+    },
+    "avapod_cat_art": {
+      "name": "هنر",
+      "icon": "ic_category_art"
+    },
+    "avapod_cat_spirituality": {
+      "name": "معنویت",
+      "icon": "ic_category_spirituality"
+    },
+    "avapod_cat_biography": {
+      "name": "زندگی‌نامه",
+      "icon": "ic_category_biography"
+    },
+    "avapod_cat_food": {
+      "name": "آشپزی",
+      "icon": "ic_category_food"
+    },
+    "avapod_cat_games": {
+      "name": "بازی",
+      "icon": "ic_category_games"
+    },
+    "avapod_cat_astronomy": {
+      "name": "نجوم",
+      "icon": "ic_category_astronomy"
+    }
+  },
+  "db_config/version": 228,
+  "podcasts/-P3j4ng0H5TSYUA7Vczj/category_id": "avapod_cat_psychology",
+  "podcasts/-P3j82R_LaRvdCdiyzSG/category_id": "avapod_cat_story",
+  "podcasts/-P4TIy2W8MJnLRDme1Zt/category_id": "avapod_cat_travel",
+  "podcasts/-P4TJHWgEQ_uj3yMmvDZ/category_id": "avapod_cat_art",
+  "podcasts/-P4TJhPljiXBnXlAbqMN/category_id": "avapod_cat_travel",
+  "podcasts/-P4TJzEpqQcdbrWhfDp6/category_id": "avapod_cat_psychology",
+  "podcasts/-P4TPAl8G9HVDw1rRIgN/category_id": "avapod_cat_story",
+  "podcasts/-P4TQ8E8eXcogHVy9X2O/category_id": "avapod_cat_business",
+  "podcasts/-P4Tnptd19QzL4e5dA22/category_id": "avapod_cat_economy",
+  "podcasts/-P4To4Zg_VJ3b-2cjhfl/category_id": "avapod_cat_business",
+  "podcasts/-P4URJZc5gecN6A4oFv1/category_id": "avapod_cat_biography",
+  "podcasts/-P4USJJcUI4Dykr96Ywp/category_id": "avapod_cat_biography",
+  "podcasts/-P4USa9g9tfIoLeWUO7B/category_id": "cat_05",
+  "podcasts/-P4USs8VAXp4GY8gPvn7/category_id": "avapod_cat_psychology",
+  "podcasts/-P4UTPjtc8WZsxr7sAhE/category_id": "avapod_cat_psychology",
+  "podcasts/pod_006/category_id": "avapod_cat_psychology",
+  "podcasts/pod_1778330327554/category_id": "cat_02",
+  "podcasts/pod_1779393096006/category_id": "avapod_cat_comedy",
+  "podcasts/pod_1779581220083/category_id": "avapod_cat_spirituality",
+  "podcasts/pod_1780409682681/category_id": "cat_12",
+  "podcasts/pod_1780409992752/category_id": "cat_12",
+  "podcasts/pod_1780719721354/category_id": "cat_05",
+  "podcasts/pod_1780720009441/category_id": "avapod_cat_spirituality",
+  "podcasts/pod_1780720220960/category_id": "avapod_cat_spirituality",
+  "podcasts/pod_1780720352623/category_id": "avapod_cat_story",
+  "podcasts/pod_1780765275400/category_id": "avapod_cat_technology",
+  "podcasts/pod_1780765460278/category_id": "avapod_cat_business",
+  "podcasts/pod_1780766257510/category_id": "avapod_cat_story",
+  "podcasts/pod_1780766426380/category_id": "cat_11",
+  "podcasts/pod_1780766648338/category_id": "avapod_cat_story",
+  "podcasts/pod_1780908050/category_id": "avapod_cat_business",
+  "podcasts/pod_1780908947912/category_id": "avapod_cat_technology",
+  "podcasts/pod_1781261432517/category_id": "cat_05",
+  "podcasts/pod_1784018029970/category_id": "avapod_cat_travel",
+  "podcasts/pod_1784018166700/category_id": "avapod_cat_psychology",
+  "podcasts/pod_1784899641664/category_id": "avapod_cat_business",
+  "podcasts/pod_1785147101329/category_id": "avapod_cat_comedy"
+}

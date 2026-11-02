@@ -229,7 +229,7 @@
     <string name="no_continue_listening">هنوز پادکستی شروع نکردی!</string>
     <string name="no_continue_listening_desc">برای شروع، یک پادکست از بخش‌های بالا انتخاب کن</string>
     <string name="start_exploring">شروع کشف</string>
-    <string name="search_hint">جستجوی پادکست…</string>
+    <string name="search_hint">جستجوی پادکست یا موضوع</string>
     <string name="search_suggestions">پیشنهادات جستجو</string>
     <string name="no_search_results">نتیجه‌ای یافت نشد</string>
 

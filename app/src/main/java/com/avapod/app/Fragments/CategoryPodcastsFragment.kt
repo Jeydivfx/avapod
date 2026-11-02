@@ -68,7 +68,8 @@ class CategoryPodcastsFragment : Fragment() {
         val repository = com.avapod.app.network.PodcastRepository(requireContext(), viewLifecycleOwner)
 
         repository.getPodcasts { allPodcasts ->
-            val filteredList = allPodcasts.filter { it.category_id == categoryId }
+            val categoryIds = arguments?.getStringArrayList("category_ids")?.toSet().orEmpty() + listOfNotNull(categoryId)
+            val filteredList = allPodcasts.filter { it.category_id in categoryIds }
 
             activity?.runOnUiThread {
                 loader.visibility = View.GONE

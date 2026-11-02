@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reuse AvaPod's transparent monochrome brand mark for foreground and FCM notifications. -->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/ic_avapod_logo"
+    android:gravity="fill"
+    android:filter="true" />

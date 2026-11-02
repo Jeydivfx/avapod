@@ -109,7 +109,7 @@ class AddPodcastFragment : Fragment() {
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spinnerCategories.adapter = adapter
 
-                    val selected = categoryList.indexOfFirst { it.id == selectedCategoryId }.coerceAtLeast(0)
+                    val selected = categoryList.indexOfFirst { it.id == selectedCategoryId || selectedCategoryId in it.sourceIds }.coerceAtLeast(0)
                     selectedCategoryId = categoryList[selected].id
                     spinnerCategories.setSelection(selected)
 

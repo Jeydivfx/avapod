@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AvaPod" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/vazir_regular</item>
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="android:windowLightStatusBar">@bool/light_system_bars</item>
+        <item name="android:windowLightNavigationBar">@bool/light_system_bars</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/primary_blue</item>
+        <item name="colorOnSecondary">@color/on_primary</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="colorOnSurface">@color/text_white</item>
+        <item name="colorOnBackground">@color/text_white</item>
+        <item name="colorAccent">@color/primary_blue</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="android:textColorPrimary">@color/text_white</item>
+        <item name="android:textColorSecondary">@color/text_gray</item>
+        <item name="android:colorControlNormal">@color/icon_tint</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="popupMenuStyle">@style/CustomPopupStyle</item>
+        <item name="actionBarPopupTheme">@style/CustomPopupStyle</item>
+    </style>
+</resources>

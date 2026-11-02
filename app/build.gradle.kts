@@ -19,8 +19,8 @@ android {
         applicationId = "com.avapod.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 27
-        versionName = "1.55"
+        versionCode = 29
+        versionName = "1.57"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,6 +64,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database") // کلمه ktx حذف شد
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-messaging")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 

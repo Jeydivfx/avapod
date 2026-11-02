@@ -28,6 +28,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AvaPod">
 
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_push_notification" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="avapod_announcements" />
+        <service android:name=".AvapodMessagingService" android:exported="false">
+            <intent-filter><action android:name="com.google.firebase.MESSAGING_EVENT" /></intent-filter>
+        </service>
         <receiver android:name=".utils.DownloadCompleteReceiver" android:exported="false">
             <intent-filter><action android:name="android.intent.action.DOWNLOAD_COMPLETE" /></intent-filter>
         </receiver>

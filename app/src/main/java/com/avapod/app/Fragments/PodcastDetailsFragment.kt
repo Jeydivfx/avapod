@@ -150,6 +150,9 @@ class PodcastDetailFragment : Fragment() {
                 com.avapod.app.utils.AdManager.navigateWithoutAd(this) {
                     val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
                         putExtra("audio_url", rssItem.audioUrl)
+                        putExtra("queue_id", com.avapod.app.utils.PlaylistStore.queue(requireContext(), episodeList.map {
+                            it.copy(artist = podcastTitle, imageUrl = it.imageUrl?.takeIf(String::isNotBlank) ?: coverUrl)
+                        }))
                         putExtra("title", rssItem.title)
                         val imageToSend = if (!rssItem.imageUrl.isNullOrEmpty()) rssItem.imageUrl else coverUrl
                         putExtra("cover", imageToSend)

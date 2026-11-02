@@ -28,7 +28,12 @@ class ContinueAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContinueViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_episode, parent, false)
+            .inflate(R.layout.item_home_continue_compact, parent, false)
+        // The episode layout is shared; keep only continue-listening cards single-line.
+        view.findViewById<TextView>(R.id.txt_episode_title).apply {
+            setSingleLine(true)
+            ellipsize = android.text.TextUtils.TruncateAt.END
+        }
         return ContinueViewHolder(view)
     }
 

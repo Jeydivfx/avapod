@@ -1,0 +1,11 @@
+<resources>
+    <string name="inbox_title">پیام‌های آواپاد</string>
+    <string name="inbox_empty">هنوز پیام تازه‌ای ندارید.</string>
+    <string name="inbox_loading">در حال دریافت پیام…</string>
+    <string name="inbox_error">دریافت پیام تازه ممکن نشد. دوباره تلاش کنید.</string>
+    <string name="inbox_retry">تلاش دوباره</string>
+    <string name="inbox_note">پیام‌های این بخش داخل برنامه نمایش داده می‌شوند.</string>
+    <string name="hero_listen_label">گوش دادن</string>
+    <string name="inbox_card_label">پیام آواپاد</string>
+<string name="inbox_latest_message">آخرین پیام آواپاد</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/background_dark" android:padding="12dp" android:layoutDirection="rtl">
+  <include android:id="@+id/common_toolbar" layout="@layout/layout_common_toolbar" />
+  <TextView android:id="@+id/collection_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/common_toolbar" android:layout_marginEnd="24dp" android:layout_marginStart="24dp" android:fontFamily="@font/vazir_bold" android:textColor="@color/text_white" android:textSize="@dimen/type_title" android:gravity="right" android:textDirection="rtl" app:fontFamily="@font/vazir_bold" android:textStyle="normal" />
+  <androidx.recyclerview.widget.RecyclerView android:id="@+id/collection_items" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/collection_title" android:layout_marginTop="12dp" />
+</RelativeLayout>

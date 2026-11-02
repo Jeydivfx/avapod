@@ -92,7 +92,7 @@ class AdminDashboardFragment : Fragment() {
                         parentFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,
                             AddPodcastFragment().apply { arguments = Bundle().apply { putSerializable("podcast_data", podcast) } })
                             .addToBackStack(null).commit()
-                    }, { podcast -> confirmDelete(podcast) })
+                    }, { podcast -> confirmDelete(podcast) }, { podcast -> showTopEpisodePicker(podcast) })
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

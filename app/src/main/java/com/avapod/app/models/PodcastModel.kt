@@ -22,7 +22,8 @@ data class Podcast(
 data class Category(
     var id: String = "",
     var name: String = "",
-    var icon: String = ""
+    var icon: String = "",
+    val sourceIds: List<String> = emptyList()
 )
 
 
