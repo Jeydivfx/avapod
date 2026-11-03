@@ -72,5 +72,10 @@
   <color name="brand_selected">#E3EDFF</color>
   <color name="brand_selected_end">#C8DBFF</color>
   <color name="nav_selected_text">#163C7A</color>
-  <color name="home_search_fill">#19263C</color>
+  <color name="home_search_fill">#FFFFFF</color>
+  <color name="nav_surface_start">#FFFFFF</color>
+  <color name="nav_surface_end">#FFFFFF</color>
+  <color name="inbox_icon_surface">#E6F0FF</color>
+  <color name="inbox_icon_border">#BACEEA</color>
+  <color name="inbox_icon_ink">#245FC4</color>
 </resources>

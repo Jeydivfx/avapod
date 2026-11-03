@@ -27,10 +27,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:cardBackgroundColor="#19365B"
+                app:cardBackgroundColor="@color/inbox_icon_surface"
                 app:cardCornerRadius="11dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#315A85"
+                app:strokeColor="@color/inbox_icon_border"
                 app:strokeWidth="0.5dp">
 
                 <ImageView
@@ -41,7 +41,7 @@
                     android:src="@drawable/ic_inbox_chat"
                     android:contentDescription="@null"
                     android:importantForAccessibility="no"
-                    app:tint="#65B7FF" />
+                    app:tint="@color/inbox_icon_ink" />
 
             </com.google.android.material.card.MaterialCardView>
 

@@ -19,8 +19,8 @@ android {
         applicationId = "com.avapod.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 31
-        versionName = "1.59"
+        versionCode = 32
+        versionName = "1.60"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

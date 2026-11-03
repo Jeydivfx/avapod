@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsCompat.CONSUMED
         }
         miniPlayer = findViewById(R.id.include_mini_player)
+        updateContentOverlap()
         cover = miniPlayer.findViewById(R.id.img_mini_player_cover)
         title = miniPlayer.findViewById(R.id.txt_mini_player_title)
         artist = miniPlayer.findViewById(R.id.txt_mini_player_podcast_name)
@@ -176,13 +177,26 @@ class MainActivity : AppCompatActivity() {
             putExtra("podcast_name", getString(R.string.app_name))
         })
     }
+    private fun updateContentOverlap() {
+        val host = findViewById<View>(R.id.nav_host_fragment)
+        val params = host.layoutParams as android.widget.RelativeLayout.LayoutParams
+        val margin = if (!keyboardVisible && miniPlayer.visibility == View.GONE)
+            -resources.getDimensionPixelSize(R.dimen.nav_corner_radius) else 0
+        if (params.bottomMargin != margin) {
+            params.bottomMargin = margin
+            host.layoutParams = params
+        }
+    }
+
     private fun renderMiniPlayer() {
         val player = connection.controller ?: run {
             miniPlayer.visibility = View.GONE
+            updateContentOverlap()
             return
         }
         val item = player.currentMediaItem
         miniPlayer.visibility = if (item == null || keyboardVisible) View.GONE else View.VISIBLE
+        updateContentOverlap()
         if (item == null) return
         title.text = item.mediaMetadata.title ?: ""
         artist.text = item.mediaMetadata.artist ?: ""

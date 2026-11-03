@@ -73,4 +73,9 @@
   <color name="brand_selected_end">#102752</color>
   <color name="nav_selected_text">#FFFFFF</color>
   <color name="home_search_fill">#1B2940</color>
+  <color name="nav_surface_start">#151824</color>
+  <color name="nav_surface_end">#101522</color>
+  <color name="inbox_icon_surface">#19365B</color>
+  <color name="inbox_icon_border">#315A85</color>
+  <color name="inbox_icon_ink">#65B7FF</color>
 </resources>

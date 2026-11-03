@@ -13,4 +13,5 @@
   <dimen name="home_section_title">15sp</dimen>
   <dimen name="icon_inline">20dp</dimen>
   <dimen name="icon_standard">24dp</dimen>
+  <dimen name="nav_corner_radius">25dp</dimen>
 </resources>
