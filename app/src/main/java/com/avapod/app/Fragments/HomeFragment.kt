@@ -139,9 +139,7 @@ class HomeFragment : Fragment() {
         setupHero()
         rvLatest = view.findViewById(R.id.rv_home_latest)
         latestAdapter = HomeShelfAdapter()
-        latestAdapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
-            override fun onChanged() { alignShelfPeek(rvLatest) }
-        })
+        alignShelfInitially(rvLatest, latestAdapter!!)
         rvLatest.adapter = latestAdapter
         rvLatest.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         view.findViewById<View>(R.id.btn_all_latest).setOnClickListener {
@@ -158,13 +156,28 @@ class HomeFragment : Fragment() {
 
     // Start each shelf with a 10% edge peek, three complete cards and 10% at the far edge.
     // The first item is intentionally cropped on the RTL start edge.
-    private fun alignShelfPeek(recyclerView: RecyclerView) {
-        recyclerView.post {
-            val manager = recyclerView.layoutManager as? LinearLayoutManager ?: return@post
-            if ((recyclerView.adapter?.itemCount ?: 0) < 5 || recyclerView.width <= 0) return@post
-            val cardWidth = (recyclerView.width / 3.20f).toInt()
-            manager.scrollToPositionWithOffset(1, (cardWidth * 0.10f).toInt())
-        }
+    private fun alignShelfInitially(recyclerView: RecyclerView, adapter: HomeShelfAdapter) {
+        var alignedOrDragged = false
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(view: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) alignedOrDragged = true
+            }
+        })
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                if (alignedOrDragged) return
+                recyclerView.post {
+                    // RSS feeds arrive incrementally. Never reset a shelf after its first
+                    // alignment or after the user starts scrolling, including queued updates.
+                    if (alignedOrDragged || recyclerView.adapter !== adapter) return@post
+                    val manager = recyclerView.layoutManager as? LinearLayoutManager ?: return@post
+                    if (adapter.itemCount < 5 || recyclerView.width <= 0) return@post
+                    alignedOrDragged = true
+                    val cardWidth = (recyclerView.width / 3.20f).toInt()
+                    manager.scrollToPositionWithOffset(1, (cardWidth * 0.10f).toInt())
+                }
+            }
+        })
     }
 
     private fun initViews(view: View) {
@@ -265,9 +278,7 @@ class HomeFragment : Fragment() {
 
     private fun setupTrendingSection() {
         trendingAdapter = HomeShelfAdapter()
-        trendingAdapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
-            override fun onChanged() { alignShelfPeek(rvTrending) }
-        })
+        alignShelfInitially(rvTrending, trendingAdapter!!)
         rvTrending.adapter = trendingAdapter
         rvTrending.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
@@ -392,9 +403,7 @@ class HomeFragment : Fragment() {
 
     private fun setupRecommendedSection() {
         recommendedAdapter = HomeShelfAdapter()
-        recommendedAdapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
-            override fun onChanged() { alignShelfPeek(rvRecommended) }
-        })
+        alignShelfInitially(rvRecommended, recommendedAdapter!!)
         rvRecommended.adapter = recommendedAdapter
         rvRecommended.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
